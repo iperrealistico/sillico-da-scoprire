@@ -58,6 +58,40 @@
     }
     </script>
     
+    <script>
+        /* ===================================
+           📷 CONFIGURAZIONE IMMAGINI SITO
+           Modifica i percorsi delle immagini qui sotto
+        =================================== */
+        
+        const SITE_IMAGES = {
+            // Hero Section
+            heroBg: 'images/hero-bg.jpg',  // Sfondo hero principale con vista panoramica del borgo
+            
+            // Chi Siamo Section
+            aboutPanorama: 'images/about-panorama.jpg',  // Vista panoramica del borgo medievale di Sillico
+            
+            // Bike Rent Section  
+            bikeSentiero: 'images/bike-sentiero.jpg',  // Mountain bike su sentiero panoramico delle Apuane
+            
+            // Cosa Vedere Section
+            palazzoCarli: 'images/palazzo-carli.jpg',  // Palazzo Carli con collezione di orologi
+            chiesaSanLorenzo: 'images/chiesa-san-lorenzo.jpg',  // Chiesa romanica di San Lorenzo
+            muraMedievali: 'images/mura-medievali.jpg',  // Mura medievali e torre di avvistamento
+            chiesaSanRocco: 'images/chiesa-san-rocco.jpg',  // Chiesa seicentesca di San Rocco
+            
+            // Eventi Section (nuova)
+            evento1: 'images/evento-sagra.jpg',  // Sagra dei sapori garfagnini
+            evento2: 'images/evento-rievocazione.jpg',  // Rievocazione storica medievale  
+            evento3: 'images/evento-castagne.jpg',  // Festa delle castagne
+            evento4: 'images/evento-escursione.jpg',  // Escursione guidata notturna
+            
+            // Favicon e icone
+            favicon: 'favicon.ico',
+            appleTouchIcon: 'images/apple-touch-icon.png'
+        };
+    </script>
+    
     <style>
         /* ===================================
            🎨 PERSONALIZZAZIONE FACILE
@@ -542,6 +576,120 @@
         }
         
         /* ===================================
+           🎉 EVENTI
+        =================================== */
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .event-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition);
+        }
+        
+        .event-card:hover .event-image img {
+            transform: scale(1.05);
+        }
+        
+        .event-date {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .event-content {
+            padding: 2rem;
+        }
+        
+        .event-content h3 {
+            font-family: var(--font-secondary);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .event-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Lightbox per immagini eventi */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: opacity var(--transition);
+        }
+        
+        .lightbox-close:hover {
+            opacity: 0.7;
+        }
+        
+        /* ===================================
            🏛️ COSA VEDERE
         =================================== */
         
@@ -664,6 +812,10 @@
             display: flex;
             align-items: flex-start;
             gap: 1.5rem;
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
         }
         
         .contact-icon {
@@ -841,7 +993,8 @@
             
             .trails-grid,
             .attractions-grid,
-            .hospitality-grid {
+            .hospitality-grid,
+            .events-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -857,7 +1010,8 @@
                 padding: 2rem;
             }
             
-            .attraction-content {
+            .attraction-content,
+            .event-content {
                 padding: 1.5rem;
             }
         }
@@ -923,6 +1077,7 @@
                 <li><a href="#chi-siamo" class="nav-link">Chi Siamo</a></li>
                 <li><a href="#sentieri" class="nav-link">Sentieri</a></li>
                 <li><a href="#bike-rent" class="nav-link">Bike Rent</a></li>
+                <li><a href="#eventi" class="nav-link">Eventi</a></li>
                 <li><a href="#cosa-vedere" class="nav-link">Cosa Vedere</a></li>
                 <li><a href="#ospitalita" class="nav-link">Ospitalità</a></li>
                 <li><a href="#contatti" class="nav-link">Contatti</a></li>
@@ -1000,10 +1155,10 @@
                         <li>Mountain bike Trek e Specialized di ultima generazione</li>
                         <li>E-bike con autonomia fino a 80 km per esplorazioni senza limiti</li>
                         <li>Consegna gratuita delle bici direttamente in paese</li>
-                        <li>Kit di sicurezza completo: casco, ginocchiere e kit riparazione</li>
+                        <li>Kit di sicurezza: casco e kit riparazione</li>
                         <li>Mappe dettagliate dei percorsi con livelli di difficoltà</li>
-                        <li>Tour guidati su prenotazione con guide esperte locali</li>
-                        <li>Assistenza tecnica 24/7 durante tutto il periodo di noleggio</li>
+                        <li>Tour guidati su prenotazione con guide esperte</li>
+                        <li>Assistenza tecnica durante tutto il periodo di noleggio</li>
                         <li>Tariffe speciali per soggiorni prolungati e gruppi</li>
                     </ul>
                     <div class="mt-4">
@@ -1015,8 +1170,66 @@
         </div>
     </section>
 
+    <!-- Eventi -->
+    <section id="eventi" class="section-alt fade-in">
+        <div class="container">
+            <h2 class="section-title">Eventi</h2>
+            <p class="section-subtitle">Un calendario ricco di appuntamenti per vivere le tradizioni e la cultura del borgo</p>
+            
+            <div class="events-grid">
+                <!-- Evento 1 -->
+                <div class="event-card" onclick="openLightbox('evento1')">
+                    <div class="event-image">
+                        <img src="images/evento-sagra.jpg" alt="Sagra dei sapori garfagnini" id="evento1-img" class="img-placeholder">
+                        <div class="event-date">15-16 Giugno 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Sagra dei Sapori Garfagnini</h3>
+                        <p>Due giorni dedicati alle eccellenze gastronomiche locali. Degustazioni di prodotti tipici, laboratori di cucina tradizionale e musica dal vivo nelle piazze del borgo. Un'esperienza unica per scoprire i sapori autentici della Garfagnana.</p>
+                    </div>
+                </div>
+                
+                <!-- Evento 2 -->
+                <div class="event-card" onclick="openLightbox('evento2')">
+                    <div class="event-image">
+                        <img src="images/evento-rievocazione.jpg" alt="Rievocazione storica medievale" id="evento2-img" class="img-placeholder">
+                        <div class="event-date">27-28 Luglio 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Rievocazione Storica Medievale</h3>
+                        <p>Il borgo rivive i fasti del suo passato con cortei in costume, spettacoli di falconeria, mercatini medievali e banchetti storici. Un tuffo nel passato tra dame, cavalieri e antichi mestieri che riportano Sillico al suo splendore medievale.</p>
+                    </div>
+                </div>
+                
+                <!-- Evento 3 -->
+                <div class="event-card" onclick="openLightbox('evento3')">
+                    <div class="event-image">
+                        <img src="images/evento-castagne.jpg" alt="Festa delle castagne" id="evento3-img" class="img-placeholder">
+                        <div class="event-date">19-20 Ottobre 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Festa delle Castagne</h3>
+                        <p>Celebrazione del frutto simbolo dell'autunno garfagnino. Caldarroste, dolci tradizionali a base di farina di castagne, visite ai castagneti secolari e dimostrazione degli antichi metodi di raccolta e lavorazione.</p>
+                    </div>
+                </div>
+                
+                <!-- Evento 4 -->
+                <div class="event-card" onclick="openLightbox('evento4')">
+                    <div class="event-image">
+                        <img src="images/evento-escursione.jpg" alt="Escursione guidata notturna" id="evento4-img" class="img-placeholder">
+                        <div class="event-date">Ogni sabato d'estate</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Escursioni Guidate al Chiaro di Luna</h3>
+                        <p>Suggestive passeggiate notturne sui sentieri del Moro illuminate dalla luna piena. Un'esperienza magica tra boschi e panorami mozzafiato, con guide esperte che raccontano leggende e storie del territorio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Cosa Vedere -->
-    <section id="cosa-vedere" class="section-alt fade-in">
+    <section id="cosa-vedere" class="fade-in">
         <div class="container">
             <h2 class="section-title">Cosa Vedere</h2>
             <p class="section-subtitle">Testimonianze storiche e artistiche di un borgo ricco di memoria e tradizioni</p>
@@ -1054,7 +1267,7 @@
     </section>
 
     <!-- Ristoranti e Ospitalità -->
-    <section id="ospitalita" class="fade-in">
+    <section id="ospitalita" class="section-alt fade-in">
         <div class="container">
             <h2 class="section-title">Ristoranti e Ospitalità</h2>
             <p class="section-subtitle">Sapori autentici e accoglienza calorosa nel cuore pulsante della Garfagnana</p>
@@ -1088,7 +1301,7 @@
     </section>
 
     <!-- Contatti -->
-    <section id="contatti" class="section-alt fade-in">
+    <section id="contatti" class="fade-in">
         <div class="container">
             <h2 class="section-title">Contatti</h2>
             <p class="section-subtitle">Siamo qui per rendere indimenticabile la tua esperienza a Sillico</p>
@@ -1117,18 +1330,10 @@
                             <p><a href="tel:+393276260127">+39 327 6260127</a></p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div class="contact-details">
-                            <h4>Orari Info Point</h4>
-                            <p>Lun-Dom: 9:00-13:00 / 15:00-19:00<br>
-                            <small style="opacity: 0.7;">Chiuso mercoledì pomeriggio</small></p>
-                        </div>
-                    </div>
                 </div>
                 <div class="contact-map">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1409.435584921731!2d10.442952938873743!3d44.13255949277089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d565f419e20ebf%3A0x74d57d917d501a1!2s55036%20Sillico%2C%20Province%20of%20Lucca!5e1!3m2!1sen!2sit!4v1751486384950!5m2!1sen!2sit" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1409.435584921731!2d10.442952938873743!3d44.13255949277089!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d565f419e20ebf%3A0x74d57d917d501a1!2s55036%20Sillico%2C%20Province%20of%20Lucca!5e1!3m2!1sen!2sit!4v1751486384950!5m2!1sen!2sit" 
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade"
@@ -1146,6 +1351,12 @@
             <p>Sviluppato con ❤️ da Garfagnanafoto.it per la valorizzazione del territorio</p>
         </div>
     </footer>
+
+    <!-- Lightbox per immagini eventi -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="" id="lightbox-img">
+    </div>
 
     <script>
         /* ===================================
@@ -1255,6 +1466,31 @@
                     link.classList.add('active');
                 }
             });
+        });
+        
+        // Lightbox functionality for events
+        function openLightbox(eventId) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const eventImg = document.getElementById(eventId + '-img');
+            
+            lightboxImg.src = eventImg.src;
+            lightboxImg.alt = eventImg.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
         });
         
         // Performance optimization: Debounced scroll handler
