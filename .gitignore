@@ -29,6 +29,18 @@ Temporary Items
 *.swo
 *~
 
+# Next.js
+.next/
+out/
+build/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
 # Python
 __pycache__/
 *.py[cod]
@@ -42,9 +54,6 @@ ENV/
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Temporary files
 *.tmp
