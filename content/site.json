@@ -13,12 +13,12 @@
       "en": "Sillico, Garfagnana, medieval village, trails, MTB, hospitality, sustainable tourism, Tuscany"
     },
     "google_site_name": "Sillico",
-    "og_image": "",
+    "og_image": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/sillico-hero-gyWCjijVRl2Vf7DVCGh5rtr06lis7U.jpg",
     "favicons": {
-      "ico": "/favicon.ico",
-      "apple": "",
-      "android_192": "",
-      "android_512": ""
+      "ico": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/favicon-HfQQwrxYEd32M3Ocdqx9IOevq6o1um.png",
+      "apple": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/apple-touch-icon-1hVb9TVaVxpmk5IEy4dvib74Vfd6Mc.png",
+      "android_192": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/android-chrome-192-eIUkeUvFlEdu6T5kqLju3tHRHpKXOh.png",
+      "android_512": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/android-chrome-512-8k8U8lmTSFKtZXEv9CNDEy3c1AtgEu.png"
     }
   },
   "nav": {
