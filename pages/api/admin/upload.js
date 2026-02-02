@@ -18,11 +18,11 @@ export default async function handler(req, res) {
     const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
     if (!ADMIN_TOKEN) {
-        return res.status(500).json({ error: 'Server configuration error: ADMIN_TOKEN not set on host.' });
+        return res.status(500).json({ error: 'Errore di configurazione server: ADMIN_TOKEN non impostato.' });
     }
 
-    if (!authHeader || authHeader !== `Bearer ${ADMIN_TOKEN}`) {
-        return res.status(401).json({ error: 'Unauthorized: Invalid or missing token.' });
+    if (!authHeader || authHeader.trim() !== `Bearer ${ADMIN_TOKEN.trim()}`) {
+        return res.status(401).json({ error: 'Accesso negato: Token non valido o mancante.' });
     }
 
     try {

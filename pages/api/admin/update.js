@@ -5,8 +5,14 @@ export default async function handler(req, res) {
 
     // 1. Authentication
     const authHeader = req.headers.authorization;
-    if (!authHeader || authHeader !== `Bearer ${process.env.ADMIN_TOKEN}`) {
-        return res.status(401).json({ error: 'Unauthorized' });
+    const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+
+    if (!ADMIN_TOKEN) {
+        return res.status(500).json({ error: 'Progetto non configurato: ADMIN_TOKEN mancante nelle variabili d\'ambiente di Vercel.' });
+    }
+
+    if (!authHeader || authHeader.trim() !== `Bearer ${ADMIN_TOKEN.trim()}`) {
+        return res.status(401).json({ error: 'Autenticazione fallita: Password non corretta o sessione scaduta.' });
     }
 
     // 2. Input Validation (Basic)
