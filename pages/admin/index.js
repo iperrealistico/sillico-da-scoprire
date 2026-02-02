@@ -258,9 +258,7 @@ export default function AdminDashboard() {
                     }
                 }
 
-                const nc = { ...content };
-                nc.meta.favicons = newFavicons;
-                setContent(nc);
+                updateField('meta.favicons', newFavicons);
                 setProgress(100);
                 logDebug('Tutte le icone sono state generate e caricate.');
                 fetchBlobStats();
@@ -1163,56 +1161,32 @@ export default function AdminDashboard() {
                                 <h4>SEO Snippet & Visibilità Google</h4>
                                 <div className="grid-2" style={{ marginTop: '1rem' }}>
                                     <div className="input-group">
-                                        <label>Nome Sito (Personalizza come appare su Google)</label>
-                                        <input type="text" value={content.meta.google_site_name} onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.meta.google_site_name = e.target.value;
-                                            setContent(nc);
-                                        }} />
+                                        <label>Nome Sito (Google SERP)</label>
+                                        <input type="text" value={content.meta.google_site_name} onChange={(e) => updateField('meta.google_site_name', e.target.value)} />
                                     </div>
                                     <div className="input-group">
                                         <label>Username Social (Twitter @handle)</label>
-                                        <input type="text" value={content.meta.twitter_handle || ''} placeholder="@sillico" onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.meta.twitter_handle = e.target.value;
-                                            setContent(nc);
-                                        }} />
+                                        <input type="text" value={content.meta.twitter_handle || ''} placeholder="@sillico" onChange={(e) => updateField('meta.twitter_handle', e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="grid-2">
                                     <div className="input-group">
                                         <label>Titolo SERP (IT)</label>
-                                        <input type="text" value={content.meta.title.it} onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.meta.title.it = e.target.value;
-                                            setContent(nc);
-                                        }} />
+                                        <input type="text" value={content.meta.title.it} onChange={(e) => updateField('meta.title.it', e.target.value)} />
                                     </div>
                                     <div className="input-group">
                                         <label>Titolo SERP (EN)</label>
-                                        <input type="text" value={content.meta.title.en} onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.meta.title.en = e.target.value;
-                                            setContent(nc);
-                                        }} />
+                                        <input type="text" value={content.meta.title.en} onChange={(e) => updateField('meta.title.en', e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="grid-2">
                                     <div className="input-group">
                                         <label>Meta Keywords (IT - Separate da virgola)</label>
-                                        <input type="text" value={content.meta.keywords.it} onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.meta.keywords.it = e.target.value;
-                                            setContent(nc);
-                                        }} />
+                                        <input type="text" value={content.meta.keywords.it} onChange={(e) => updateField('meta.keywords.it', e.target.value)} />
                                     </div>
                                     <div className="input-group">
                                         <label>Meta Keywords (EN - Separate da virgola)</label>
-                                        <input type="text" value={content.meta.keywords.en || ''} onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.meta.keywords.en = e.target.value;
-                                            setContent(nc);
-                                        }} />
+                                        <input type="text" value={content.meta.keywords.en || ''} onChange={(e) => updateField('meta.keywords.en', e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="grid-2">
