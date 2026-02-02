@@ -499,7 +499,7 @@ export default function AdminDashboard() {
                 <TabButton id="about" label="Chi Siamo" icon="circle-info" />
                 <TabButton id="trails" label="Sentieri" icon="route" />
                 <TabButton id="events" label="Eventi" icon="calendar-days" />
-                <TabButton id="bike-rent" label="Bike Rent" icon="bicycle" />
+                <TabButton id="bike_rent" label="Bike Rent" icon="bicycle" />
                 <TabButton id="attractions" label="Cosa Vedere" icon="camera-retro" />
                 <TabButton id="hospitality" label="Ospitalità" icon="bed" />
                 <TabButton id="contacts" label="Contatti" icon="address-book" />
@@ -782,20 +782,20 @@ export default function AdminDashboard() {
                         </div>
                     )}
 
-                    {activeTab === 'bike-rent' && (
+                    {activeTab === 'bike_rent' && (
                         <div>
                             <div className="grid-2">
                                 <div className="col-it">
                                     <h3>Italiano</h3>
-                                    <TextInput label="Titolo" path="bike_rent.title" lang="it" />
-                                    <TextInput label="Sottotitolo" path="bike_rent.subtitle" lang="it" />
-                                    <TextInput label="Intro" path="bike_rent.intro" lang="it" />
+                                    <TextInput label="Titolo" path="title" lang="it" />
+                                    <TextInput label="Sottotitolo" path="subtitle" lang="it" />
+                                    <TextInput label="Intro" path="intro" lang="it" />
                                 </div>
                                 <div className="col-en">
                                     <h3>English</h3>
-                                    <TextInput label="Title" path="bike_rent.title" lang="en" />
-                                    <TextInput label="Subtitle" path="bike_rent.subtitle" lang="en" />
-                                    <TextInput label="Intro" path="bike_rent.intro" lang="en" />
+                                    <TextInput label="Title" path="title" lang="en" />
+                                    <TextInput label="Subtitle" path="subtitle" lang="en" />
+                                    <TextInput label="Intro" path="intro" lang="en" />
                                 </div>
                             </div>
                             <FileUploader
