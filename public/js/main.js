@@ -1,7 +1,7 @@
 
 /* ===================================
    🔧 FUNZIONALITÀ JAVASCRIPT
-=================================== */
+ =================================== */
 
 const initApp = () => {
     // Mobile Menu Toggle
@@ -19,21 +19,20 @@ const initApp = () => {
                 document.body.style.overflow = '';
             }
         });
+
+        // Close mobile menu when clicking on nav links or the overlay itself
+        navMenu.addEventListener('click', (e) => {
+            if (e.target === navMenu || e.target.closest('.nav-link')) {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
     }
 
-    // Close mobile menu when clicking on nav links
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-            if (navMenu) navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Close mobile menu when clicking outside
+    // Close mobile menu when clicking outside toggle while menu is active
     document.addEventListener('click', (e) => {
-        if (navMenu && mobileMenuToggle && !navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        if (navMenu && navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
             mobileMenuToggle.classList.remove('active');
             navMenu.classList.remove('active');
             document.body.style.overflow = '';
@@ -75,8 +74,8 @@ const initApp = () => {
 
     // Intersection Observer for fade-in animations
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -144,6 +143,16 @@ const initApp = () => {
             closeLightbox();
         }
     });
+
+    // Close lightbox when clicking background or X button
+    const lb = document.getElementById('lightbox');
+    if (lb) {
+        lb.addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+                closeLightbox();
+            }
+        });
+    }
 
     /* --- FILTRI SENTIERI (UNIFIED) --- */
     const trailFilterButtons = document.querySelectorAll('.filter-btn, .filter-btn-duration');
@@ -237,8 +246,6 @@ const initApp = () => {
             });
         });
     }
-
-    /* --- PARSING EVENTI (Rimosso - gestito da Next.js) --- */
 };
 
 // Start execution
