@@ -7,31 +7,32 @@
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-mobileMenuToggle.addEventListener('click', () => {
-    mobileMenuToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
+if (mobileMenuToggle && navMenu) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
 
-    // Prevent body scroll when menu is open
-    if (navMenu.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
-});
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+}
 
 // Close mobile menu when clicking on nav links
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        mobileMenuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+        if (navMenu) navMenu.classList.remove('active');
         document.body.style.overflow = '';
     });
 });
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+    if (navMenu && mobileMenuToggle && !navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
         mobileMenuToggle.classList.remove('active');
         navMenu.classList.remove('active');
         document.body.style.overflow = '';
@@ -57,12 +58,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Enhanced header background on scroll
 const header = document.querySelector('.header');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.9)';
-        header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+    if (header) {
+        if (window.scrollY > 50) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.9)';
+            header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+        }
     }
 });
 
@@ -80,7 +83,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all fade-in elements
 document.querySelectorAll('.fade-in').forEach(el => {
     observer.observe(el);
 });
@@ -113,11 +115,10 @@ window.openLightbox = function (eventId) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
-    // Supporto sia per ID img diretto che per ID evento
     let eventImg = document.getElementById(eventId + '-img');
     if (!eventImg) eventImg = document.getElementById(eventId);
 
-    if (eventImg) {
+    if (eventImg && lightbox && lightboxImg) {
         lightboxImg.src = eventImg.src;
         lightboxImg.alt = eventImg.alt;
         lightbox.classList.add('active');
@@ -127,11 +128,12 @@ window.openLightbox = function (eventId) {
 
 window.closeLightbox = function () {
     const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 };
 
-// Close lightbox with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeLightbox();
@@ -151,65 +153,99 @@ const handleScroll = () => {
 
 window.addEventListener('scroll', handleScroll, { passive: true });
 
-// Preload critical images (when implemented)
-const preloadImage = (src) => {
-    const img = new Image();
-    img.src = src;
-};
-
 // Add loading state management
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Enhanced touch handling for mobile
-let touchStartY = 0;
-let touchEndY = 0;
-
-document.addEventListener('touchstart', e => {
-    touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-document.addEventListener('touchend', e => {
-    touchEndY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-
 // =================================== 
-// 🎪 LOGICA NUOVA: EVENTI & FILTRI
+// 🎪 LOGICA: EVENTI & FILTRI
 // ===================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- FILTRI SENTIERI --- */
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    /* --- FILTRI SENTIERI (UNIFIED) --- */
+    const trailFilterButtons = document.querySelectorAll('.filter-btn, .filter-btn-duration');
     const trailCards = document.querySelectorAll('.trail-card');
 
-    if (filterButtons.length > 0) {
-        filterButtons.forEach(button => {
+    const updateTrailFilters = () => {
+        const activeDifficulty = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        const activeDuration = document.querySelector('.filter-btn-duration.active').getAttribute('data-duration');
+
+        trailCards.forEach(card => {
+            const difficolta = card.getAttribute('data-difficolta');
+            const duration = parseInt(card.getAttribute('data-duration'));
+
+            let matchDifficulty = (activeDifficulty === 'all' || activeDifficulty === difficolta);
+            let matchDuration = false;
+
+            if (activeDuration === 'all') {
+                matchDuration = true;
+            } else if (activeDuration === 'short' && duration < 60) {
+                matchDuration = true;
+            } else if (activeDuration === 'medium' && duration >= 60 && duration <= 120) {
+                matchDuration = true;
+            } else if (activeDuration === 'long' && duration > 120) {
+                matchDuration = true;
+            }
+
+            if (matchDifficulty && matchDuration) {
+                card.style.display = 'block';
+                // Small animation if becoming visible
+                if (card.style.opacity === '0' || !card.classList.contains('animated')) {
+                    card.animate([
+                        { opacity: 0, transform: 'translateY(10px)' },
+                        { opacity: 1, transform: 'translateY(0)' }
+                    ], {
+                        duration: 300,
+                        easing: 'ease-out'
+                    });
+                    card.classList.add('animated');
+                }
+            } else {
+                card.style.display = 'none';
+                card.classList.remove('animated');
+            }
+        });
+    };
+
+    if (trailFilterButtons.length > 0) {
+        trailFilterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Rimuovi classe active da tutti i bottoni
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Aggiungi active al bottone cliccato
+                const siblingGroup = button.classList.contains('filter-btn') ? '.filter-btn' : '.filter-btn-duration';
+                document.querySelectorAll(siblingGroup).forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                updateTrailFilters();
+            });
+        });
+    }
+
+    /* --- FILTRI OSPITALITÀ (BADGE STYLE) --- */
+    const hospitalityButtons = document.querySelectorAll('.hospitality-filter-btn');
+    const hospitalityItems = document.querySelectorAll('.stay-item');
+
+    if (hospitalityButtons.length > 0) {
+        hospitalityButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                hospitalityButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
-                const filterValue = button.getAttribute('data-filter');
+                const filterType = button.getAttribute('data-type');
 
-                trailCards.forEach(card => {
-                    const difficolta = card.getAttribute('data-difficolta');
+                hospitalityItems.forEach(item => {
+                    const type = item.getAttribute('data-type');
 
-                    if (filterValue === 'all' || filterValue === difficolta) {
-                        card.style.display = 'block';
-                        // Piccola animazione fade in
-                        card.animate([
-                            { opacity: 0, transform: 'translateY(10px)' },
-                            { opacity: 1, transform: 'translateY(0)' }
+                    if (filterType === 'all' || filterType === type) {
+                        item.style.display = 'flex';
+                        item.animate([
+                            { opacity: 0, scale: 0.95 },
+                            { opacity: 1, scale: 1 }
                         ], {
                             duration: 300,
                             easing: 'ease-out'
                         });
                     } else {
-                        card.style.display = 'none';
+                        item.style.display = 'none';
                     }
                 });
             });
@@ -220,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const eventsContainer = document.querySelector('.events-grid');
 
     if (eventsContainer) {
-        // Mostra loader iniziale
         eventsContainer.innerHTML = '<div class="events-loading">Caricamento eventi...</div>';
 
         fetch('eventi.md')
@@ -231,17 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(text => {
                 const lines = text.split('\n').filter(line => line.trim() !== '');
                 let eventCardsHtml = '';
-
-                // Cerca righe tabella
                 const tableLines = lines.filter(line => line.trim().startsWith('|'));
 
-                // Salta header e separatore
                 if (tableLines.length > 2) {
                     const contentLines = tableLines.slice(2);
-
                     contentLines.forEach((line, index) => {
                         const columns = line.split('|').map(col => col.trim()).filter(col => col !== '');
-
                         if (columns.length >= 4) {
                             const titolo = columns[0];
                             const data = columns[1];
@@ -249,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             const descrizione = columns[3];
                             const eventId = `evento-md-${index}`;
 
-                            // Crea card HTML
                             eventCardsHtml += `
                                 <div class="event-card" onclick="openLightbox('${eventId}')">
                                     <div class="event-image">
@@ -278,118 +307,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-});
-// Add CSS for duration filter buttons
-const durationFilterCSS = `
-.filter-btn-duration {
-    padding: 0.5rem 1.25rem;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    transition: all var(--transition);
-    font-weight: 500;
-}
-
-.filter-btn-duration:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.filter-btn-duration.active {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
-`;
-
-// Add CSS to page
-const styleEl = document.createElement('style');
-styleEl.textContent = durationFilterCSS;
-document.head.appendChild(styleEl);
-
-// Duration filter logic
-document.addEventListener('DOMContentLoaded', () => {
-    const durationButtons = document.querySelectorAll('.filter-btn-duration');
-    const trailCards = document.querySelectorAll('.trail-card');
-
-    if (durationButtons.length > 0) {
-        durationButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active from all duration buttons
-                durationButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active to clicked button
-                button.classList.add('active');
-
-                const durationFilter = button.getAttribute('data-duration');
-
-                trailCards.forEach(card => {
-                    const duration = parseInt(card.getAttribute('data-duration'));
-                    let show = false;
-
-                    if (durationFilter === 'all') {
-                        show = true;
-                    } else if (durationFilter === 'short' && duration < 60) {
-                        show = true;
-                    } else if (durationFilter === 'medium' && duration >= 60 && duration <= 120) {
-                        show = true;
-                    } else if (durationFilter === 'long' && duration > 120) {
-                        show = true;
-                    }
-
-                    // Check if also difficulty filter is applied
-                    const currentDisplay = card.style.display;
-                    if (show && currentDisplay !== 'none') {
-                        card.style.display = 'block';
-                        card.animate([
-                            { opacity: 0, transform: 'translateY(10px)' },
-                            { opacity: 1, transform: 'translateY(0)' }
-                        ], {
-                            duration: 300,
-                            easing: 'ease-out'
-                        });
-                    } else if (!show) {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
-});
-// Hospitality filter logic
-document.addEventListener('DOMContentLoaded', () => {
-    const hospitalityButtons = document.querySelectorAll('.hospitality-filter-btn');
-    const hospitalityItems = document.querySelectorAll('.stay-item');
-
-    if (hospitalityButtons.length > 0) {
-        hospitalityButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active from all buttons
-                hospitalityButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active to clicked button
-                button.classList.add('active');
-
-                const filterType = button.getAttribute('data-type');
-
-                hospitalityItems.forEach(item => {
-                    const type = item.getAttribute('data-type');
-
-                    if (filterType === 'all' || filterType === type) {
-                        item.style.display = 'flex';
-                        item.animate([
-                            { opacity: 0, scale: 0.95 },
-                            { opacity: 1, scale: 1 }
-                        ], {
-                            duration: 300,
-                            easing: 'ease-out'
-                        });
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
 });
