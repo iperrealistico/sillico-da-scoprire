@@ -358,3 +358,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// Hospitality filter logic
+document.addEventListener('DOMContentLoaded', () => {
+    const hospitalityButtons = document.querySelectorAll('.hospitality-filter-btn');
+    const hospitalityItems = document.querySelectorAll('.stay-item');
+
+    if (hospitalityButtons.length > 0) {
+        hospitalityButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active from all buttons
+                hospitalityButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active to clicked button
+                button.classList.add('active');
+
+                const filterType = button.getAttribute('data-type');
+
+                hospitalityItems.forEach(item => {
+                    const type = item.getAttribute('data-type');
+
+                    if (filterType === 'all' || filterType === type) {
+                        item.style.display = 'flex';
+                        item.animate([
+                            { opacity: 0, scale: 0.95 },
+                            { opacity: 1, scale: 1 }
+                        ], {
+                            duration: 300,
+                            easing: 'ease-out'
+                        });
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+});
