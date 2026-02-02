@@ -7,7 +7,7 @@ export default function Home({ lang = 'it' }) {
     return (
         <Layout content={content} lang={lang}>
             {/* Hero Section */}
-            <section className="hero">
+            <section className="hero" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url('/${content.hero.image}')` }}>
                 <div className="hero-content">
                     <h1>{content.hero.title}</h1>
                     <p className="hero-subtitle">{content.hero.subtitle}</p>
@@ -29,7 +29,7 @@ export default function Home({ lang = 'it' }) {
                             ))}
                         </div>
                         <div className="about-image img-container" data-alt="Vista panoramica del borgo di Sillico"
-                            style={{ backgroundImage: "url('/images/sillico-chi-siamo.jpg')" }}></div>
+                            style={{ backgroundImage: `url('/${content.about.image}')` }}></div>
                     </div>
                 </div>
             </section>
@@ -93,7 +93,7 @@ export default function Home({ lang = 'it' }) {
                             </div>
                         </div>
                         <div className="bike-image img-container"
-                            style={{ backgroundImage: "url('/images/sillico-mtb.jpg')", height: '350px' }}></div>
+                            style={{ backgroundImage: `url('/${content.bike_rent.image}')`, height: '350px' }}></div>
                     </div>
                 </div>
             </section>

@@ -53,8 +53,11 @@ export default function AdminDashboard() {
         );
     };
 
-    const ImageUploader = ({ label, path, currentUrl }) => {
+    const FileUploader = ({ label, path, currentUrl, accept = "image/*" }) => {
         const [uploading, setUploading] = useState(false);
+        const [uploadError, setUploadError] = useState('');
+
+        const isImage = accept.includes('image');
 
         const onFileSelect = async (e) => {
             const file = e.target.files[0];
@@ -71,6 +74,7 @@ export default function AdminDashboard() {
 
         const uploadFile = async (file) => {
             setUploading(true);
+            setUploadError('');
             try {
                 const response = await fetch(`/api/admin/upload?filename=${file.name}&contentType=${file.type}&oldUrl=${currentUrl}`, {
                     method: 'POST',
@@ -83,10 +87,13 @@ export default function AdminDashboard() {
                     updateField(path, blob.url);
                     fetchBlobStats();
                 } else {
-                    alert('Errore caricamento immagine');
+                    const errorData = await response.json();
+                    setUploadError(errorData.error || 'Errore durante il caricamento');
+                    console.error('Upload failed:', errorData);
                 }
             } catch (err) {
-                alert('Errore connessione');
+                setUploadError('Errore di connessione. Verifica che il server Node.js sia in esecuzione (npm run dev).');
+                console.error('Upload connection error:', err);
             } finally {
                 setUploading(false);
             }
@@ -96,7 +103,7 @@ export default function AdminDashboard() {
             <div className="input-group">
                 <label>{label}</label>
                 <div
-                    className={`drop-zone ${uploading ? 'uploading' : ''}`}
+                    className={`drop-zone ${uploading ? 'uploading' : ''} ${uploadError ? 'error' : ''}`}
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={onDrop}
                 >
@@ -104,25 +111,29 @@ export default function AdminDashboard() {
                         <span><i className="fa-solid fa-spinner fa-spin"></i> Caricamento...</span>
                     ) : (
                         <>
-                            {currentUrl ? (
+                            {currentUrl && isImage ? (
                                 <div className="preview-container">
-                                    <img src={currentUrl} alt="Preview" />
+                                    <img src={currentUrl.startsWith('http') ? currentUrl : `/${currentUrl}`} alt="Preview" />
                                     <div className="preview-overlay">
                                         <span>Trascina per sostituire</span>
                                     </div>
                                 </div>
                             ) : (
-                                <span>Trascina qui l'immagine o clicca per caricare</span>
+                                <div className="uploader-placeholder">
+                                    <i className={`fa-solid ${isImage ? 'fa-image' : 'fa-file-code'}`}></i>
+                                    <span>{currentUrl ? (isImage ? 'Immagine presente' : 'File GPX presente') : (isImage ? 'Trascina immagine o clicca' : 'Trascina file GPX o clicca')}</span>
+                                </div>
                             )}
-                            <input type="file" accept="image/*" onChange={onFileSelect} />
+                            <input type="file" accept={accept} onChange={onFileSelect} />
                         </>
                     )}
                 </div>
+                {uploadError && <div className="upload-error-msg"><i className="fa-solid fa-triangle-exclamation"></i> {uploadError}</div>}
                 <div className="input-group" style={{ marginTop: '0.5rem' }}>
                     <input
                         type="text"
                         value={currentUrl}
-                        placeholder="O incolla URL immagine"
+                        placeholder={isImage ? "O incolla URL immagine" : "O incolla URL file GPX"}
                         onChange={(e) => updateField(path, e.target.value)}
                     />
                 </div>
@@ -367,6 +378,28 @@ export default function AdminDashboard() {
                     .drop-zone:hover .preview-overlay {
                         opacity: 1;
                     }
+                    .upload-error-msg {
+                        color: #e74c3c;
+                        font-size: 0.85rem;
+                        margin-top: 5px;
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                    }
+                    .drop-zone.error {
+                        border-color: #e74c3c;
+                        background: #fdf2f2;
+                    }
+                    .uploader-placeholder {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                    .uploader-placeholder i {
+                        font-size: 2rem;
+                        color: #bdc3c7;
+                    }
                 `}</style>
             </Head>
 
@@ -377,6 +410,7 @@ export default function AdminDashboard() {
                 <TabButton id="about" label="Chi Siamo" icon="circle-info" />
                 <TabButton id="trails" label="Sentieri" icon="route" />
                 <TabButton id="events" label="Eventi" icon="calendar-days" />
+                <TabButton id="bike-rent" label="Bike Rent" icon="bicycle" />
                 <TabButton id="attractions" label="Cosa Vedere" icon="camera-retro" />
                 <TabButton id="hospitality" label="Ospitalità" icon="bed" />
                 <TabButton id="contacts" label="Contatti" icon="address-book" />
@@ -389,7 +423,12 @@ export default function AdminDashboard() {
 
             <main className="admin-main">
                 <div className="admin-header">
-                    <h1>Modifica {activeTab.toUpperCase()}</h1>
+                    <div>
+                        <h1>Modifica {activeTab.toUpperCase()}</h1>
+                        <p style={{ color: '#e67e22', fontSize: '0.9rem', marginTop: '0.2rem' }}>
+                            <i className="fa-solid fa-circle-exclamation"></i> Nota: Per caricare file e vedere statistiche è necessario il server Node.js attivo (npm run dev).
+                        </p>
+                    </div>
                     <button
                         className="btn btn-primary"
                         onClick={handleSave}
@@ -407,62 +446,76 @@ export default function AdminDashboard() {
 
                 <div className="card">
                     {activeTab === 'hero' && (
-                        <div className="grid-2">
-                            <div className="col-it">
-                                <h3>Italiano</h3>
-                                <TextInput label="Titolo" path="title" lang="it" />
-                                <TextInput label="Sottotitolo" path="subtitle" lang="it" />
-                                <TextInput label="Testo Bottone" path="cta" lang="it" />
+                        <div>
+                            <div className="grid-2">
+                                <div className="col-it">
+                                    <h3>Italiano</h3>
+                                    <TextInput label="Titolo" path="title" lang="it" />
+                                    <TextInput label="Sottotitolo" path="subtitle" lang="it" />
+                                    <TextInput label="Testo Bottone" path="cta" lang="it" />
+                                </div>
+                                <div className="col-en">
+                                    <h3>English</h3>
+                                    <TextInput label="Title" path="title" lang="en" />
+                                    <TextInput label="Subtitle" path="subtitle" lang="en" />
+                                    <TextInput label="Button Text" path="cta" lang="en" />
+                                </div>
                             </div>
-                            <div className="col-en">
-                                <h3>English</h3>
-                                <TextInput label="Title" path="title" lang="en" />
-                                <TextInput label="Subtitle" path="subtitle" lang="en" />
-                                <TextInput label="Button Text" path="cta" lang="en" />
-                            </div>
+                            <FileUploader
+                                label="Immagine di Sfondo Hero"
+                                path="hero.image"
+                                currentUrl={content.hero.image}
+                            />
                         </div>
                     )}
 
                     {activeTab === 'about' && (
-                        <div className="grid-2">
-                            <div className="col-it">
-                                <h3>Italiano</h3>
-                                <TextInput label="Titolo" path="title" lang="it" />
-                                <TextInput label="Sottotitolo" path="subtitle" lang="it" />
-                                {content.about.paragraphs.map((_, i) => (
-                                    <div key={i} className="input-group">
-                                        <label>Paragrafo {i + 1}</label>
-                                        <textarea
-                                            rows="4"
-                                            value={content.about.paragraphs[i].it}
-                                            onChange={(e) => {
-                                                const newContent = { ...content };
-                                                newContent.about.paragraphs[i].it = e.target.value;
-                                                setContent(newContent);
-                                            }}
-                                        />
-                                    </div>
-                                ))}
+                        <div>
+                            <div className="grid-2">
+                                <div className="col-it">
+                                    <h3>Italiano</h3>
+                                    <TextInput label="Titolo" path="title" lang="it" />
+                                    <TextInput label="Sottotitolo" path="subtitle" lang="it" />
+                                    {content.about.paragraphs.map((_, i) => (
+                                        <div key={i} className="input-group">
+                                            <label>Paragrafo {i + 1}</label>
+                                            <textarea
+                                                rows="4"
+                                                value={content.about.paragraphs[i].it}
+                                                onChange={(e) => {
+                                                    const newContent = { ...content };
+                                                    newContent.about.paragraphs[i].it = e.target.value;
+                                                    setContent(newContent);
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="col-en">
+                                    <h3>English</h3>
+                                    <TextInput label="Title" path="title" lang="en" />
+                                    <TextInput label="Subtitle" path="subtitle" lang="en" />
+                                    {content.about.paragraphs.map((_, i) => (
+                                        <div key={i} className="input-group">
+                                            <label>Paragraph {i + 1}</label>
+                                            <textarea
+                                                rows="4"
+                                                value={content.about.paragraphs[i].en}
+                                                onChange={(e) => {
+                                                    const newContent = { ...content };
+                                                    newContent.about.paragraphs[i].en = e.target.value;
+                                                    setContent(newContent);
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="col-en">
-                                <h3>English</h3>
-                                <TextInput label="Title" path="title" lang="en" />
-                                <TextInput label="Subtitle" path="subtitle" lang="en" />
-                                {content.about.paragraphs.map((_, i) => (
-                                    <div key={i} className="input-group">
-                                        <label>Paragraph {i + 1}</label>
-                                        <textarea
-                                            rows="4"
-                                            value={content.about.paragraphs[i].en}
-                                            onChange={(e) => {
-                                                const newContent = { ...content };
-                                                newContent.about.paragraphs[i].en = e.target.value;
-                                                setContent(newContent);
-                                            }}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                            <FileUploader
+                                label="Immagine 'Chi Siamo'"
+                                path="about.image"
+                                currentUrl={content.about.image}
+                            />
                         </div>
                     )}
 
@@ -518,19 +571,17 @@ export default function AdminDashboard() {
                                                     setContent(nc);
                                                 }} />
                                             </div>
-                                            <ImageUploader
+                                            <FileUploader
                                                 label="Immagine"
                                                 path={`trails.items.${idx}.image`}
                                                 currentUrl={trail.image}
                                             />
-                                            <div className="input-group">
-                                                <label>File GPX (URL o percorso)</label>
-                                                <input type="text" value={trail.gpx} onChange={(e) => {
-                                                    const nc = { ...content };
-                                                    nc.trails.items[idx].gpx = e.target.value;
-                                                    setContent(nc);
-                                                }} />
-                                            </div>
+                                            <FileUploader
+                                                label="File GPX"
+                                                path={`trails.items.${idx}.gpx`}
+                                                currentUrl={trail.gpx}
+                                                accept=".gpx,application/gpx+xml"
+                                            />
                                         </div>
                                     </div>
                                     <button className="btn btn-secondary" style={{ color: 'red', border: '1px solid red' }} onClick={() => {
@@ -600,7 +651,7 @@ export default function AdminDashboard() {
                                             </div>
                                         </div>
                                     </div>
-                                    <ImageUploader
+                                    <FileUploader
                                         label="Immagine Evento"
                                         path={`events.items.${idx}.image`}
                                         currentUrl={event.image}
@@ -641,6 +692,57 @@ export default function AdminDashboard() {
                                 });
                                 setContent(nc);
                             }}>+ Aggiungi Nuovo Evento</button>
+                        </div>
+                    )}
+
+                    {activeTab === 'bike-rent' && (
+                        <div>
+                            <div className="grid-2">
+                                <div className="col-it">
+                                    <h3>Italiano</h3>
+                                    <TextInput label="Titolo" path="bike_rent.title" lang="it" />
+                                    <TextInput label="Sottotitolo" path="bike_rent.subtitle" lang="it" />
+                                    <TextInput label="Intro" path="bike_rent.intro" lang="it" />
+                                </div>
+                                <div className="col-en">
+                                    <h3>English</h3>
+                                    <TextInput label="Title" path="bike_rent.title" lang="en" />
+                                    <TextInput label="Subtitle" path="bike_rent.subtitle" lang="en" />
+                                    <TextInput label="Intro" path="bike_rent.intro" lang="en" />
+                                </div>
+                            </div>
+                            <FileUploader
+                                label="Immagine Bike Rent"
+                                path="bike_rent.image"
+                                currentUrl={content.bike_rent.image}
+                            />
+                            <div className="input-group">
+                                <label>Caratteristiche (Lista)</label>
+                                {content.bike_rent.features.map((feature, i) => (
+                                    <div key={i} style={{ display: 'flex', gap: '10px', marginBottom: '5px' }}>
+                                        <input type="text" value={feature.it} placeholder="IT" onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.bike_rent.features[i].it = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                        <input type="text" value={feature.en} placeholder="EN" onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.bike_rent.features[i].en = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                        <button className="btn-small" style={{ color: 'red', border: 'none', background: 'none', cursor: 'pointer' }} onClick={() => {
+                                            const nc = { ...content };
+                                            nc.bike_rent.features.splice(i, 1);
+                                            setContent(nc);
+                                        }}>×</button>
+                                    </div>
+                                ))}
+                                <button className="btn btn-secondary" style={{ marginTop: '0.5rem' }} onClick={() => {
+                                    const nc = { ...content };
+                                    nc.bike_rent.features.push({ it: '', en: '' });
+                                    setContent(nc);
+                                }}>+ Aggiungi Caratteristica</button>
+                            </div>
                         </div>
                     )}
 
@@ -757,7 +859,7 @@ export default function AdminDashboard() {
                                             </div>
                                         </div>
                                     </div>
-                                    <ImageUploader
+                                    <FileUploader
                                         label="Immagine Attrazione"
                                         path={`attractions.items.${idx}.image`}
                                         currentUrl={item.image}

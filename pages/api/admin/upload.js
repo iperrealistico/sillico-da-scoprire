@@ -3,49 +3,61 @@ import { put, del } from '@vercel/blob';
 export const config = {
     api: {
         bodyParser: {
-            sizeLimit: '4mb',
+            sizeLimit: '10mb', // Increased for GPX or larger images
         },
     },
 };
 
 export default async function handler(req, res) {
+    // 1. Method check
     if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+        res.setHeader('Allow', ['POST']);
+        return res.status(405).json({ error: `Method ${req.method} not allowed. Please use POST.` });
     }
 
-    // 1. Authentication
+    // 2. Authentication
     const authHeader = req.headers.authorization;
-    if (!authHeader || authHeader !== `Bearer ${localStorage.getItem('admin_token')}`) {
-        // Note: Since this is server-side process.env.ADMIN_TOKEN should be used.
-        // But for consistency with your previous setup:
-        if (authHeader !== `Bearer ${process.env.ADMIN_TOKEN}`) {
-            return res.status(401).json({ error: 'Unauthorized' });
-        }
+    const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+
+    if (!ADMIN_TOKEN) {
+        return res.status(500).json({ error: 'Server configuration error: ADMIN_TOKEN not set on host.' });
+    }
+
+    if (!authHeader || authHeader !== `Bearer ${ADMIN_TOKEN}`) {
+        return res.status(401).json({ error: 'Unauthorized: Invalid or missing token.' });
     }
 
     try {
         const { filename, contentType, oldUrl } = req.query;
 
-        // 2. Delete old image if it was a blob
-        if (oldUrl && oldUrl.includes('vercel-storage.com')) {
+        if (!filename) {
+            return res.status(400).json({ error: 'Missing filename in query parameters.' });
+        }
+
+        // 3. Delete old image if it was a blob
+        if (oldUrl && (oldUrl.includes('vercel-storage.com') || oldUrl.includes('public.blob.vercel-storage.com'))) {
             try {
                 await del(oldUrl);
+                console.log('Old blob deleted:', oldUrl);
             } catch (e) {
-                console.error('Failed to delete old blob:', e);
+                console.warn('Failed to delete old blob (may already be gone):', e.message);
+                // We continue anyway, as the upload is the primary goal
             }
         }
 
-        // 3. Upload new image
-        // In a real browser environment, req is a ReadableStream.
-        // Next.js handles body parsing, but for Blobs we often use fetch on the client or multiparty.
-        // For simplicity with Vercel's example:
+        // 4. Upload new file
+        // Note: req is a ReadableStream in Next.js APIs for POST requests
         const blob = await put(filename, req, {
             access: 'public',
-            contentType,
+            contentType: contentType || 'application/octet-stream',
         });
 
         return res.status(200).json(blob);
     } catch (error) {
-        return res.status(500).json({ error: error.message });
+        console.error('Upload error details:', error);
+        return res.status(500).json({
+            error: 'Failed to upload to Vercel Blob.',
+            details: error.message
+        });
     }
 }

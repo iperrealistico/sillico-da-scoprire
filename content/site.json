@@ -55,7 +55,8 @@
         "cta": {
             "it": "✨ Inizia il viaggio",
             "en": "✨ Start the journey"
-        }
+        },
+        "image": "images/sillico-hero.jpg"
     },
     "about": {
         "title": {
@@ -66,6 +67,7 @@
             "it": "Un borgo medievale custode di storie antiche e tradizioni autentiche nel cuore della Garfagnana",
             "en": "A medieval village guardian of ancient stories and authentic traditions in the heart of Garfagnana"
         },
+        "image": "images/sillico-chi-siamo.jpg",
         "paragraphs": [
             {
                 "it": "Sillico è un piccolo gioiello incastonato tra i versanti appenninici della Garfagnana, si hanno notizie di questo borgo a partire dal X secolo.",
@@ -278,6 +280,7 @@
             "it": "Mountain bike di ultima generazione per esplorare la Garfagnana su due ruote",
             "en": "Latest generation mountain bikes to explore Garfagnana on two wheels"
         },
+        "image": "images/sillico-mtb.jpg",
         "intro": {
             "it": "Scopri i nostri servizi per ciclisti:",
             "en": "Discover our services for cyclists:"
