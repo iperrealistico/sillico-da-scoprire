@@ -20,13 +20,73 @@ export default function Layout({ children, content, lang }) {
                 <meta name="keywords" content={meta.keywords} />
                 <meta name="author" content="Associazione Sillico da Scoprire" />
                 <title>{meta.title}</title>
-                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+                {/* Google Site Name */}
+                <meta name="application-name" content={meta.google_site_name || 'Sillico'} />
+
+                {/* Favicons */}
+                <link rel="icon" type="image/x-icon" href={meta.favicons?.ico || "/favicon.ico"} />
+                {meta.favicons?.apple && <link rel="apple-touch-icon" href={meta.favicons.apple} />}
+                {meta.favicons?.android_192 && <link rel="icon" type="image/png" sizes="192x192" href={meta.favicons.android_192} />}
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`https://sillicodascoprire.it${lang === 'en' ? '/en' : ''}`} />
+                <meta property="og:title" content={meta.title} />
+                <meta property="og:description" content={meta.description} />
+                <meta property="og:site_name" content={meta.google_site_name || 'Sillico'} />
+                {meta.og_image && <meta property="og:image" content={meta.og_image} />}
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:url" content={`https://sillicodascoprire.it${lang === 'en' ? '/en' : ''}`} />
+                <meta name="twitter:title" content={meta.title} />
+                <meta name="twitter:description" content={meta.description} />
+                {meta.og_image && <meta name="twitter:image" content={meta.og_image} />}
+
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
                 <link rel="stylesheet" href="/css/style.css" />
                 <link rel="canonical" href={`https://sillicodascoprire.it${lang === 'en' ? '/en' : ''}`} />
                 <link rel="alternate" hrefLang="it" href="https://sillicodascoprire.it/" />
                 <link rel="alternate" hrefLang="en" href="https://sillicodascoprire.it/en" />
                 <link rel="alternate" hrefLang="x-default" href="https://sillicodascoprire.it/" />
+
+                {/* Structured Data */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "LocalBusiness",
+                            "name": "Sillico",
+                            "image": meta.og_image || "https://sillicodascoprire.it/images/sillico-hero.jpg",
+                            "@id": "https://sillicodascoprire.it",
+                            "url": "https://sillicodascoprire.it",
+                            "telephone": "+390583662053",
+                            "address": {
+                                "@type": "PostalAddress",
+                                "streetAddress": "Via del Moro",
+                                "addressLocality": "Sillico",
+                                "addressRegion": "LU",
+                                "postalCode": "55036",
+                                "addressCountry": "IT"
+                            },
+                            "geo": {
+                                "@type": "GeoCoordinates",
+                                "latitude": 44.133,
+                                "longitude": 10.443
+                            },
+                            "openingHoursSpecification": {
+                                "@type": "OpeningHoursSpecification",
+                                "dayOfWeek": [
+                                    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+                                ],
+                                "opens": "00:00",
+                                "closes": "23:59"
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <header className="header">

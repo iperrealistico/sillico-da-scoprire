@@ -209,6 +209,111 @@ export default function AdminDashboard() {
         );
     };
 
+    const FaviconUploader = () => {
+        const [processing, setProcessing] = useState(false);
+        const [progress, setProgress] = useState(0);
+
+        const processFavicons = async (file) => {
+            setProcessing(true);
+            setProgress(0);
+            logDebug(`Elaborazione favicons da: ${file.name}`);
+
+            const sizes = [
+                { size: 32, key: 'ico', name: 'favicon.png' },
+                { size: 180, key: 'apple', name: 'apple-touch-icon.png' },
+                { size: 192, key: 'android_192', name: 'android-chrome-192.png' },
+                { size: 512, key: 'android_512', name: 'android-chrome-512.png' }
+            ];
+
+            try {
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
+                await new Promise(resolve => img.onload = resolve);
+
+                const newFavicons = { ...(content.meta.favicons || {}) };
+
+                for (let i = 0; i < sizes.length; i++) {
+                    const { size, key, name } = sizes[i];
+                    setProgress(Math.round((i / sizes.length) * 100));
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, size, size);
+
+                    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                    const uploadRes = await fetch(`/api/admin/upload?filename=${name}&contentType=image/png&oldUrl=${(content.meta.favicons && content.meta.favicons[key]) || ''}`, {
+                        method: 'POST',
+                        body: blob,
+                        headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` }
+                    });
+
+                    if (uploadRes.ok) {
+                        const data = await uploadRes.json();
+                        newFavicons[key] = data.url;
+                        logDebug(`Generato e caricato: ${name} (${size}x${size})`);
+                    }
+                }
+
+                const nc = { ...content };
+                nc.meta.favicons = newFavicons;
+                setContent(nc);
+                setProgress(100);
+                logDebug('Tutte le icone sono state generate e caricate.');
+                fetchBlobStats();
+            } catch (err) {
+                logDebug(`Errore favicons: ${err.message}`, 'error');
+            } finally {
+                setProcessing(false);
+            }
+        };
+
+        return (
+            <div className="input-group" style={{ background: '#f5f5f5', padding: '1.5rem', borderRadius: '8px', border: '1px solid #ddd' }}>
+                <label style={{ fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <i className="fa-solid fa-icons" style={{ color: '#3498db' }}></i> Identità Sito & Favicon
+                </label>
+                <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '1.2rem', lineHeight: '1.4' }}>
+                    Carica un'immagine quadrata ad alta risoluzione. Il sistema genererà automaticamente tutte le versioni necessarie per browser moderni, Android (Homescreen) e iOS (Apple Touch Icon).
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <div className="btn-file-wrapper" style={{ position: 'relative', overflow: 'hidden', display: 'inline-block' }}>
+                        <button className="btn btn-secondary" disabled={processing} style={{ cursor: 'pointer' }}>
+                            <i className="fa-solid fa-upload"></i> Carica Immagine Sorgente
+                        </button>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            style={{ position: 'absolute', fontSize: '100px', right: 0, top: 0, opacity: 0, cursor: 'pointer' }}
+                            onChange={(e) => e.target.files[0] && processFavicons(e.target.files[0])}
+                            disabled={processing}
+                        />
+                    </div>
+                    {processing && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <i className="fa-solid fa-spinner fa-spin"></i>
+                            <div style={{ width: '100px', height: '6px', background: '#ddd', borderRadius: '3px', position: 'relative' }}>
+                                <div style={{ position: 'absolute', height: '100%', background: '#3498db', borderRadius: '3px', width: `${progress}%`, transition: 'width 0.3s' }}></div>
+                            </div>
+                            <span style={{ fontSize: '0.8rem' }}>{progress}%</span>
+                        </div>
+                    )}
+                </div>
+                <div style={{ marginTop: '1.5rem', display: 'flex', gap: '15px', flexWrap: 'wrap', padding: '10px', background: '#fff', borderRadius: '4px', border: '1px solid #eee' }}>
+                    {Object.entries(content.meta.favicons || {}).map(([key, url]) => (
+                        url && url.startsWith('http') && (
+                            <div key={key} style={{ textAlign: 'center', padding: '5px' }}>
+                                <img src={url} style={{ width: '40px', height: '40px', display: 'block', margin: '0 auto', objectFit: 'contain', border: '1px solid #eee' }} alt={key} />
+                                <span style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginTop: '4px', display: 'block' }}>{key.replace('_', ' ')}</span>
+                            </div>
+                        )
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
     const handleSave = async () => {
         setSaving(true);
         setMessage({ type: 'info', text: 'Salvataggio in corso...' });
@@ -1048,6 +1153,65 @@ export default function AdminDashboard() {
                                 />
                                 <label htmlFor="debugToggle" style={{ margin: 0, cursor: 'pointer' }}>Abilita Modalità Debug (Visualizza log tecnici e dettagli errori)</label>
                             </div>
+
+                            <hr style={{ margin: '2rem 0', borderColor: '#eee' }} />
+
+                            <div style={{ marginBottom: '2rem' }}>
+                                <h4>SEO Snippet & Visibilità Google</h4>
+                                <div className="grid-2" style={{ marginTop: '1rem' }}>
+                                    <div className="input-group">
+                                        <label>Nome Sito (Personalizza come appare su Google)</label>
+                                        <input type="text" value={content.meta.google_site_name} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.meta.google_site_name = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Username Social (Twitter @handle)</label>
+                                        <input type="text" value={content.meta.twitter_handle || ''} placeholder="@sillico" onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.meta.twitter_handle = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                </div>
+                                <div className="grid-2">
+                                    <div className="input-group">
+                                        <label>Titolo SERP (IT)</label>
+                                        <input type="text" value={content.meta.title.it} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.meta.title.it = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Titolo SERP (EN)</label>
+                                        <input type="text" value={content.meta.title.en} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.meta.title.en = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                </div>
+                                <div className="grid-2">
+                                    <div className="input-group">
+                                        <label>Meta Keywords (Separate da virgola)</label>
+                                        <input type="text" value={content.meta.keywords.it} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.meta.keywords.it = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                    <FileUploader
+                                        label="Immagine Anteprima Social (OG Image)"
+                                        path="meta.og_image"
+                                        currentUrl={content.meta.og_image}
+                                    />
+                                </div>
+                            </div>
+
+                            <FaviconUploader />
 
                             {debugMode && (
                                 <div style={{ marginTop: '2rem' }}>
