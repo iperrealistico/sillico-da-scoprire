@@ -9,7 +9,8 @@ const initApp = () => {
     const navMenu = document.querySelector('.nav-menu');
 
     if (mobileMenuToggle && navMenu) {
-        mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileMenuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
 
@@ -20,9 +21,19 @@ const initApp = () => {
             }
         });
 
-        // Close mobile menu when clicking on nav links or the overlay itself
+        // Close mobile menu when clicking on nav links
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking on the menu overlay itself
         navMenu.addEventListener('click', (e) => {
-            if (e.target === navMenu || e.target.closest('.nav-link')) {
+            if (e.target === navMenu) {
                 mobileMenuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
@@ -42,9 +53,10 @@ const initApp = () => {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const href = this.getAttribute('href');
-            if (href === '#') return;
+            if (!href.startsWith('#')) return;
+
+            e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
                 const header = document.querySelector('.header');
@@ -127,6 +139,9 @@ const initApp = () => {
             lightboxImg.alt = eventImg.alt;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            // Touch friendly: ensure the lightbox is centered and manageable
+            lightbox.scrollTo(0, 0);
         }
     };
 
@@ -138,21 +153,22 @@ const initApp = () => {
         }
     };
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
-
-    // Close lightbox when clicking background or X button
+    // Close lightbox handlers
     const lb = document.getElementById('lightbox');
     if (lb) {
         lb.addEventListener('click', (e) => {
+            // Close if clicked on the overlay or the close span (X)
             if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
                 closeLightbox();
             }
         });
     }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
 
     /* --- FILTRI SENTIERI (UNIFIED) --- */
     const trailFilterButtons = document.querySelectorAll('.filter-btn, .filter-btn-duration');
