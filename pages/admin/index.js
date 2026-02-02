@@ -168,10 +168,36 @@ export default function AdminDashboard() {
                             className="btn btn-secondary"
                             style={{ padding: '0 1rem', color: '#e74c3c', borderColor: '#e74c3c' }}
                             title="Rimuovi file"
-                            onClick={() => {
-                                if (window.confirm('Vuoi rimuovere questo file? Se è un file caricato esternamente verrà mantenuto solo il riferimento testuale vuoto.')) {
+                            onClick={async () => {
+                                const isBlob = currentUrl.includes('vercel-storage.com');
+                                const confirmMsg = isBlob
+                                    ? 'Vuoi eliminare DEFINITIVAMENTE questo file dallo storage Vercel?'
+                                    : 'Vuoi rimuovere il riferimento a questo file esterno?';
+
+                                if (window.confirm(confirmMsg)) {
+                                    if (isBlob) {
+                                        logDebug(`Eliminazione fisica blob: ${currentUrl}`);
+                                        try {
+                                            const res = await fetch('/api/admin/delete-blob', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'Authorization': `Bearer ${localStorage.getItem('admin_token')}`
+                                                },
+                                                body: JSON.stringify({ url: currentUrl })
+                                            });
+                                            if (res.ok) {
+                                                logDebug('File eliminato dallo storage con successo');
+                                                fetchBlobStats();
+                                            } else {
+                                                logDebug('Errore eliminazione storage, rimuovo solo riferimento', 'error');
+                                            }
+                                        } catch (e) {
+                                            logDebug(`Eccezione eliminazione: ${e.message}`, 'error');
+                                        }
+                                    }
                                     updateField(path, '');
-                                    logDebug(`File rimosso da: ${path}`);
+                                    logDebug(`Campo resettato: ${path}`);
                                 }
                             }}
                         >
