@@ -54,7 +54,7 @@
   "hero": {
     "title": {
       "it": "Sillico di Pieve Fosciana",
-      "en": "Sillico"
+      "en": "Sillico in Pieve Fosciana"
     },
     "subtitle": {
       "it": "Storia, natura e sapori autentici nel cuore della Garfagnana",
@@ -364,7 +364,7 @@
         },
         "image": "https://www.sillicodascoprire.it/images/evento-sentieri-e-sapori.jpg",
         "description": {
-          "it": "Trekking gastronomico lungo i “Sentieri del Moro. Ottima occasione per avventurarsi nei boschi di castagni alla scoperta dei prodotti tipici. L'evento, nato nel 2023 si svolge due volte l'anno: in primavera e in autunno. Prenotazione esclusivamente online.",
+          "it": "Trekking gastronomico lungo i Sentieri del Moro. Ottima occasione per avventurarsi nei boschi di castagni alla scoperta dei prodotti tipici. L'evento, nato nel 2023 dalla collaborazione di tutte le associazioni paesane (Terre del Moro, Polis Sillico, Pro Loco Capraia, Filarmonica G. Verdi ), si svolge due volte l'anno: in primavera e in autunno. Per partecipare la prenotazione è esclusivamente online e all’arrivo verrà consegnato, a ciascuno, il biglietto da presentare ai vari stand lungo il percorso. Si raccomanda l’uso di vestiario e scarpe adatto ai percorsi outdoor.",
           "en": "Gastronomic trekking along the 'Moro Trails'. A great opportunity to discover local products in the chestnut woods. Born in 2023, it takes place twice a year. Online reservation only."
         }
       },
@@ -379,7 +379,7 @@
         },
         "image": "https://www.sillicodascoprire.it/images/evento-divini-e-sapori.jpg",
         "description": {
-          "it": "Due serate per gli appassionati di alta cucina e vini pregiati nella splendida cornice di palazzo Carli. Evento a numero chiuso con prenotazione obbligatoria e degustazione guidata FISAR.",
+          "it": "Due serate per gli appassionati di alta cucina e vini pregiati. Questo evento va in scena nella splendida cornice di palazzo Carli e nelle piazze del borgo. Si tratta di un esclusivo evento a numero chiuso per il quale è richiesta la prenotazione. La cena è composta da stuzzicanti portate che rivisitano la tradizione garfagnina, con l’aggiunta di una degustazione guidata dal corpo di sommelier FISAR. ",
           "en": "Two evenings for fine dining and wine lovers in the beautiful setting of Palazzo Carli. Limited availability, reservation required, FISAR guided tasting."
         }
       },
@@ -394,7 +394,7 @@
         },
         "image": "https://www.sillicodascoprire.it/images/evento-trekking-alle-lame.jpg",
         "description": {
-          "it": "Trekking alla scoperta dei boschi che collegano Sillico al crinale appenninico. Pranzo alle Lame di Capraia tra musica, giochi e gastronomia tipica.",
+          "it": "Trekking alla scoperta dei boschi e del territorio che collega il borgo di Sillico alla parte del crinale appenninico dove va in scena la festa dei pastori. Per questa giornata, infatti, le Lame di Capraia si animeranno con musica, giochi, gastronomia tipica e altro ancora. Il gruppo partirà da Sillico per raggiungere questa località per il pranzo e godersi poi il resto del pomeriggio prima del rientro.",
           "en": "Discover the forests connecting Sillico to the Apennine ridge. Lunch at Lame di Capraia with music, games, and typical food."
         }
       },
@@ -409,7 +409,7 @@
         },
         "image": "https://www.sillicodascoprire.it/images/evento-concerto-banda.jpg",
         "description": {
-          "it": "Tradizionale concerto estivo della banda di Sillico, attiva dal 1898, in onore del patrono. Ingresso libero nella piazza principale dalle ore 21:00.",
+          "it": "Immancabile appuntamento estivo con la banda di Sillico, attiva dal 1898. Nella piazza principale del paese dalle ore 21:00 si terrà il tradizionale concerto in onore del patrono locale. L’ingresso è libero e per l’occasione si potrà assistere all’esibizione anche di altre realtà bandistiche della Garfagnana. ",
           "en": "Traditional summer concert of the Sillico band, active since 1898. Free entry in the main square from 9:00 PM."
         }
       },
@@ -424,7 +424,7 @@
         },
         "image": "https://www.sillicodascoprire.it/images/evento-estemporanea-pittura.jpg",
         "description": {
-          "it": "Concorso di pittura aperto a tutti per la miglior rappresentazione del paese. Le opere verranno esposte e premiate nella piazza del borgo.",
+          "it": "L’evento a cura di Polis Sillico con il patrocinio del Comune di Pieve Fosciana, è un appuntamento per tutti gli appassionati di arte e pittura, che ha riportato negli ultimi anni una serie di artisti di livello anche nazionale a competere per la miglior rappresentazione del paese. Al concorso possono partecipare tutti, italiani e stranieri, senza limiti d’età. Alla fine del concorso le opere verranno esposte nella piazza del paese dove avverrà la premiazione. ",
           "en": "Painting competition open to all for the best representation of the village. Works will be exhibited and awarded in the main square."
         }
       }
