@@ -3,178 +3,165 @@
    🔧 FUNZIONALITÀ JAVASCRIPT
 =================================== */
 
-// Mobile Menu Toggle
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
+const initApp = () => {
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-if (mobileMenuToggle && navMenu) {
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileMenuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
+    if (mobileMenuToggle && navMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
 
-        if (navMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Close mobile menu when clicking on nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu && mobileMenuToggle && !navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
-}
 
-// Close mobile menu when clicking on nav links
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-        if (navMenu) navMenu.classList.remove('active');
-        document.body.style.overflow = '';
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            const target = document.querySelector(href);
+            if (target) {
+                const header = document.querySelector('.header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
-});
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (navMenu && mobileMenuToggle && !navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-        mobileMenuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const targetPosition = target.offsetTop - headerHeight - 20;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Enhanced header background on scroll
-const header = document.querySelector('.header');
-window.addEventListener('scroll', () => {
-    if (header) {
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.background = 'rgba(255, 255, 255, 0.9)';
-            header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
-        }
-    }
-});
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-});
-
-// Active nav link highlighting
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const headerHeight = document.querySelector('.header').offsetHeight;
-
-        if (window.scrollY >= (sectionTop - headerHeight - 100)) {
-            current = section.getAttribute('id');
+    // Enhanced header background on scroll
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (header) {
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.9)';
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
         }
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Active nav link highlighting
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const header = document.querySelector('.header');
+            const headerHeight = header ? header.offsetHeight : 0;
+
+            if (window.scrollY >= (sectionTop - headerHeight - 100)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Lightbox functionality for events (Global Scope)
+    window.openLightbox = function (eventId) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        let eventImg = document.getElementById(eventId + '-img');
+        if (!eventImg) eventImg = document.getElementById(eventId);
+
+        if (eventImg && lightbox && lightboxImg) {
+            lightboxImg.src = eventImg.src;
+            lightboxImg.alt = eventImg.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeLightbox = function () {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
         }
     });
-});
-
-// Lightbox functionality for events (Global Scope)
-window.openLightbox = function (eventId) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    let eventImg = document.getElementById(eventId + '-img');
-    if (!eventImg) eventImg = document.getElementById(eventId);
-
-    if (eventImg && lightbox && lightboxImg) {
-        lightboxImg.src = eventImg.src;
-        lightboxImg.alt = eventImg.alt;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-};
-
-window.closeLightbox = function () {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-};
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeLightbox();
-    }
-});
-
-// Performance optimization: Debounced scroll handler
-let scrollTimeout;
-const handleScroll = () => {
-    if (scrollTimeout) {
-        cancelAnimationFrame(scrollTimeout);
-    }
-    scrollTimeout = requestAnimationFrame(() => {
-        // Scroll-dependent operations here
-    });
-};
-
-window.addEventListener('scroll', handleScroll, { passive: true });
-
-// Add loading state management
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// =================================== 
-// 🎪 LOGICA: EVENTI & FILTRI
-// ===================================
-
-document.addEventListener('DOMContentLoaded', () => {
 
     /* --- FILTRI SENTIERI (UNIFIED) --- */
     const trailFilterButtons = document.querySelectorAll('.filter-btn, .filter-btn-duration');
     const trailCards = document.querySelectorAll('.trail-card');
 
     const updateTrailFilters = () => {
-        const activeDifficulty = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-        const activeDuration = document.querySelector('.filter-btn-duration.active').getAttribute('data-duration');
+        const activeDifficultyBtn = document.querySelector('.filter-btn.active');
+        const activeDurationBtn = document.querySelector('.filter-btn-duration.active');
+
+        if (!activeDifficultyBtn || !activeDurationBtn) return;
+
+        const activeDifficulty = activeDifficultyBtn.getAttribute('data-filter');
+        const activeDuration = activeDurationBtn.getAttribute('data-duration');
 
         trailCards.forEach(card => {
             const difficolta = card.getAttribute('data-difficolta');
-            const duration = parseInt(card.getAttribute('data-duration'));
+            const durationAttr = card.getAttribute('data-duration');
+            const duration = durationAttr ? parseInt(durationAttr) : 0;
 
             let matchDifficulty = (activeDifficulty === 'all' || activeDifficulty === difficolta);
             let matchDuration = false;
@@ -191,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (matchDifficulty && matchDuration) {
                 card.style.display = 'block';
-                // Small animation if becoming visible
                 if (card.style.opacity === '0' || !card.classList.contains('animated')) {
                     card.animate([
                         { opacity: 0, transform: 'translateY(10px)' },
@@ -306,5 +292,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 eventsContainer.innerHTML = '<div class="events-error"><i class="fa-solid fa-circle-exclamation"></i> Impossibile caricare il calendario eventi.</div>';
             });
     }
+};
 
+// Start execution
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
+
+// Add loading state management
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
 });

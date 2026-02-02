@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 export default function Layout({ children, content, lang }) {
     const router = useRouter();
@@ -11,7 +12,7 @@ export default function Layout({ children, content, lang }) {
     const togglePath = lang === 'it' ? '/en' : '/';
 
     return (
-        <>
+        <div suppressHydrationWarning>
             <Head>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +21,7 @@ export default function Layout({ children, content, lang }) {
                 <meta name="author" content="Associazione Sillico da Scoprire" />
                 <title>{meta.title}</title>
                 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-                <link rel="stylesheet" href="/js/lib/fontawesome.all.min.css" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
                 <link rel="stylesheet" href="/css/style.css" />
                 <link rel="canonical" href={`https://sillicodascoprire.it${lang === 'en' ? '/en' : ''}`} />
                 <link rel="alternate" hrefLang="it" href="https://sillicodascoprire.it/" />
@@ -71,8 +72,7 @@ export default function Layout({ children, content, lang }) {
                 <img src="" alt="" id="lightbox-img" />
             </div>
 
-            <script src="/js/lib/fontawesome.all.min.js" defer></script>
-            <script src="/js/main.js" defer></script>
-        </>
+            <Script src="/js/main.js" strategy="afterInteractive" />
+        </div>
     );
 }
