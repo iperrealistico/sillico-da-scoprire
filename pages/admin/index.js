@@ -155,13 +155,29 @@ export default function AdminDashboard() {
                     )}
                 </div>
                 {uploadError && <div className="upload-error-msg"><i className="fa-solid fa-triangle-exclamation"></i> {uploadError}</div>}
-                <div className="input-group" style={{ marginTop: '0.5rem' }}>
+                <div className="input-group" style={{ marginTop: '0.5rem', display: 'flex', gap: '0.5rem' }}>
                     <input
                         type="text"
+                        style={{ flex: 1 }}
                         value={currentUrl}
                         placeholder={isImage ? "O incolla URL immagine" : "O incolla URL file GPX"}
                         onChange={(e) => updateField(path, e.target.value)}
                     />
+                    {currentUrl && (
+                        <button
+                            className="btn btn-secondary"
+                            style={{ padding: '0 1rem', color: '#e74c3c', borderColor: '#e74c3c' }}
+                            title="Rimuovi file"
+                            onClick={() => {
+                                if (window.confirm('Vuoi rimuovere questo file? Se è un file caricato esternamente verrà mantenuto solo il riferimento testuale vuoto.')) {
+                                    updateField(path, '');
+                                    logDebug(`File rimosso da: ${path}`);
+                                }
+                            }}
+                        >
+                            <i className="fa-solid fa-trash-can"></i>
+                        </button>
+                    )}
                 </div>
             </div>
         );

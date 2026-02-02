@@ -4,10 +4,16 @@ import { getLangContent } from '../lib/content';
 export default function Home({ lang = 'it' }) {
     const content = getLangContent(lang);
 
+    const getImageUrl = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http')) return path;
+        return `/${path}`;
+    };
+
     return (
         <Layout content={content} lang={lang}>
             {/* Hero Section */}
-            <section className="hero" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url('/${content.hero.image}')` }}>
+            <section className="hero" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url('${getImageUrl(content.hero.image)}')` }}>
                 <div className="hero-content">
                     <h1>{content.hero.title}</h1>
                     <p className="hero-subtitle">{content.hero.subtitle}</p>
@@ -29,7 +35,7 @@ export default function Home({ lang = 'it' }) {
                             ))}
                         </div>
                         <div className="about-image img-container" data-alt="Vista panoramica del borgo di Sillico"
-                            style={{ backgroundImage: `url('/${content.about.image}')` }}></div>
+                            style={{ backgroundImage: `url('${getImageUrl(content.about.image)}')` }}></div>
                     </div>
                 </div>
             </section>
@@ -52,9 +58,9 @@ export default function Home({ lang = 'it' }) {
 
                     <div className="trails-grid">
                         {content.trails.items.map((trail) => (
-                            <div key={trail.id} className="trail-card" data-difficolta={trail.difficulty} data-duration={trail.duration}>
+                            <div className="trail-card" key={trail.id} data-difficolta={trail.difficulty} data-duration={trail.duration}>
                                 <div className="trail-image"
-                                    style={{ backgroundImage: `url('/${trail.image}')`, height: '200px', backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 'var(--border-radius)', marginBottom: '1rem' }}>
+                                    style={{ backgroundImage: `url('${getImageUrl(trail.image)}')`, height: '200px', backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 'var(--border-radius)', marginBottom: '1rem' }}>
                                 </div>
                                 <div className="trail-meta">
                                     <span className={`trail-badge badge-${trail.difficulty}`}>{content.trails.labels.time}: {trail.durationText}</span>
@@ -64,7 +70,7 @@ export default function Home({ lang = 'it' }) {
                                 <h3>{trail.title}</h3>
                                 <p>{trail.description}</p>
                                 <div className="trail-actions">
-                                    <a href={`/${trail.gpx}`} className="btn btn-secondary btn-trail" download><i
+                                    <a href={getImageUrl(trail.gpx)} className="btn btn-secondary btn-trail" download><i
                                         className="fa-solid fa-download"></i> GPX</a>
                                     <button className="btn btn-secondary btn-trail" onClick={() => alert('Mappa interattiva in arrivo!')}><i
                                         className="fa-solid fa-map"></i> Mappa</button>
@@ -93,7 +99,7 @@ export default function Home({ lang = 'it' }) {
                             </div>
                         </div>
                         <div className="bike-image img-container"
-                            style={{ backgroundImage: `url('/${content.bike_rent.image}')`, height: '350px' }}></div>
+                            style={{ backgroundImage: `url('${getImageUrl(content.bike_rent.image)}')`, height: '350px' }}></div>
                     </div>
                 </div>
             </section>
@@ -109,7 +115,7 @@ export default function Home({ lang = 'it' }) {
                             content.events.items.map((event, i) => (
                                 <div key={i} className="event-card" onClick={() => typeof window !== 'undefined' && window.openLightbox(`evento-${i}`)}>
                                     <div className="event-image">
-                                        <img src={event.image} alt={event.title} id={`evento-${i}-img`} loading="lazy" />
+                                        <img src={getImageUrl(event.image)} alt={event.title} id={`evento-${i}-img`} loading="lazy" />
                                         <div className="event-date"><i className="fa-regular fa-calendar"></i> {event.date}</div>
                                     </div>
                                     <div className="event-content">
@@ -134,7 +140,7 @@ export default function Home({ lang = 'it' }) {
                         {content.attractions.items.map((item, i) => (
                             <div key={i} className="attraction-card">
                                 <div className="attraction-image img-container"
-                                    style={{ backgroundImage: `url('/${item.image}')` }}></div>
+                                    style={{ backgroundImage: `url('${getImageUrl(item.image)}')` }}></div>
                                 <div className="attraction-content">
                                     <h3>{item.title}</h3>
                                     <p>{item.description}</p>
