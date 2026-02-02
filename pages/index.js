@@ -105,7 +105,22 @@ export default function Home({ lang = 'it' }) {
                     <p className="section-subtitle">{content.events.subtitle}</p>
 
                     <div className="events-grid">
-                        <div className="events-loading">{content.events.loading}</div>
+                        {content.events.items && content.events.items.length > 0 ? (
+                            content.events.items.map((event, i) => (
+                                <div key={i} className="event-card" onClick={() => typeof window !== 'undefined' && window.openLightbox(`evento-${i}`)}>
+                                    <div className="event-image">
+                                        <img src={event.image} alt={event.title} id={`evento-${i}-img`} loading="lazy" />
+                                        <div className="event-date"><i className="fa-regular fa-calendar"></i> {event.date}</div>
+                                    </div>
+                                    <div className="event-content">
+                                        <h3>{event.title}</h3>
+                                        <p>{event.description}</p>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-center">Nessun evento in programma al momento.</p>
+                        )}
                     </div>
                 </div>
             </section>

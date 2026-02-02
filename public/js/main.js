@@ -238,60 +238,7 @@ const initApp = () => {
         });
     }
 
-    /* --- PARSING EVENTI MARKDOWN --- */
-    const eventsContainer = document.querySelector('.events-grid');
-
-    if (eventsContainer) {
-        eventsContainer.innerHTML = '<div class="events-loading">Caricamento eventi...</div>';
-
-        fetch('/eventi.md')
-            .then(response => {
-                if (!response.ok) throw new Error('File eventi non trovato');
-                return response.text();
-            })
-            .then(text => {
-                const lines = text.split('\n').filter(line => line.trim() !== '');
-                let eventCardsHtml = '';
-                const tableLines = lines.filter(line => line.trim().startsWith('|'));
-
-                if (tableLines.length > 2) {
-                    const contentLines = tableLines.slice(2);
-                    contentLines.forEach((line, index) => {
-                        const columns = line.split('|').map(col => col.trim()).filter(col => col !== '');
-                        if (columns.length >= 4) {
-                            const titolo = columns[0];
-                            const data = columns[1];
-                            const imgUrl = columns[2];
-                            const descrizione = columns[3];
-                            const eventId = `evento-md-${index}`;
-
-                            eventCardsHtml += `
-                                <div class="event-card" onclick="openLightbox('${eventId}')">
-                                    <div class="event-image">
-                                        <img src="${imgUrl}" alt="${titolo}" id="${eventId}-img" class="img-placeholder" loading="lazy" onerror="this.onerror=null; this.parentElement.classList.add('img-placeholder'); this.parentElement.setAttribute('data-alt', '${titolo}');">
-                                        <div class="event-date"><i class="fa-regular fa-calendar"></i> ${data}</div>
-                                    </div>
-                                    <div class="event-content">
-                                        <h3>${titolo}</h3>
-                                        <p>${descrizione}</p>
-                                    </div>
-                                </div>
-                            `;
-                        }
-                    });
-
-                    if (eventCardsHtml) {
-                        eventsContainer.innerHTML = eventCardsHtml;
-                    } else {
-                        eventsContainer.innerHTML = '<p class="text-center">Nessun evento in programma al momento.</p>';
-                    }
-                }
-            })
-            .catch(error => {
-                console.error('Errore caricamento eventi:', error);
-                eventsContainer.innerHTML = '<div class="events-error"><i class="fa-solid fa-circle-exclamation"></i> Impossibile caricare il calendario eventi.</div>';
-            });
-    }
+    /* --- PARSING EVENTI (Rimosso - gestito da Next.js) --- */
 };
 
 // Start execution
