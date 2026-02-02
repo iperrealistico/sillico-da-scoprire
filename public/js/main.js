@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (eventsContainer) {
         eventsContainer.innerHTML = '<div class="events-loading">Caricamento eventi...</div>';
 
-        fetch('eventi.md')
+        fetch('/eventi.md')
             .then(response => {
                 if (!response.ok) throw new Error('File eventi non trovato');
                 return response.text();
