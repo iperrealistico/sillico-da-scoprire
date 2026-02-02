@@ -9,6 +9,7 @@ export default function AdminDashboard() {
     const [saving, setSaving] = useState(false);
     const [activeTab, setActiveTab] = useState('hero');
     const [message, setMessage] = useState({ type: '', text: '' });
+    const [blobStats, setBlobStats] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -16,13 +17,118 @@ export default function AdminDashboard() {
         if (!token) {
             router.push('/admin/login');
         } else {
-            // In a real app, we'd fetch the latest JSON from the API
-            // For now we'll use the one imported via getStaticProps (server-side)
-            // But since this is a client-side transition, we'll just use the imported one.
             setContent(getContent());
+            fetchBlobStats();
             setLoading(false);
         }
     }, []);
+
+    const fetchBlobStats = async () => {
+        try {
+            const response = await fetch('/api/admin/blob-stats', {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` }
+            });
+            if (response.ok) {
+                const stats = await response.json();
+                setBlobStats(stats);
+            }
+        } catch (e) {
+            console.error('Failed to fetch blob stats');
+        }
+    };
+
+    const StorageBar = () => {
+        if (!blobStats) return null;
+        const formatBytes = (bytes) => (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        return (
+            <div className="storage-bar-container">
+                <div className="storage-info">
+                    <span><i className="fa-solid fa-cloud"></i> Storage Vercel Blob</span>
+                    <span>{formatBytes(blobStats.used)} / {formatBytes(blobStats.limit)}</span>
+                </div>
+                <div className="storage-bar">
+                    <div className="storage-progress" style={{ width: `${Math.min(blobStats.percentage, 100)}%` }}></div>
+                </div>
+            </div>
+        );
+    };
+
+    const ImageUploader = ({ label, path, currentUrl }) => {
+        const [uploading, setUploading] = useState(false);
+
+        const onFileSelect = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            uploadFile(file);
+        };
+
+        const onDrop = async (e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            if (!file) return;
+            uploadFile(file);
+        };
+
+        const uploadFile = async (file) => {
+            setUploading(true);
+            try {
+                const response = await fetch(`/api/admin/upload?filename=${file.name}&contentType=${file.type}&oldUrl=${currentUrl}`, {
+                    method: 'POST',
+                    body: file,
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` }
+                });
+
+                if (response.ok) {
+                    const blob = await response.json();
+                    updateField(path, blob.url);
+                    fetchBlobStats();
+                } else {
+                    alert('Errore caricamento immagine');
+                }
+            } catch (err) {
+                alert('Errore connessione');
+            } finally {
+                setUploading(false);
+            }
+        };
+
+        return (
+            <div className="input-group">
+                <label>{label}</label>
+                <div
+                    className={`drop-zone ${uploading ? 'uploading' : ''}`}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={onDrop}
+                >
+                    {uploading ? (
+                        <span><i className="fa-solid fa-spinner fa-spin"></i> Caricamento...</span>
+                    ) : (
+                        <>
+                            {currentUrl ? (
+                                <div className="preview-container">
+                                    <img src={currentUrl} alt="Preview" />
+                                    <div className="preview-overlay">
+                                        <span>Trascina per sostituire</span>
+                                    </div>
+                                </div>
+                            ) : (
+                                <span>Trascina qui l'immagine o clicca per caricare</span>
+                            )}
+                            <input type="file" accept="image/*" onChange={onFileSelect} />
+                        </>
+                    )}
+                </div>
+                <div className="input-group" style={{ marginTop: '0.5rem' }}>
+                    <input
+                        type="text"
+                        value={currentUrl}
+                        placeholder="O incolla URL immagine"
+                        onChange={(e) => updateField(path, e.target.value)}
+                    />
+                </div>
+            </div>
+        );
+    };
 
     const handleSave = async () => {
         setSaving(true);
@@ -186,11 +292,87 @@ export default function AdminDashboard() {
                         text-decoration: none;
                         font-size: 0.9rem;
                     }
+
+                    /* Vercel Blob Styles */
+                    .storage-bar-container {
+                        padding: 1rem 1.5rem;
+                        background: rgba(0,0,0,0.1);
+                        margin: 1rem 1rem 2rem 1rem;
+                        border-radius: 8px;
+                    }
+                    .storage-info {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 0.8rem;
+                        margin-bottom: 0.5rem;
+                        color: #bdc3c7;
+                    }
+                    .storage-bar {
+                        height: 6px;
+                        background: #455a64;
+                        border-radius: 3px;
+                        overflow: hidden;
+                    }
+                    .storage-progress {
+                        height: 100%;
+                        background: var(--secondary);
+                        transition: width 0.3s;
+                    }
+                    
+                    .drop-zone {
+                        border: 2px dashed #ddd;
+                        border-radius: 8px;
+                        padding: 1rem;
+                        text-align: center;
+                        position: relative;
+                        transition: all 0.2s;
+                        background: #fdfdfd;
+                        cursor: pointer;
+                        min-height: 120px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .drop-zone:hover {
+                        border-color: var(--primary);
+                        background: #f0f7ff;
+                    }
+                    .drop-zone input[type="file"] {
+                        position: absolute;
+                        top: 0; left: 0; width: 100%; height: 100%;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                    .preview-container {
+                        width: 100%;
+                        max-height: 200px;
+                        overflow: hidden;
+                        border-radius: 4px;
+                    }
+                    .preview-container img {
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                    .preview-overlay {
+                        position: absolute;
+                        top: 0; left: 0; width: 100%; height: 100%;
+                        background: rgba(0,0,0,0.4);
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        transition: opacity 0.2s;
+                    }
+                    .drop-zone:hover .preview-overlay {
+                        opacity: 1;
+                    }
                 `}</style>
             </Head>
 
             <aside className="admin-sidebar">
                 <h2>Sillico Admin</h2>
+                <StorageBar />
                 <TabButton id="hero" label="Hero" icon="wand-magic-sparkles" />
                 <TabButton id="about" label="Chi Siamo" icon="circle-info" />
                 <TabButton id="trails" label="Sentieri" icon="route" />
@@ -336,14 +518,11 @@ export default function AdminDashboard() {
                                                     setContent(nc);
                                                 }} />
                                             </div>
-                                            <div className="input-group">
-                                                <label>Immagine (URL o percorso)</label>
-                                                <input type="text" value={trail.image} onChange={(e) => {
-                                                    const nc = { ...content };
-                                                    nc.trails.items[idx].image = e.target.value;
-                                                    setContent(nc);
-                                                }} />
-                                            </div>
+                                            <ImageUploader
+                                                label="Immagine"
+                                                path={`trails.items.${idx}.image`}
+                                                currentUrl={trail.image}
+                                            />
                                             <div className="input-group">
                                                 <label>File GPX (URL o percorso)</label>
                                                 <input type="text" value={trail.gpx} onChange={(e) => {
@@ -421,14 +600,11 @@ export default function AdminDashboard() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="input-group">
-                                        <label>Immagine URL</label>
-                                        <input type="text" value={event.image} onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.events.items[idx].image = e.target.value;
-                                            setContent(nc);
-                                        }} />
-                                    </div>
+                                    <ImageUploader
+                                        label="Immagine Evento"
+                                        path={`events.items.${idx}.image`}
+                                        currentUrl={event.image}
+                                    />
                                     <div className="grid-2">
                                         <div className="input-group">
                                             <label>Descrizione (IT)</label>
@@ -581,14 +757,11 @@ export default function AdminDashboard() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="input-group">
-                                        <label>Immagine URL</label>
-                                        <input type="text" value={item.image} onChange={(e) => {
-                                            const nc = { ...content };
-                                            nc.attractions.items[idx].image = e.target.value;
-                                            setContent(nc);
-                                        }} />
-                                    </div>
+                                    <ImageUploader
+                                        label="Immagine Attrazione"
+                                        path={`attractions.items.${idx}.image`}
+                                        currentUrl={item.image}
+                                    />
                                     <button className="btn btn-secondary" style={{ color: 'red', border: '1px solid red' }} onClick={() => {
                                         const nc = { ...content };
                                         nc.attractions.items.splice(idx, 1);

@@ -15,6 +15,7 @@
         "gray-matter": "^4.0.3",
         "remark": "^14.0.2",
         "remark-html": "^15.0.1",
-        "framer-motion": "^10.12.16"
+        "framer-motion": "^10.12.16",
+        "@vercel/blob": "^0.22.1"
     }
 }
