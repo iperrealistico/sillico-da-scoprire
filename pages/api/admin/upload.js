@@ -2,9 +2,7 @@ import { put, del } from '@vercel/blob';
 
 export const config = {
     api: {
-        bodyParser: {
-            sizeLimit: '10mb', // Increased for GPX or larger images
-        },
+        bodyParser: false,
     },
 };
 

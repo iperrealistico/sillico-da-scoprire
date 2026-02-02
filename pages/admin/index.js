@@ -10,7 +10,21 @@ export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState('hero');
     const [message, setMessage] = useState({ type: '', text: '' });
     const [blobStats, setBlobStats] = useState(null);
+    const [debugMode, setDebugMode] = useState(false);
+    const [debugLogs, setDebugLogs] = useState([]);
     const router = useRouter();
+
+    useEffect(() => {
+        const savedDebug = localStorage.getItem('admin_debug') === 'true';
+        setDebugMode(savedDebug);
+    }, []);
+
+    const logDebug = (msg, type = 'info') => {
+        const entry = { time: new Date().toLocaleTimeString(), msg, type };
+        setDebugLogs(prev => [entry, ...prev].slice(0, 50));
+        if (type === 'error') console.error(`[DEBUG] ${msg}`);
+        else console.log(`[DEBUG] ${msg}`);
+    };
 
     useEffect(() => {
         const token = localStorage.getItem('admin_token');
@@ -24,6 +38,7 @@ export default function AdminDashboard() {
     }, []);
 
     const fetchBlobStats = async () => {
+        logDebug('Recupero statistiche storage...');
         try {
             const response = await fetch('/api/admin/blob-stats', {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` }
@@ -31,9 +46,12 @@ export default function AdminDashboard() {
             if (response.ok) {
                 const stats = await response.json();
                 setBlobStats(stats);
+                logDebug(`Storage: ${(stats.used / 1024 / 1024).toFixed(2)}MB utilizzati`);
+            } else {
+                logDebug(`Errore statistiche: ${response.status}`, 'error');
             }
         } catch (e) {
-            console.error('Failed to fetch blob stats');
+            logDebug(`Eccezione fetch stats: ${e.message}`, 'error');
         }
     };
 
@@ -75,25 +93,33 @@ export default function AdminDashboard() {
         const uploadFile = async (file) => {
             setUploading(true);
             setUploadError('');
+            logDebug(`Avvio caricamento: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`);
+
             try {
-                const response = await fetch(`/api/admin/upload?filename=${file.name}&contentType=${file.type}&oldUrl=${currentUrl}`, {
+                const url = `/api/admin/upload?filename=${encodeURIComponent(file.name)}&contentType=${encodeURIComponent(file.type)}&oldUrl=${encodeURIComponent(currentUrl || '')}`;
+                logDebug(`POST -> ${url}`);
+
+                const response = await fetch(url, {
                     method: 'POST',
                     body: file,
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` }
                 });
 
+                logDebug(`Risposta server: ${response.status} ${response.statusText}`);
+
                 if (response.ok) {
                     const blob = await response.json();
+                    logDebug(`Caricamento completato: ${blob.url}`);
                     updateField(path, blob.url);
                     fetchBlobStats();
                 } else {
-                    const errorData = await response.json();
-                    setUploadError(errorData.error || 'Errore durante il caricamento');
-                    console.error('Upload failed:', errorData);
+                    const errorData = await response.json().catch(() => ({ error: 'Unknown server error' }));
+                    setUploadError(debugMode ? (errorData.error || 'Errore durante il caricamento') : 'Errore nel caricamento del file');
+                    logDebug(`Errore upload: ${JSON.stringify(errorData)}`, 'error');
                 }
             } catch (err) {
-                setUploadError('Errore di connessione. Verifica che il server Node.js sia in esecuzione (npm run dev).');
-                console.error('Upload connection error:', err);
+                setUploadError(debugMode ? `Errore di connessione: ${err.message}` : 'Errore di connessione');
+                logDebug(`Eccezione upload: ${err.message}`, 'error');
             } finally {
                 setUploading(false);
             }
@@ -400,6 +426,27 @@ export default function AdminDashboard() {
                         font-size: 2rem;
                         color: #bdc3c7;
                     }
+                    .debug-console {
+                        background: #1e1e1e;
+                        color: #d4d4d4;
+                        font-family: 'Courier New', Courier, monospace;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        border-radius: 4px;
+                        height: 300px;
+                        overflow-y: auto;
+                        margin-top: 0.5rem;
+                        border: 1px solid #333;
+                    }
+                    .debug-entry {
+                        margin-bottom: 4px;
+                        border-bottom: 1px solid #2d2d2d;
+                        padding-bottom: 2px;
+                        word-break: break-all;
+                    }
+                    .debug-entry.error { color: #f48771; }
+                    .debug-entry.info { color: #9cdcfe; }
+                    .debug-time { color: #808080; margin-right: 5px; }
                 `}</style>
             </Head>
 
@@ -414,6 +461,7 @@ export default function AdminDashboard() {
                 <TabButton id="attractions" label="Cosa Vedere" icon="camera-retro" />
                 <TabButton id="hospitality" label="Ospitalità" icon="bed" />
                 <TabButton id="contacts" label="Contatti" icon="address-book" />
+                <TabButton id="advanced" label="Avanzate" icon="gears" />
 
                 <a href="#" className="logout-btn" onClick={() => {
                     localStorage.removeItem('admin_token');
@@ -425,9 +473,6 @@ export default function AdminDashboard() {
                 <div className="admin-header">
                     <div>
                         <h1>Modifica {activeTab.toUpperCase()}</h1>
-                        <p style={{ color: '#e67e22', fontSize: '0.9rem', marginTop: '0.2rem' }}>
-                            <i className="fa-solid fa-circle-exclamation"></i> Nota: Per caricare file e vedere statistiche è necessario il server Node.js attivo (npm run dev).
-                        </p>
                     </div>
                     <button
                         className="btn btn-primary"
@@ -943,6 +988,44 @@ export default function AdminDashboard() {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                    )}
+                    {activeTab === 'advanced' && (
+                        <div>
+                            <h3>Impostazioni Avanzate</h3>
+                            <div className="input-group" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1rem' }}>
+                                <input
+                                    type="checkbox"
+                                    id="debugToggle"
+                                    checked={debugMode}
+                                    onChange={(e) => {
+                                        setDebugMode(e.target.checked);
+                                        localStorage.setItem('admin_debug', e.target.checked);
+                                    }}
+                                    style={{ width: '20px', height: '20px' }}
+                                />
+                                <label htmlFor="debugToggle" style={{ margin: 0, cursor: 'pointer' }}>Abilita Modalità Debug (Visualizza log tecnici e dettagli errori)</label>
+                            </div>
+
+                            {debugMode && (
+                                <div style={{ marginTop: '2rem' }}>
+                                    <h4>Console Log Debug</h4>
+                                    <div className="debug-console">
+                                        {debugLogs.length === 0 ? (
+                                            <div style={{ color: '#999', padding: '10px' }}>Nessun log disponibile...</div>
+                                        ) : (
+                                            debugLogs.map((log, i) => (
+                                                <div key={i} className={`debug-entry ${log.type}`}>
+                                                    <span className="debug-time">[{log.time}]</span> {log.msg}
+                                                </div>
+                                            ))
+                                        )}
+                                    </div>
+                                    <button className="btn btn-secondary" style={{ marginTop: '0.5rem', fontSize: '0.8rem' }} onClick={() => setDebugLogs([])}>
+                                        Svuota Log
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
