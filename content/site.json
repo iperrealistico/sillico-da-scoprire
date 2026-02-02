@@ -1,716 +1,716 @@
 {
-    "meta": {
-        "title": {
-            "it": "Sillico - Storia, natura e sapori in Garfagnana",
-            "en": "Sillico - History, nature and flavors in Garfagnana"
-        },
-        "description": {
-            "it": "Sillico da Scoprire: un borgo medievale in Garfagnana ricco di storia, natura e tradizioni. Scopri sentieri, sapori autentici e ospitalità nel cuore della Toscana.",
-            "en": "Sillico to Discover: a medieval village in Garfagnana rich in history, nature and traditions. Discover trails, authentic flavors and hospitality in the heart of Tuscany."
-        },
-        "keywords": {
-            "it": "Sillico, Garfagnana, borgo medievale, sentieri, MTB, ospitalità, turismo sostenibile, Toscana",
-            "en": "Sillico, Garfagnana, medieval village, trails, MTB, hospitality, sustainable tourism, Tuscany"
-        }
+  "meta": {
+    "title": {
+      "it": "Sillico - Storia, natura e sapori in Garfagnana",
+      "en": "Sillico - History, nature and flavors in Garfagnana"
     },
-    "nav": {
-        "chi_siamo": {
-            "it": "Chi Siamo",
-            "en": "About Us"
-        },
-        "sentieri": {
-            "it": "Sentieri",
-            "en": "Trails"
-        },
-        "bike_rent": {
-            "it": "Bike Rent",
-            "en": "Bike Rent"
-        },
-        "eventi": {
-            "it": "Eventi",
-            "en": "Events"
-        },
-        "cosa_vedere": {
-            "it": "Cosa Vedere",
-            "en": "To See"
-        },
-        "ospitalita": {
-            "it": "Ospitalità",
-            "en": "Hospitality"
-        },
-        "contatti": {
-            "it": "Contatti",
-            "en": "Contacts"
-        }
+    "description": {
+      "it": "Sillico da Scoprire: un borgo medievale in Garfagnana ricco di storia, natura e tradizioni. Scopri sentieri, sapori autentici e ospitalità nel cuore della Toscana.",
+      "en": "Sillico to Discover: a medieval village in Garfagnana rich in history, nature and traditions. Discover trails, authentic flavors and hospitality in the heart of Tuscany."
     },
-    "hero": {
-        "title": {
-            "it": "Sillico",
-            "en": "Sillico"
-        },
-        "subtitle": {
-            "it": "Storia, natura e sapori autentici nel cuore della Garfagnana",
-            "en": "History, nature and authentic flavors in the heart of Garfagnana"
-        },
-        "cta": {
-            "it": "✨ Inizia il viaggio",
-            "en": "✨ Start the journey"
-        },
-        "image": "images/sillico-hero.jpg"
+    "keywords": {
+      "it": "Sillico, Garfagnana, borgo medievale, sentieri, MTB, ospitalità, turismo sostenibile, Toscana",
+      "en": "Sillico, Garfagnana, medieval village, trails, MTB, hospitality, sustainable tourism, Tuscany"
+    }
+  },
+  "nav": {
+    "chi_siamo": {
+      "it": "Chi Siamo",
+      "en": "About Us"
     },
-    "about": {
-        "title": {
-            "it": "Chi Siamo",
-            "en": "About Us"
-        },
-        "subtitle": {
-            "it": "Un borgo medievale custode di storie antiche e tradizioni autentiche nel cuore della Garfagnana",
-            "en": "A medieval village guardian of ancient stories and authentic traditions in the heart of Garfagnana"
-        },
-        "image": "images/sillico-chi-siamo.jpg",
-        "paragraphs": [
-            {
-                "it": "Sillico è un piccolo gioiello incastonato tra i versanti appenninici della Garfagnana, si hanno notizie di questo borgo a partire dal X secolo.",
-                "en": "Sillico is a small jewel nestled between the Apennine slopes of Garfagnana, we have news of this village starting from the 10th century."
-            },
-            {
-                "it": "Questo borgo medievale, testimone silenzioso di epoche passate, conserva ancora oggi il fascino autentico di un tempo che fu. Sillico viene menzionato per la prima volta in un documento del 991 come comunità soggetta alla pievania di Pieve Fosciana. Nel 1429 fu il primo borgo della Garfagnana a dichiarare la propria dedizione alla Signoria Estense, ottenendo in cambio sgravi fiscali e finanziamenti per il rafforzamento delle mura. Sillico rimase Comune autonomo fino al 1804 e Palazzo Carli era, probabilmente, la sua sede.",
-                "en": "This medieval village, silent witness of past eras, still preserves today the authentic charm of a time that was. Sillico is mentioned for the first time in a document of 991 as a community subject to the Pieve Fosciana parish. In 1429 it was the first village of Garfagnana to declare its dedication to the Signoria Estense, obtaining in return tax breaks and funding for strengthening the walls. Sillico remained an autonomous municipality until 1804 and Palazzo Carli was, probably, its headquarters."
-            },
-            {
-                "it": "Le mura fortificate e i resti della torre medievale raccontano di un passato glorioso, quando il borgo era un importante avamposto strategico nella valle. Oggi, le Associazioni Polis Sillico e Terre del Moro si impegnano a valorizzare questo straordinario patrimonio.",
-                "en": "The fortified walls and the remains of the medieval tower tell of a glorious past, when the village was an important strategic outpost in the valley. Today, the associations Polis Sillico and Terre del Moro are committed to enhancing this extraordinary heritage."
-            },
-            {
-                "it": "Offriamo ai visitatori l'opportunità di immergersi in un'esperienza autentica tra storia, natura incontaminata e tradizioni gastronomiche che si tramandano di generazione in generazione.",
-                "en": "We offer visitors the opportunity to immerse themselves in an authentic experience of history, pristine nature and gastronomic traditions passed down from generation to generation."
-            }
-        ]
-    },
-    "trails": {
-        "title": {
-            "it": "I Sentieri del Moro",
-            "en": "The Moro Trails"
-        },
-        "subtitle": {
-            "it": "Una rete di sette itinerari che conducono alla scoperta del territorio compreso tra i borghi montani di Sillico, Capraia e Bargecchia",
-            "en": "A network of seven itineraries that lead to the discovery of the territory between the mountain villages of Sillico, Capraia and Bargecchia"
-        },
-        "labels": {
-            "difficulty": {
-                "it": "Difficoltà",
-                "en": "Difficulty"
-            },
-            "time": {
-                "it": "Tempo percorrenza",
-                "en": "Duration"
-            },
-            "filters": {
-                "all": {
-                    "it": "Tutti",
-                    "en": "All"
-                },
-                "any": {
-                    "it": "Qualsiasi",
-                    "en": "Any"
-                }
-            }
-        },
-        "items": [
-            {
-                "id": "1",
-                "title": {
-                    "it": "Sentiero delle Rogazioni – N.1",
-                    "en": "Sentiero delle Rogazioni – N.1"
-                },
-                "difficulty": "T",
-                "duration": 30,
-                "durationText": {
-                    "it": "30 minuti",
-                    "en": "30 minutes"
-                },
-                "image": "images/sentiero-rogazioni.jpg",
-                "description": {
-                    "it": "Breve anello intorno a Sillico, da cui si gode di una magnifica vista sulla valle e le Alpi Apuane. Attraversando castagneti e vigne terrazzate si giunge ad una stazione delle “Rogazioni”, rito religioso col quale si chiedeva aiuto a Dio perché venissero protetti i raccolti. E’ di recente realizzazione la scultura nel tronco di un vecchio castagno, posta poco dopo l’imbocco del sentiero.",
-                    "en": "Short loop around Sillico, with a magnificent view over the valley and the Apuan Alps. Crossing chestnut groves and terraced vineyards you reach a station of the “Rogazioni”, a religious rite to ask God for protection of the harvests. A sculpture in an old chestnut trunk was recently created near the trail start."
-                },
-                "gpx": "gpx/1-sentiero-delle-rogazioni.gpx"
-            },
-            {
-                "id": "2",
-                "title": {
-                    "it": "Sentiero delle Maestà - N.2",
-                    "en": "Sentiero delle Maestà - N.2"
-                },
-                "difficulty": "T",
-                "duration": 60,
-                "durationText": {
-                    "it": "1 ora",
-                    "en": "1 hour"
-                },
-                "image": "images/sentiero-maesta.jpg",
-                "description": {
-                    "it": "Dalla parte bassa del paese si scende per la “Via Chiusa” fino a scoprire il maestoso panorama delle Alpi Apuane. Entrati nel castagneto si intercetta l’antica via comunale che risale in paese. Lungo il percorso si incontrano alcune maestà (costruzioni con immagine votiva) e il lavatoio, usato fino ad alcuni decenni fa.",
-                    "en": "From the lower part of the village you descend along “Via Chiusa” to discover the majestic panorama of the Apuan Alps. Entering the chestnut grove you intercept the ancient municipal road that goes back up. Along the way you encounter some “maestà” (votive shrines) and the wash house, used until a few decades ago."
-                },
-                "gpx": "gpx/2-sentiero-delle-maesta.gpx"
-            },
-            {
-                "id": "3",
-                "title": {
-                    "it": "Sentiero dei Metati - N.3",
-                    "en": "Sentiero dei Metati - N.3"
-                },
-                "difficulty": "T",
-                "duration": 90,
-                "durationText": {
-                    "it": "1 ora e 30 minuti",
-                    "en": "1 hour 30 minutes"
-                },
-                "image": "images/sentiero-metati.jpg",
-                "description": {
-                    "it": "Facile anello con partenza dal parcheggio di Sillico, che attraversa suggestivi castagneti. Lungo il percorso si incontrano vari metati, edifici per l’essiccazione delle castagne, alcuni dei quali sono ancora regolarmente utilizzati. Una breve variante conduce in riva al torrente Sillico in prossimità di un antico mulino.",
-                    "en": "Easy loop starting from the Sillico parking lot, passing through evocative chestnut groves. Along the route you encounter various “metati”, buildings for drying chestnuts, some still regularly used. A short variant leads to the Sillico stream near an ancient mill."
-                },
-                "gpx": "gpx/3-sentierodei-metati.gpx"
-            },
-            {
-                "id": "4",
-                "title": {
-                    "it": "Sentiero dell’Eremo - N.4",
-                    "en": "Sentiero dell’Eremo - N.4"
-                },
-                "difficulty": "E",
-                "duration": 150,
-                "durationText": {
-                    "it": "2 ore e 30 minuti",
-                    "en": "2 hours 30 minutes"
-                },
-                "image": "images/sentiero-eremo.jpg",
-                "description": {
-                    "it": "Dal borgo di Sillico si raggiunge Capraia ed, in particolare, il suo suggestivo Eremo. Imboccata la strada sterrata, che parte dal parcheggio alto di Sillico, il sentiero piega a destra e si addentra nel bosco di castagni. Il sentiero, poi, abbandona il bosco e sale per prati e vecchi coltivi fino all’ Eremo di Capraia. Da qui, proseguendo sulla sinistra con un breve tratto in salita, il sentiero raggiunge la carrozzabile, oppure sulla destra è possibile raggiungere il paese di Capraia per poi ricollegarsi sempre alla strada carrabile. Si prosegue fino ad incontrare la strada sterrata, chiusa da una catena, che conduce alla pineta di Col de’ Campacci e, in breve, nuovamente al punto di partenza.",
-                    "en": "From Sillico you reach Capraia and its suggestive Hermitage. Taking the dirt road starting from the upper parking lot, the trail turns right into the chestnut forest. The path then leaves the forest and climbs through meadows to the Hermitage of Capraia. From there, you can reach the road or the village of Capraia. The path eventually leads to the Col de’ Campacci pinewood and back to the start."
-                },
-                "gpx": "gpx/4-sentiero-dell-eremo.gpx"
-            },
-            {
-                "id": "5",
-                "title": {
-                    "it": "Sentiero di Bargecchia - N.5",
-                    "en": "Sentiero di Bargecchia - N.5"
-                },
-                "difficulty": "E",
-                "duration": 120,
-                "durationText": {
-                    "it": "2 ore",
-                    "en": "2 hours"
-                },
-                "image": "images/sentiero-bargecchia.jpg",
-                "description": {
-                    "it": "Scendendo sotto il campo sportivo di Sillico si imbocca il sentiero che porta a Bargecchia, un piccolissimo borgo che si affaccia sulla valle. Il sentiero è interamente nel bosco fino al paese, da qui poi si percorre un tratto di strada carrabile e si risale a Sillico passando per la località “La Casetta”.",
-                    "en": "Descending below the Sillico sports field, you take the path to Bargecchia, a tiny village overlooking the valley. The trail is entirely in the woods until the village, then follows a stretch of road back up to Sillico via “La Casetta”."
-                },
-                "gpx": "gpx/5-sentiero-di-barghecchia.gpx"
-            },
-            {
-                "id": "6",
-                "title": {
-                    "it": "Sentiero di Sassatecchia - N.6",
-                    "en": "Sentiero di Sassatecchia - N.6"
-                },
-                "difficulty": "E",
-                "duration": 150,
-                "durationText": {
-                    "it": "2 ore e 30 minuti",
-                    "en": "2 hours 30 minutes"
-                },
-                "image": "images/sentiero-sassatecchia.jpg",
-                "description": {
-                    "it": "Scendendo sotto il campo sportivo di Sillico si imbocca il sentiero che porta in località Pastina, un tempo abitata e coltivata come testimoniano i ruderi e i terrazzamenti ancora presenti. Si prosegue sulla destra fino alla località Salotti, dove è ancora visibile un vecchio mulino. Attraversando il torrente che divide il versante di Sillico da quello di Fosciandora, è possibile raggiungere località come Ceserana, La Villa, Migliano o Fosciandora, ma questi tratti non fanno parte della rete dei sentieri del Moro. Si risale verso il paese di Sillico ripercorrendo lo stesso sentiero.",
-                    "en": "Descending below the sports field, take the path to Pastina, once inhabited and cultivated. Continue right to Salotti and its old mill. Crossing the stream separating Sillico from Fosciandora, other locations can be reached, though not part of the Moro network. Return to Sillico along the same path."
-                },
-                "gpx": "gpx/6-sentiero-sassatecchia.gpx"
-            },
-            {
-                "id": "7",
-                "title": {
-                    "it": "Sentiero dei Mulini - N.7",
-                    "en": "Sentiero dei Mulini - N.7"
-                },
-                "difficulty": "E",
-                "duration": 210,
-                "durationText": {
-                    "it": "3 ore e 30 minuti",
-                    "en": "3 hours 30 minutes"
-                },
-                "image": "images/sentiero-mulini.jpg",
-                "description": {
-                    "it": "Partendo dalla parte bassa del paese si raggiunge l’antico lavatoio e si va ad intercettare quella che era l’antica via comunale, di cui si intravedono ancora i sassi sotto alla morbida coperta di muschio. Si giunge ad un primo mulino e si attraversa il fiume di Sillico passando sul ponte carrabile. Passati sull’altro versante si percorre il sentiero lungo fiume, incontrando la centralina idroelettrica, la diga del Sacco ed, infine, il Mulino del Pilastrello, dove si attraversa un secondo ponte sospeso. Da qui si risale al paese tra i castagneti ricollegandosi al sentiero dei Metati N.3.",
-                    "en": "From the lower village, reach the old wash house and the ancient municipal road. Reach the first mill, cross the Sillico river, and follow the river passing the hydroelectric plant and Sacco dam to Pilastrello Mill. Cross a second bridge and climb back to the village through chestnut groves connecting to trail N.3."
-                },
-                "gpx": "gpx/7-sentiero-dei-mulini.gpx"
-            },
-            {
-                "id": "8",
-                "title": {
-                    "it": "Caprasecca – N.8",
-                    "en": "Caprasecca – N.8"
-                },
-                "difficulty": "T",
-                "duration": 60,
-                "durationText": {
-                    "it": "1 ora",
-                    "en": "1 hour"
-                },
-                "image": "images/sentiero-caprasecca.jpg",
-                "description": {
-                    "it": "Questo sentiero permette il collegamento con le località di Foce e Capraia, con la possibilità di proseguire il cammino sui sentieri della Pro Loco Capraia. Partendo dal parcheggio di Sillico si imbocca il sentiero N.3 verso Pasquejo. Una volta arrivati a “Le Grotte” si prosegue salendo sulla destra in direzione “Buricavi”. Usciti dal bosco ci si collega alla strada carrabile in località La Foce",
-                    "en": "This trail connects to Foce and Capraia. Starting from the parking lot, follow trail N.3 towards Pasquejo. At “Le Grotte”, climb right towards “Buricavi”. Out of the forest, connect to the road at La Foce."
-                },
-                "gpx": "gpx/caprasecca.gpx"
-            }
-        ]
+    "sentieri": {
+      "it": "Sentieri",
+      "en": "Trails"
     },
     "bike_rent": {
-        "title": {
-            "it": "Sillico Bike Rent",
-            "en": "Sillico Bike Rent"
-        },
-        "subtitle": {
-            "it": "Mountain bike di ultima generazione per esplorare la Garfagnana su due ruote",
-            "en": "Latest generation mountain bikes to explore Garfagnana on two wheels"
-        },
-        "image": "images/sillico-mtb.jpg",
-        "intro": {
-            "it": "Scopri i nostri servizi per ciclisti:",
-            "en": "Discover our services for cyclists:"
-        },
-        "features": [
-            {
-                "it": "Mountain bike Focus di ultima generazione",
-                "en": "Latest generation Focus mountain bikes"
-            },
-            {
-                "it": "E-bike con autonomia fino a 80 km per esplorazioni senza limiti",
-                "en": "E-bikes with up to 80 km range for limitless exploration"
-            },
-            {
-                "it": "Consegna gratuita delle bici direttamente in paese",
-                "en": "Free bike delivery directly in the village"
-            },
-            {
-                "it": "Kit di sicurezza: casco e kit riparazione",
-                "en": "Safety kit: helmet and repair kit"
-            },
-            {
-                "it": "Mappe dettagliate dei percorsi con livelli di difficoltà",
-                "en": "Detailed trail maps with difficulty levels"
-            },
-            {
-                "it": "Tour guidati su prenotazione con guide esperte",
-                "en": "Guided tours on reservation with expert guides"
-            },
-            {
-                "it": "Assistenza tecnica",
-                "en": "Technical assistance"
-            }
-        ],
-        "cta": {
-            "it": "🚴‍♂️ Prenota ora",
-            "en": "🚴‍♂️ Book now"
-        }
+      "it": "Bike Rent",
+      "en": "Bike Rent"
     },
-    "events": {
-        "title": {
-            "it": "Eventi",
-            "en": "Events"
-        },
-        "subtitle": {
-            "it": "Un calendario ricco di appuntamenti per vivere le tradizioni e la cultura del borgo",
-            "en": "A calendar full of appointments to experience the traditions and culture of the village"
-        },
-        "items": [
-            {
-                "title": {
-                    "it": "I banditi del Sillico nella Garfagnana dell'Ariosto... all'ora di cena",
-                    "en": "The Sillico bandits in Ariosto's Garfagnana... at dinner time"
-                },
-                "date": {
-                    "it": "Sabato 8 agosto e Venerdì 14 agosto",
-                    "en": "Saturday August 8th and Friday August 14th"
-                },
-                "image": "https://www.sillicodascoprire.it/images/evento-banditi-del-sillico.jpg",
-                "description": {
-                    "it": "L’evento principe del borgo, nato nel 1998 da un’idea del Dott. Roberto Nobili. Si tratta di una rievocazione storica e gastronomica che mette in scena le usanze del periodo rinascimentale, tra musica, esibizioni e cucina tipica dell’epoca. Figura di riferimento per la festa è il Moro del Sillico, leggendario brigante che nella Garfagnana di Ludovico Ariosto faceva il bello e il cattivo tempo.",
-                    "en": "The village's flagship event, born in 1998 from an idea by Dr. Roberto Nobili. Historical and gastronomic reenactment of Renaissance customs, with music, performances, and typical cuisine. The key figure is the Moro of Sillico, a legendary brigand."
-                }
-            },
-            {
-                "title": {
-                    "it": "Sentieri & Sapori",
-                    "en": "Trails & Flavors"
-                },
-                "date": {
-                    "it": "Domenica 17 maggio e 4 ottobre",
-                    "en": "Sunday May 17th and October 4th"
-                },
-                "image": "https://www.sillicodascoprire.it/images/evento-sentieri-e-sapori.jpg",
-                "description": {
-                    "it": "Trekking gastronomico lungo i “Sentieri del Moro. Ottima occasione per avventurarsi nei boschi di castagni alla scoperta dei prodotti tipici. L'evento, nato nel 2023 si svolge due volte l'anno: in primavera e in autunno. Prenotazione esclusivamente online.",
-                    "en": "Gastronomic trekking along the 'Moro Trails'. A great opportunity to discover local products in the chestnut woods. Born in 2023, it takes place twice a year. Online reservation only."
-                }
-            },
-            {
-                "title": {
-                    "it": "Divini & Sapori",
-                    "en": "Divini & Sapori"
-                },
-                "date": {
-                    "it": "Venerdì 3 e Sabato 4 luglio",
-                    "en": "Friday July 3rd and Saturday July 4th"
-                },
-                "image": "https://www.sillicodascoprire.it/images/evento-divini-e-sapori.jpg",
-                "description": {
-                    "it": "Due serate per gli appassionati di alta cucina e vini pregiati nella splendida cornice di palazzo Carli. Evento a numero chiuso con prenotazione obbligatoria e degustazione guidata FISAR.",
-                    "en": "Two evenings for fine dining and wine lovers in the beautiful setting of Palazzo Carli. Limited availability, reservation required, FISAR guided tasting."
-                }
-            },
-            {
-                "title": {
-                    "it": "Trekking alle Lame di Capraia con pranzo alla Festa dei Pastori",
-                    "en": "Trekking to the Lame of Capraia with lunch at the Shepherds' Festival"
-                },
-                "date": {
-                    "it": "Domenica 26 luglio",
-                    "en": "Sunday July 26th"
-                },
-                "image": "https://www.sillicodascoprire.it/images/evento-trekking-alle-lame.jpg",
-                "description": {
-                    "it": "Trekking alla scoperta dei boschi che collegano Sillico al crinale appenninico. Pranzo alle Lame di Capraia tra musica, giochi e gastronomia tipica.",
-                    "en": "Discover the forests connecting Sillico to the Apennine ridge. Lunch at Lame di Capraia with music, games, and typical food."
-                }
-            },
-            {
-                "title": {
-                    "it": "Concerto di San Lorenzo della Filarmonica G. Verdi di Sillico",
-                    "en": "San Lorenzo Concert by the G. Verdi Philharmonic of Sillico"
-                },
-                "date": {
-                    "it": "Domenica 10 agosto",
-                    "en": "Sunday August 10th"
-                },
-                "image": "https://www.sillicodascoprire.it/images/evento-concerto-banda.jpg",
-                "description": {
-                    "it": "Tradizionale concerto estivo della banda di Sillico, attiva dal 1898, in onore del patrono. Ingresso libero nella piazza principale dalle ore 21:00.",
-                    "en": "Traditional summer concert of the Sillico band, active since 1898. Free entry in the main square from 9:00 PM."
-                }
-            },
-            {
-                "title": {
-                    "it": "17a Estemporanea di pittura",
-                    "en": "17th Painting Extemporaneous"
-                },
-                "date": {
-                    "it": "Domenica 23 agosto",
-                    "en": "Sunday August 23rd"
-                },
-                "image": "https://www.sillicodascoprire.it/images/evento-estemporanea-pittura.jpg",
-                "description": {
-                    "it": "Concorso di pittura aperto a tutti per la miglior rappresentazione del paese. Le opere verranno esposte e premiate nella piazza del borgo.",
-                    "en": "Painting competition open to all for the best representation of the village. Works will be exhibited and awarded in the main square."
-                }
-            }
-        ]
+    "eventi": {
+      "it": "Eventi",
+      "en": "Events"
     },
-    "attractions": {
-        "title": {
-            "it": "Cosa Vedere",
-            "en": "What to See"
-        },
-        "subtitle": {
-            "it": "Testimonianze storiche e artistiche di un borgo ricco di memoria e tradizioni",
-            "en": "Historical and artistic evidence of a village rich in memory and traditions"
-        },
-        "items": [
-            {
-                "title": {
-                    "it": "Palazzo Carli",
-                    "en": "Palazzo Carli"
-                },
-                "image": "images/palazzo-carli.jpg",
-                "description": {
-                    "it": "Un'affascinante dimora storica che ospita una preziosa raccolta di orologi d'epoca e memorie di vita locale. Il palazzo apparteneva in origine alla facoltosa famiglia di Maria Teresa Pellini, la quale sposò nel 1765 il conte Carli di Castelnuovo di Garfagnana. L’edificio, oggi di proprietà della famiglia Lorenzetti, è stato restaurato a inizio degli anni 2000 dall’associazione Polis Sillico, che tutt’oggi lo gestisce. Dal 2009 nelle quattro sale che compongono l’ultimo piano del Palazzo vengono allestite mostre di pittura, scultura e fotografia di artisti locali e di fama nazionale. Al piano inferiore è facile immergersi in un’atmosfera di altri tempi, entrando nella grande cucina con il camino di pietra o nella camera da letto con affreschi risalenti ai primi dell’800.",
-                    "en": "A fascinating historical residence housing a precious collection of period clocks and local life memories. The palace originally belonged to the wealthy family of Maria Teresa Pellini. Restored in the early 2000s, it hosts art exhibitions. The lower floor offers an atmosphere of other times with its large kitchen and stone fireplace."
-                }
-            },
-            {
-                "title": {
-                    "it": "Chiesa di San Lorenzo",
-                    "en": "Church of San Lorenzo"
-                },
-                "image": "images/chiesa-san-lorenzo.jpg",
-                "description": {
-                    "it": "Situata nel centro del paese sorge la chiesa parrocchiale dedicata a San Lorenzo Martire. Questa viene citata per la prima volta in una bolla papale del 1168. In origine era un edificio a una sola navata con soffitti in legno, successivamente fu costruito un tempio a tre navate tuttora esistente. Sono presenti sette altari in legno fra cui spicca l’altare della Madonna ricco di intagli e di ori. Particolarità della chiesa è l’organo con il singolare timbro di voce del registro Principale di 8’, tipico degli organi costruiti dai fratelli Turrini di Pieve Fosciana. Importante sottolineare come nel 1909 la parrocchia vide il passaggio da Rettoria al più alto rango di Prioria.",
-                    "en": "Located in the village center, this parish church dedicated to St. Lawrence Martyr dates back to 1168. It features seven wooden altars and a unique organ built by the Turrini brothers. In 1909 it was elevated to the rank of Priory."
-                }
-            },
-            {
-                "title": {
-                    "it": "Resti delle Mura",
-                    "en": "Remains of the Walls"
-                },
-                "image": "images/resti-mura.jpg",
-                "description": {
-                    "it": "I resti della cinta muraria, perfettamente conservati nella parte nord, includono una torre di avvistamento che appare oggi come un grande tronco di piramide. La realizzazione di questa struttura è collocabile nel corso del ‘400. All’interno della rocca si trova un’altra torre a pianta quadrata, databile al XII – XIII secolo: si tratta della torre castellana del Sillico. Attualmente è in fase di sviluppo un progetto per il restauro e la riqualificazione di quest’area.",
-                    "en": "The remains of the city walls, perfectly preserved in the northern part, include a 15th-century watchtower. Inside the fortress is another square tower dating back to the 12th-13th century: the Sillico castle tower. A restoration project is currently in development."
-                }
-            },
-            {
-                "title": {
-                    "it": "Chiesa di San Giuseppe",
-                    "en": "Church of San Giuseppe"
-                },
-                "image": "images/chiesa-san-giuseppe.jpg",
-                "description": {
-                    "it": "Si tratta di un piccolo oratorio dedicato a San Giuseppe e originariamente di proprietà dei conti Carli. Sul portale di ingresso è tutt’ora visibile lo stemma della famiglia Carli in bassorilievo di marmo bianco. Questo fu recuperato da Don Sessi, priore di quel periodo, fra le macerie degli edifici distrutti a Castelnuovo di Garfagnana nel secondo dopoguerra. Oggi l’oratorio, conosciuto ormai come chiesa di San Rocco, è stato opportunamente restaurato nel 1997. Il nome attuale deriva dalla presenza della statua dedicato al santo, posta all’interno del locale. Inoltre è possibile ammirare il vecchio tabernacolo in legno del XVII secolo.",
-                    "en": "Consisting of a small oratory dedicated to St. Joseph, originally owned by the Carli counts. It features the Carli family crest in white marble. Restored in 1997, it's also known as the Church of San Rocco. Inside is a 17th-century wooden tabernacle."
-                }
-            }
-        ]
+    "cosa_vedere": {
+      "it": "Cosa Vedere",
+      "en": "To See"
     },
-    "hospitality": {
-        "title": {
-            "it": "Ristoranti e Ospitalità",
-            "en": "Restaurants and Hospitality"
-        },
-        "subtitle": {
-            "it": "Sapori autentici e accoglienza calorosa nel cuore pulsante della Garfagnana",
-            "en": "Authentic flavors and warm welcome in the pulsating heart of Garfagnana"
-        },
-        "filters": {
-            "all": {
-                "it": "Tutti",
-                "en": "All"
-            },
-            "restaurants": {
-                "it": "Ristoranti",
-                "en": "Restaurants"
-            },
-            "accommodation": {
-                "it": "Alloggi",
-                "en": "Accommodations"
-            }
-        },
-        "items": [
-            {
-                "name": "Locanda Belvedere di Roberta e Clara",
-                "type": "ristorante",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "0583 662173",
-                        "label": "0583 662173"
-                    },
-                    {
-                        "type": "mobile",
-                        "value": "328 5337176",
-                        "label": "328 5337176"
-                    },
-                    {
-                        "type": "email",
-                        "value": "locandabelvederesillico@gmail.com",
-                        "label": "Email"
-                    }
-                ]
-            },
-            {
-                "name": "Casa vacanze le Muse",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 339 6576018",
-                        "label": "+39 339 6576018"
-                    },
-                    {
-                        "type": "email",
-                        "value": "Info@lemuse-sillico.it",
-                        "label": "Info@lemuse-sillico.it"
-                    }
-                ]
-            },
-            {
-                "name": "Agriturismo Il Collettino",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 389 5114975",
-                        "label": "+39 389 5114975"
-                    },
-                    {
-                        "type": "email",
-                        "value": "info@collettino.it",
-                        "label": "info@collettino.it"
-                    },
-                    {
-                        "type": "web",
-                        "value": "https://www.collettino.it/",
-                        "label": "www.collettino.it"
-                    }
-                ]
-            },
-            {
-                "name": "Sillico Relais del Borgo",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 333 1899491",
-                        "label": "+39 333 1899491"
-                    },
-                    {
-                        "type": "email",
-                        "value": "vivisillico@gmail.com",
-                        "label": "vivisillico@gmail.com"
-                    }
-                ]
-            },
-            {
-                "name": "Casa Laura",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 334 2969329",
-                        "label": "+39 334 2969329"
-                    },
-                    {
-                        "type": "email",
-                        "value": "melliyvonnel@gmail.com",
-                        "label": "melliyvonnel@gmail.com"
-                    },
-                    {
-                        "type": "web",
-                        "value": "https://www.vrbo.com/en-gb/p830340",
-                        "label": "www.vrbo.com/en-gb/p830340"
-                    }
-                ]
-            },
-            {
-                "name": "La Dimora dell'Abramo",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 329 2128407",
-                        "label": "+39 329 2128407"
-                    },
-                    {
-                        "type": "web",
-                        "value": "https://www.ladimoradellabramo.it",
-                        "label": "www.ladimoradellabramo.it"
-                    }
-                ]
-            },
-            {
-                "name": "Villa Loris",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 375 9026861",
-                        "label": "+39 375 9026861"
-                    },
-                    {
-                        "type": "email",
-                        "value": "fullmonti.ap@gmail.com",
-                        "label": "fullmonti.ap@gmail.com"
-                    }
-                ]
-            },
-            {
-                "name": "Casa La Luna",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 331 4597074",
-                        "label": "+39 331 4597074"
-                    },
-                    {
-                        "type": "email",
-                        "value": "mmdespirt@alice.it",
-                        "label": "mmdespirt@alice.it"
-                    },
-                    {
-                        "type": "web",
-                        "value": "https://www.airbnb.it/rooms/44009171?viralityEntryPoint=1&s=76",
-                        "label": "Airbnb"
-                    }
-                ]
-            },
-            {
-                "name": "Eremo San Lorenzo",
-                "type": "alloggio",
-                "contacts": [
-                    {
-                        "type": "phone",
-                        "value": "+39 335 8066222",
-                        "label": "+39 335 8066222"
-                    },
-                    {
-                        "type": "phone",
-                        "value": "+39 349 2836654",
-                        "label": "+39 349 2836654"
-                    },
-                    {
-                        "type": "phone",
-                        "value": "+39 339 5615457",
-                        "label": "+39 339 5615457"
-                    }
-                ]
-            }
-        ]
+    "ospitalita": {
+      "it": "Ospitalità",
+      "en": "Hospitality"
     },
-    "contacts": {
-        "title": {
-            "it": "Contatti",
-            "en": "Contacts"
-        },
-        "subtitle": {
-            "it": "Siamo qui per rendere indimenticabile la tua esperienza a Sillico",
-            "en": "We are here to make your experience in Sillico unforgettable"
-        },
-        "associations": {
-            "title": {
-                "it": "Associazioni",
-                "en": "Associations"
-            },
-            "items": [
-                {
-                    "name": "Polis Sillico",
-                    "email": "polissillico@gmail.com"
-                },
-                {
-                    "name": "Terre del Moro",
-                    "email": "leterredelmoro@gmail.com"
-                }
-            ]
-        },
-        "social": {
-            "title": {
-                "it": "Seguici sui Social",
-                "en": "Follow us on Socials"
-            },
-            "facebook": "https://www.facebook.com/p/Sillico-da-scoprire-100092474273337/",
-            "instagram": "https://www.instagram.com/sillico_da_scoprire/"
-        }
-    },
-    "footer": {
-        "copyright": {
-            "it": "© 2026 Associazione Sillico. Tutti i diritti riservati.",
-            "en": "© 2026 Associazione Sillico. All rights reserved."
-        }
+    "contatti": {
+      "it": "Contatti",
+      "en": "Contacts"
     }
+  },
+  "hero": {
+    "title": {
+      "it": "Sillicoo",
+      "en": "Sillico"
+    },
+    "subtitle": {
+      "it": "Storia, natura e sapori autentici nel cuore della Garfagnana",
+      "en": "History, nature and authentic flavors in the heart of Garfagnana"
+    },
+    "cta": {
+      "it": "✨ Inizia il viaggio",
+      "en": "✨ Start the journey"
+    },
+    "image": "images/sillico-hero.jpg"
+  },
+  "about": {
+    "title": {
+      "it": "Chi Siamo",
+      "en": "About Us"
+    },
+    "subtitle": {
+      "it": "Un borgo medievale custode di storie antiche e tradizioni autentiche nel cuore della Garfagnana",
+      "en": "A medieval village guardian of ancient stories and authentic traditions in the heart of Garfagnana"
+    },
+    "image": "images/sillico-chi-siamo.jpg",
+    "paragraphs": [
+      {
+        "it": "Sillico è un piccolo gioiello incastonato tra i versanti appenninici della Garfagnana, si hanno notizie di questo borgo a partire dal X secolo.",
+        "en": "Sillico is a small jewel nestled between the Apennine slopes of Garfagnana, we have news of this village starting from the 10th century."
+      },
+      {
+        "it": "Questo borgo medievale, testimone silenzioso di epoche passate, conserva ancora oggi il fascino autentico di un tempo che fu. Sillico viene menzionato per la prima volta in un documento del 991 come comunità soggetta alla pievania di Pieve Fosciana. Nel 1429 fu il primo borgo della Garfagnana a dichiarare la propria dedizione alla Signoria Estense, ottenendo in cambio sgravi fiscali e finanziamenti per il rafforzamento delle mura. Sillico rimase Comune autonomo fino al 1804 e Palazzo Carli era, probabilmente, la sua sede.",
+        "en": "This medieval village, silent witness of past eras, still preserves today the authentic charm of a time that was. Sillico is mentioned for the first time in a document of 991 as a community subject to the Pieve Fosciana parish. In 1429 it was the first village of Garfagnana to declare its dedication to the Signoria Estense, obtaining in return tax breaks and funding for strengthening the walls. Sillico remained an autonomous municipality until 1804 and Palazzo Carli was, probably, its headquarters."
+      },
+      {
+        "it": "Le mura fortificate e i resti della torre medievale raccontano di un passato glorioso, quando il borgo era un importante avamposto strategico nella valle. Oggi, le Associazioni Polis Sillico e Terre del Moro si impegnano a valorizzare questo straordinario patrimonio.",
+        "en": "The fortified walls and the remains of the medieval tower tell of a glorious past, when the village was an important strategic outpost in the valley. Today, the associations Polis Sillico and Terre del Moro are committed to enhancing this extraordinary heritage."
+      },
+      {
+        "it": "Offriamo ai visitatori l'opportunità di immergersi in un'esperienza autentica tra storia, natura incontaminata e tradizioni gastronomiche che si tramandano di generazione in generazione.",
+        "en": "We offer visitors the opportunity to immerse themselves in an authentic experience of history, pristine nature and gastronomic traditions passed down from generation to generation."
+      }
+    ]
+  },
+  "trails": {
+    "title": {
+      "it": "I Sentieri del Moro",
+      "en": "The Moro Trails"
+    },
+    "subtitle": {
+      "it": "Una rete di sette itinerari che conducono alla scoperta del territorio compreso tra i borghi montani di Sillico, Capraia e Bargecchia",
+      "en": "A network of seven itineraries that lead to the discovery of the territory between the mountain villages of Sillico, Capraia and Bargecchia"
+    },
+    "labels": {
+      "difficulty": {
+        "it": "Difficoltà",
+        "en": "Difficulty"
+      },
+      "time": {
+        "it": "Tempo percorrenza",
+        "en": "Duration"
+      },
+      "filters": {
+        "all": {
+          "it": "Tutti",
+          "en": "All"
+        },
+        "any": {
+          "it": "Qualsiasi",
+          "en": "Any"
+        }
+      }
+    },
+    "items": [
+      {
+        "id": "1",
+        "title": {
+          "it": "Sentiero delle Rogazioni – N.1",
+          "en": "Sentiero delle Rogazioni – N.1"
+        },
+        "difficulty": "T",
+        "duration": 30,
+        "durationText": {
+          "it": "30 minuti",
+          "en": "30 minutes"
+        },
+        "image": "images/sentiero-rogazioni.jpg",
+        "description": {
+          "it": "Breve anello intorno a Sillico, da cui si gode di una magnifica vista sulla valle e le Alpi Apuane. Attraversando castagneti e vigne terrazzate si giunge ad una stazione delle “Rogazioni”, rito religioso col quale si chiedeva aiuto a Dio perché venissero protetti i raccolti. E’ di recente realizzazione la scultura nel tronco di un vecchio castagno, posta poco dopo l’imbocco del sentiero.",
+          "en": "Short loop around Sillico, with a magnificent view over the valley and the Apuan Alps. Crossing chestnut groves and terraced vineyards you reach a station of the “Rogazioni”, a religious rite to ask God for protection of the harvests. A sculpture in an old chestnut trunk was recently created near the trail start."
+        },
+        "gpx": "gpx/1-sentiero-delle-rogazioni.gpx"
+      },
+      {
+        "id": "2",
+        "title": {
+          "it": "Sentiero delle Maestà - N.2",
+          "en": "Sentiero delle Maestà - N.2"
+        },
+        "difficulty": "T",
+        "duration": 60,
+        "durationText": {
+          "it": "1 ora",
+          "en": "1 hour"
+        },
+        "image": "images/sentiero-maesta.jpg",
+        "description": {
+          "it": "Dalla parte bassa del paese si scende per la “Via Chiusa” fino a scoprire il maestoso panorama delle Alpi Apuane. Entrati nel castagneto si intercetta l’antica via comunale che risale in paese. Lungo il percorso si incontrano alcune maestà (costruzioni con immagine votiva) e il lavatoio, usato fino ad alcuni decenni fa.",
+          "en": "From the lower part of the village you descend along “Via Chiusa” to discover the majestic panorama of the Apuan Alps. Entering the chestnut grove you intercept the ancient municipal road that goes back up. Along the way you encounter some “maestà” (votive shrines) and the wash house, used until a few decades ago."
+        },
+        "gpx": "gpx/2-sentiero-delle-maesta.gpx"
+      },
+      {
+        "id": "3",
+        "title": {
+          "it": "Sentiero dei Metati - N.3",
+          "en": "Sentiero dei Metati - N.3"
+        },
+        "difficulty": "T",
+        "duration": 90,
+        "durationText": {
+          "it": "1 ora e 30 minuti",
+          "en": "1 hour 30 minutes"
+        },
+        "image": "images/sentiero-metati.jpg",
+        "description": {
+          "it": "Facile anello con partenza dal parcheggio di Sillico, che attraversa suggestivi castagneti. Lungo il percorso si incontrano vari metati, edifici per l’essiccazione delle castagne, alcuni dei quali sono ancora regolarmente utilizzati. Una breve variante conduce in riva al torrente Sillico in prossimità di un antico mulino.",
+          "en": "Easy loop starting from the Sillico parking lot, passing through evocative chestnut groves. Along the route you encounter various “metati”, buildings for drying chestnuts, some still regularly used. A short variant leads to the Sillico stream near an ancient mill."
+        },
+        "gpx": "gpx/3-sentierodei-metati.gpx"
+      },
+      {
+        "id": "4",
+        "title": {
+          "it": "Sentiero dell’Eremo - N.4",
+          "en": "Sentiero dell’Eremo - N.4"
+        },
+        "difficulty": "E",
+        "duration": 150,
+        "durationText": {
+          "it": "2 ore e 30 minuti",
+          "en": "2 hours 30 minutes"
+        },
+        "image": "images/sentiero-eremo.jpg",
+        "description": {
+          "it": "Dal borgo di Sillico si raggiunge Capraia ed, in particolare, il suo suggestivo Eremo. Imboccata la strada sterrata, che parte dal parcheggio alto di Sillico, il sentiero piega a destra e si addentra nel bosco di castagni. Il sentiero, poi, abbandona il bosco e sale per prati e vecchi coltivi fino all’ Eremo di Capraia. Da qui, proseguendo sulla sinistra con un breve tratto in salita, il sentiero raggiunge la carrozzabile, oppure sulla destra è possibile raggiungere il paese di Capraia per poi ricollegarsi sempre alla strada carrabile. Si prosegue fino ad incontrare la strada sterrata, chiusa da una catena, che conduce alla pineta di Col de’ Campacci e, in breve, nuovamente al punto di partenza.",
+          "en": "From Sillico you reach Capraia and its suggestive Hermitage. Taking the dirt road starting from the upper parking lot, the trail turns right into the chestnut forest. The path then leaves the forest and climbs through meadows to the Hermitage of Capraia. From there, you can reach the road or the village of Capraia. The path eventually leads to the Col de’ Campacci pinewood and back to the start."
+        },
+        "gpx": "gpx/4-sentiero-dell-eremo.gpx"
+      },
+      {
+        "id": "5",
+        "title": {
+          "it": "Sentiero di Bargecchia - N.5",
+          "en": "Sentiero di Bargecchia - N.5"
+        },
+        "difficulty": "E",
+        "duration": 120,
+        "durationText": {
+          "it": "2 ore",
+          "en": "2 hours"
+        },
+        "image": "images/sentiero-bargecchia.jpg",
+        "description": {
+          "it": "Scendendo sotto il campo sportivo di Sillico si imbocca il sentiero che porta a Bargecchia, un piccolissimo borgo che si affaccia sulla valle. Il sentiero è interamente nel bosco fino al paese, da qui poi si percorre un tratto di strada carrabile e si risale a Sillico passando per la località “La Casetta”.",
+          "en": "Descending below the Sillico sports field, you take the path to Bargecchia, a tiny village overlooking the valley. The trail is entirely in the woods until the village, then follows a stretch of road back up to Sillico via “La Casetta”."
+        },
+        "gpx": "gpx/5-sentiero-di-barghecchia.gpx"
+      },
+      {
+        "id": "6",
+        "title": {
+          "it": "Sentiero di Sassatecchia - N.6",
+          "en": "Sentiero di Sassatecchia - N.6"
+        },
+        "difficulty": "E",
+        "duration": 150,
+        "durationText": {
+          "it": "2 ore e 30 minuti",
+          "en": "2 hours 30 minutes"
+        },
+        "image": "images/sentiero-sassatecchia.jpg",
+        "description": {
+          "it": "Scendendo sotto il campo sportivo di Sillico si imbocca il sentiero che porta in località Pastina, un tempo abitata e coltivata come testimoniano i ruderi e i terrazzamenti ancora presenti. Si prosegue sulla destra fino alla località Salotti, dove è ancora visibile un vecchio mulino. Attraversando il torrente che divide il versante di Sillico da quello di Fosciandora, è possibile raggiungere località come Ceserana, La Villa, Migliano o Fosciandora, ma questi tratti non fanno parte della rete dei sentieri del Moro. Si risale verso il paese di Sillico ripercorrendo lo stesso sentiero.",
+          "en": "Descending below the sports field, take the path to Pastina, once inhabited and cultivated. Continue right to Salotti and its old mill. Crossing the stream separating Sillico from Fosciandora, other locations can be reached, though not part of the Moro network. Return to Sillico along the same path."
+        },
+        "gpx": "gpx/6-sentiero-sassatecchia.gpx"
+      },
+      {
+        "id": "7",
+        "title": {
+          "it": "Sentiero dei Mulini - N.7",
+          "en": "Sentiero dei Mulini - N.7"
+        },
+        "difficulty": "E",
+        "duration": 210,
+        "durationText": {
+          "it": "3 ore e 30 minuti",
+          "en": "3 hours 30 minutes"
+        },
+        "image": "images/sentiero-mulini.jpg",
+        "description": {
+          "it": "Partendo dalla parte bassa del paese si raggiunge l’antico lavatoio e si va ad intercettare quella che era l’antica via comunale, di cui si intravedono ancora i sassi sotto alla morbida coperta di muschio. Si giunge ad un primo mulino e si attraversa il fiume di Sillico passando sul ponte carrabile. Passati sull’altro versante si percorre il sentiero lungo fiume, incontrando la centralina idroelettrica, la diga del Sacco ed, infine, il Mulino del Pilastrello, dove si attraversa un secondo ponte sospeso. Da qui si risale al paese tra i castagneti ricollegandosi al sentiero dei Metati N.3.",
+          "en": "From the lower village, reach the old wash house and the ancient municipal road. Reach the first mill, cross the Sillico river, and follow the river passing the hydroelectric plant and Sacco dam to Pilastrello Mill. Cross a second bridge and climb back to the village through chestnut groves connecting to trail N.3."
+        },
+        "gpx": "gpx/7-sentiero-dei-mulini.gpx"
+      },
+      {
+        "id": "8",
+        "title": {
+          "it": "Caprasecca – N.8",
+          "en": "Caprasecca – N.8"
+        },
+        "difficulty": "T",
+        "duration": 60,
+        "durationText": {
+          "it": "1 ora",
+          "en": "1 hour"
+        },
+        "image": "images/sentiero-caprasecca.jpg",
+        "description": {
+          "it": "Questo sentiero permette il collegamento con le località di Foce e Capraia, con la possibilità di proseguire il cammino sui sentieri della Pro Loco Capraia. Partendo dal parcheggio di Sillico si imbocca il sentiero N.3 verso Pasquejo. Una volta arrivati a “Le Grotte” si prosegue salendo sulla destra in direzione “Buricavi”. Usciti dal bosco ci si collega alla strada carrabile in località La Foce",
+          "en": "This trail connects to Foce and Capraia. Starting from the parking lot, follow trail N.3 towards Pasquejo. At “Le Grotte”, climb right towards “Buricavi”. Out of the forest, connect to the road at La Foce."
+        },
+        "gpx": "gpx/caprasecca.gpx"
+      }
+    ]
+  },
+  "bike_rent": {
+    "title": {
+      "it": "Sillico Bike Rent",
+      "en": "Sillico Bike Rent"
+    },
+    "subtitle": {
+      "it": "Mountain bike di ultima generazione per esplorare la Garfagnana su due ruote",
+      "en": "Latest generation mountain bikes to explore Garfagnana on two wheels"
+    },
+    "image": "images/sillico-mtb.jpg",
+    "intro": {
+      "it": "Scopri i nostri servizi per ciclisti:",
+      "en": "Discover our services for cyclists:"
+    },
+    "features": [
+      {
+        "it": "Mountain bike Focus di ultima generazione",
+        "en": "Latest generation Focus mountain bikes"
+      },
+      {
+        "it": "E-bike con autonomia fino a 80 km per esplorazioni senza limiti",
+        "en": "E-bikes with up to 80 km range for limitless exploration"
+      },
+      {
+        "it": "Consegna gratuita delle bici direttamente in paese",
+        "en": "Free bike delivery directly in the village"
+      },
+      {
+        "it": "Kit di sicurezza: casco e kit riparazione",
+        "en": "Safety kit: helmet and repair kit"
+      },
+      {
+        "it": "Mappe dettagliate dei percorsi con livelli di difficoltà",
+        "en": "Detailed trail maps with difficulty levels"
+      },
+      {
+        "it": "Tour guidati su prenotazione con guide esperte",
+        "en": "Guided tours on reservation with expert guides"
+      },
+      {
+        "it": "Assistenza tecnica",
+        "en": "Technical assistance"
+      }
+    ],
+    "cta": {
+      "it": "🚴‍♂️ Prenota ora",
+      "en": "🚴‍♂️ Book now"
+    }
+  },
+  "events": {
+    "title": {
+      "it": "Eventi",
+      "en": "Events"
+    },
+    "subtitle": {
+      "it": "Un calendario ricco di appuntamenti per vivere le tradizioni e la cultura del borgo",
+      "en": "A calendar full of appointments to experience the traditions and culture of the village"
+    },
+    "items": [
+      {
+        "title": {
+          "it": "I banditi del Sillico nella Garfagnana dell'Ariosto... all'ora di cena",
+          "en": "The Sillico bandits in Ariosto's Garfagnana... at dinner time"
+        },
+        "date": {
+          "it": "Sabato 8 agosto e Venerdì 14 agosto",
+          "en": "Saturday August 8th and Friday August 14th"
+        },
+        "image": "https://www.sillicodascoprire.it/images/evento-banditi-del-sillico.jpg",
+        "description": {
+          "it": "L’evento principe del borgo, nato nel 1998 da un’idea del Dott. Roberto Nobili. Si tratta di una rievocazione storica e gastronomica che mette in scena le usanze del periodo rinascimentale, tra musica, esibizioni e cucina tipica dell’epoca. Figura di riferimento per la festa è il Moro del Sillico, leggendario brigante che nella Garfagnana di Ludovico Ariosto faceva il bello e il cattivo tempo.",
+          "en": "The village's flagship event, born in 1998 from an idea by Dr. Roberto Nobili. Historical and gastronomic reenactment of Renaissance customs, with music, performances, and typical cuisine. The key figure is the Moro of Sillico, a legendary brigand."
+        }
+      },
+      {
+        "title": {
+          "it": "Sentieri & Sapori",
+          "en": "Trails & Flavors"
+        },
+        "date": {
+          "it": "Domenica 17 maggio e 4 ottobre",
+          "en": "Sunday May 17th and October 4th"
+        },
+        "image": "https://www.sillicodascoprire.it/images/evento-sentieri-e-sapori.jpg",
+        "description": {
+          "it": "Trekking gastronomico lungo i “Sentieri del Moro. Ottima occasione per avventurarsi nei boschi di castagni alla scoperta dei prodotti tipici. L'evento, nato nel 2023 si svolge due volte l'anno: in primavera e in autunno. Prenotazione esclusivamente online.",
+          "en": "Gastronomic trekking along the 'Moro Trails'. A great opportunity to discover local products in the chestnut woods. Born in 2023, it takes place twice a year. Online reservation only."
+        }
+      },
+      {
+        "title": {
+          "it": "Divini & Sapori",
+          "en": "Divini & Sapori"
+        },
+        "date": {
+          "it": "Venerdì 3 e Sabato 4 luglio",
+          "en": "Friday July 3rd and Saturday July 4th"
+        },
+        "image": "https://www.sillicodascoprire.it/images/evento-divini-e-sapori.jpg",
+        "description": {
+          "it": "Due serate per gli appassionati di alta cucina e vini pregiati nella splendida cornice di palazzo Carli. Evento a numero chiuso con prenotazione obbligatoria e degustazione guidata FISAR.",
+          "en": "Two evenings for fine dining and wine lovers in the beautiful setting of Palazzo Carli. Limited availability, reservation required, FISAR guided tasting."
+        }
+      },
+      {
+        "title": {
+          "it": "Trekking alle Lame di Capraia con pranzo alla Festa dei Pastori",
+          "en": "Trekking to the Lame of Capraia with lunch at the Shepherds' Festival"
+        },
+        "date": {
+          "it": "Domenica 26 luglio",
+          "en": "Sunday July 26th"
+        },
+        "image": "https://www.sillicodascoprire.it/images/evento-trekking-alle-lame.jpg",
+        "description": {
+          "it": "Trekking alla scoperta dei boschi che collegano Sillico al crinale appenninico. Pranzo alle Lame di Capraia tra musica, giochi e gastronomia tipica.",
+          "en": "Discover the forests connecting Sillico to the Apennine ridge. Lunch at Lame di Capraia with music, games, and typical food."
+        }
+      },
+      {
+        "title": {
+          "it": "Concerto di San Lorenzo della Filarmonica G. Verdi di Sillico",
+          "en": "San Lorenzo Concert by the G. Verdi Philharmonic of Sillico"
+        },
+        "date": {
+          "it": "Domenica 10 agosto",
+          "en": "Sunday August 10th"
+        },
+        "image": "https://www.sillicodascoprire.it/images/evento-concerto-banda.jpg",
+        "description": {
+          "it": "Tradizionale concerto estivo della banda di Sillico, attiva dal 1898, in onore del patrono. Ingresso libero nella piazza principale dalle ore 21:00.",
+          "en": "Traditional summer concert of the Sillico band, active since 1898. Free entry in the main square from 9:00 PM."
+        }
+      },
+      {
+        "title": {
+          "it": "17a Estemporanea di pittura",
+          "en": "17th Painting Extemporaneous"
+        },
+        "date": {
+          "it": "Domenica 23 agosto",
+          "en": "Sunday August 23rd"
+        },
+        "image": "https://www.sillicodascoprire.it/images/evento-estemporanea-pittura.jpg",
+        "description": {
+          "it": "Concorso di pittura aperto a tutti per la miglior rappresentazione del paese. Le opere verranno esposte e premiate nella piazza del borgo.",
+          "en": "Painting competition open to all for the best representation of the village. Works will be exhibited and awarded in the main square."
+        }
+      }
+    ]
+  },
+  "attractions": {
+    "title": {
+      "it": "Cosa Vedere",
+      "en": "What to See"
+    },
+    "subtitle": {
+      "it": "Testimonianze storiche e artistiche di un borgo ricco di memoria e tradizioni",
+      "en": "Historical and artistic evidence of a village rich in memory and traditions"
+    },
+    "items": [
+      {
+        "title": {
+          "it": "Palazzo Carli",
+          "en": "Palazzo Carli"
+        },
+        "image": "images/palazzo-carli.jpg",
+        "description": {
+          "it": "Un'affascinante dimora storica che ospita una preziosa raccolta di orologi d'epoca e memorie di vita locale. Il palazzo apparteneva in origine alla facoltosa famiglia di Maria Teresa Pellini, la quale sposò nel 1765 il conte Carli di Castelnuovo di Garfagnana. L’edificio, oggi di proprietà della famiglia Lorenzetti, è stato restaurato a inizio degli anni 2000 dall’associazione Polis Sillico, che tutt’oggi lo gestisce. Dal 2009 nelle quattro sale che compongono l’ultimo piano del Palazzo vengono allestite mostre di pittura, scultura e fotografia di artisti locali e di fama nazionale. Al piano inferiore è facile immergersi in un’atmosfera di altri tempi, entrando nella grande cucina con il camino di pietra o nella camera da letto con affreschi risalenti ai primi dell’800.",
+          "en": "A fascinating historical residence housing a precious collection of period clocks and local life memories. The palace originally belonged to the wealthy family of Maria Teresa Pellini. Restored in the early 2000s, it hosts art exhibitions. The lower floor offers an atmosphere of other times with its large kitchen and stone fireplace."
+        }
+      },
+      {
+        "title": {
+          "it": "Chiesa di San Lorenzo",
+          "en": "Church of San Lorenzo"
+        },
+        "image": "images/chiesa-san-lorenzo.jpg",
+        "description": {
+          "it": "Situata nel centro del paese sorge la chiesa parrocchiale dedicata a San Lorenzo Martire. Questa viene citata per la prima volta in una bolla papale del 1168. In origine era un edificio a una sola navata con soffitti in legno, successivamente fu costruito un tempio a tre navate tuttora esistente. Sono presenti sette altari in legno fra cui spicca l’altare della Madonna ricco di intagli e di ori. Particolarità della chiesa è l’organo con il singolare timbro di voce del registro Principale di 8’, tipico degli organi costruiti dai fratelli Turrini di Pieve Fosciana. Importante sottolineare come nel 1909 la parrocchia vide il passaggio da Rettoria al più alto rango di Prioria.",
+          "en": "Located in the village center, this parish church dedicated to St. Lawrence Martyr dates back to 1168. It features seven wooden altars and a unique organ built by the Turrini brothers. In 1909 it was elevated to the rank of Priory."
+        }
+      },
+      {
+        "title": {
+          "it": "Resti delle Mura",
+          "en": "Remains of the Walls"
+        },
+        "image": "images/resti-mura.jpg",
+        "description": {
+          "it": "I resti della cinta muraria, perfettamente conservati nella parte nord, includono una torre di avvistamento che appare oggi come un grande tronco di piramide. La realizzazione di questa struttura è collocabile nel corso del ‘400. All’interno della rocca si trova un’altra torre a pianta quadrata, databile al XII – XIII secolo: si tratta della torre castellana del Sillico. Attualmente è in fase di sviluppo un progetto per il restauro e la riqualificazione di quest’area.",
+          "en": "The remains of the city walls, perfectly preserved in the northern part, include a 15th-century watchtower. Inside the fortress is another square tower dating back to the 12th-13th century: the Sillico castle tower. A restoration project is currently in development."
+        }
+      },
+      {
+        "title": {
+          "it": "Chiesa di San Giuseppe",
+          "en": "Church of San Giuseppe"
+        },
+        "image": "images/chiesa-san-giuseppe.jpg",
+        "description": {
+          "it": "Si tratta di un piccolo oratorio dedicato a San Giuseppe e originariamente di proprietà dei conti Carli. Sul portale di ingresso è tutt’ora visibile lo stemma della famiglia Carli in bassorilievo di marmo bianco. Questo fu recuperato da Don Sessi, priore di quel periodo, fra le macerie degli edifici distrutti a Castelnuovo di Garfagnana nel secondo dopoguerra. Oggi l’oratorio, conosciuto ormai come chiesa di San Rocco, è stato opportunamente restaurato nel 1997. Il nome attuale deriva dalla presenza della statua dedicato al santo, posta all’interno del locale. Inoltre è possibile ammirare il vecchio tabernacolo in legno del XVII secolo.",
+          "en": "Consisting of a small oratory dedicated to St. Joseph, originally owned by the Carli counts. It features the Carli family crest in white marble. Restored in 1997, it's also known as the Church of San Rocco. Inside is a 17th-century wooden tabernacle."
+        }
+      }
+    ]
+  },
+  "hospitality": {
+    "title": {
+      "it": "Ristoranti e Ospitalità",
+      "en": "Restaurants and Hospitality"
+    },
+    "subtitle": {
+      "it": "Sapori autentici e accoglienza calorosa nel cuore pulsante della Garfagnana",
+      "en": "Authentic flavors and warm welcome in the pulsating heart of Garfagnana"
+    },
+    "filters": {
+      "all": {
+        "it": "Tutti",
+        "en": "All"
+      },
+      "restaurants": {
+        "it": "Ristoranti",
+        "en": "Restaurants"
+      },
+      "accommodation": {
+        "it": "Alloggi",
+        "en": "Accommodations"
+      }
+    },
+    "items": [
+      {
+        "name": "Locanda Belvedere di Roberta e Clara",
+        "type": "ristorante",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "0583 662173",
+            "label": "0583 662173"
+          },
+          {
+            "type": "mobile",
+            "value": "328 5337176",
+            "label": "328 5337176"
+          },
+          {
+            "type": "email",
+            "value": "locandabelvederesillico@gmail.com",
+            "label": "Email"
+          }
+        ]
+      },
+      {
+        "name": "Casa vacanze le Muse",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 339 6576018",
+            "label": "+39 339 6576018"
+          },
+          {
+            "type": "email",
+            "value": "Info@lemuse-sillico.it",
+            "label": "Info@lemuse-sillico.it"
+          }
+        ]
+      },
+      {
+        "name": "Agriturismo Il Collettino",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 389 5114975",
+            "label": "+39 389 5114975"
+          },
+          {
+            "type": "email",
+            "value": "info@collettino.it",
+            "label": "info@collettino.it"
+          },
+          {
+            "type": "web",
+            "value": "https://www.collettino.it/",
+            "label": "www.collettino.it"
+          }
+        ]
+      },
+      {
+        "name": "Sillico Relais del Borgo",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 333 1899491",
+            "label": "+39 333 1899491"
+          },
+          {
+            "type": "email",
+            "value": "vivisillico@gmail.com",
+            "label": "vivisillico@gmail.com"
+          }
+        ]
+      },
+      {
+        "name": "Casa Laura",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 334 2969329",
+            "label": "+39 334 2969329"
+          },
+          {
+            "type": "email",
+            "value": "melliyvonnel@gmail.com",
+            "label": "melliyvonnel@gmail.com"
+          },
+          {
+            "type": "web",
+            "value": "https://www.vrbo.com/en-gb/p830340",
+            "label": "www.vrbo.com/en-gb/p830340"
+          }
+        ]
+      },
+      {
+        "name": "La Dimora dell'Abramo",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 329 2128407",
+            "label": "+39 329 2128407"
+          },
+          {
+            "type": "web",
+            "value": "https://www.ladimoradellabramo.it",
+            "label": "www.ladimoradellabramo.it"
+          }
+        ]
+      },
+      {
+        "name": "Villa Loris",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 375 9026861",
+            "label": "+39 375 9026861"
+          },
+          {
+            "type": "email",
+            "value": "fullmonti.ap@gmail.com",
+            "label": "fullmonti.ap@gmail.com"
+          }
+        ]
+      },
+      {
+        "name": "Casa La Luna",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 331 4597074",
+            "label": "+39 331 4597074"
+          },
+          {
+            "type": "email",
+            "value": "mmdespirt@alice.it",
+            "label": "mmdespirt@alice.it"
+          },
+          {
+            "type": "web",
+            "value": "https://www.airbnb.it/rooms/44009171?viralityEntryPoint=1&s=76",
+            "label": "Airbnb"
+          }
+        ]
+      },
+      {
+        "name": "Eremo San Lorenzo",
+        "type": "alloggio",
+        "contacts": [
+          {
+            "type": "phone",
+            "value": "+39 335 8066222",
+            "label": "+39 335 8066222"
+          },
+          {
+            "type": "phone",
+            "value": "+39 349 2836654",
+            "label": "+39 349 2836654"
+          },
+          {
+            "type": "phone",
+            "value": "+39 339 5615457",
+            "label": "+39 339 5615457"
+          }
+        ]
+      }
+    ]
+  },
+  "contacts": {
+    "title": {
+      "it": "Contatti",
+      "en": "Contacts"
+    },
+    "subtitle": {
+      "it": "Siamo qui per rendere indimenticabile la tua esperienza a Sillico",
+      "en": "We are here to make your experience in Sillico unforgettable"
+    },
+    "associations": {
+      "title": {
+        "it": "Associazioni",
+        "en": "Associations"
+      },
+      "items": [
+        {
+          "name": "Polis Sillico",
+          "email": "polissillico@gmail.com"
+        },
+        {
+          "name": "Terre del Moro",
+          "email": "leterredelmoro@gmail.com"
+        }
+      ]
+    },
+    "social": {
+      "title": {
+        "it": "Seguici sui Social",
+        "en": "Follow us on Socials"
+      },
+      "facebook": "https://www.facebook.com/p/Sillico-da-scoprire-100092474273337/",
+      "instagram": "https://www.instagram.com/sillico_da_scoprire/"
+    }
+  },
+  "footer": {
+    "copyright": {
+      "it": "© 2026 Associazione Sillico. Tutti i diritti riservati.",
+      "en": "© 2026 Associazione Sillico. All rights reserved."
+    }
+  }
 }
