@@ -68,6 +68,25 @@
 }
 
 /* ===================================
+   🔧 STILE ICONE (FONT AWESOME)
+=================================== */
+i.fa-solid,
+i.fa-regular,
+i.fa-brands,
+svg.svg-inline--fa {
+    color: inherit !important;
+    fill: currentColor !important;
+}
+
+/* Fix specifico per icone nei titoli con gradiente */
+.section-title i,
+.section-title svg {
+    -webkit-text-fill-color: var(--primary);
+    /* Fallback marrone per icone nei titoli */
+    color: var(--primary) !important;
+}
+
+/* ===================================
    🏗️ RESET E BASE
 =================================== */
 
@@ -218,6 +237,13 @@ body {
     transition: all var(--transition);
     position: relative;
     padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-link i {
+    font-size: 0.9em;
 }
 
 .nav-link:hover {
@@ -398,6 +424,8 @@ section {
     transition: all var(--transition);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .trail-card::before {
@@ -668,10 +696,10 @@ section {
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    transition: all var(--transition);
     display: flex;
     flex-direction: column;
+    min-height: 250px;
+    border: 1px solid var(--border);
 }
 
 .stay-item:hover {
@@ -714,8 +742,7 @@ section {
 }
 
 .stay-contact i {
-    color: var(--primary);
-    width: 16px;
+    width: 20px;
     text-align: center;
 }
 
@@ -765,6 +792,7 @@ section {
     font-size: 1.5rem;
     flex-shrink: 0;
     box-shadow: var(--shadow);
+    color: var(--primary);
 }
 
 .contact-details h4 {
@@ -1147,7 +1175,7 @@ section {
 .trail-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: auto;
     border-top: 1px solid #f1f5f9;
     padding-top: 1.5rem;
 }

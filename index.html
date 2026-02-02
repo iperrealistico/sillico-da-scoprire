@@ -41,9 +41,8 @@
         rel="stylesheet">
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="js/lib/fontawesome.all.min.css">
+    <script src="js/lib/fontawesome.all.min.js" defer></script>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -54,13 +53,14 @@
         <nav class="nav container">
             <a href="#" class="logo">Sillico da Scoprire</a>
             <ul class="nav-menu">
-                <li><a href="#chi-siamo" class="nav-link">Chi Siamo</a></li>
-                <li><a href="#sentieri" class="nav-link">Sentieri</a></li>
-                <li><a href="#bike-rent" class="nav-link">Bike Rent</a></li>
-                <li><a href="#eventi" class="nav-link">Eventi</a></li>
-                <li><a href="#cosa-vedere" class="nav-link">Cosa Vedere</a></li>
-                <li><a href="#ospitalita" class="nav-link">Ospitalità</a></li>
-                <li><a href="#contatti" class="nav-link">Contatti</a></li>
+                <li><a href="#chi-siamo" class="nav-link"><i class="fa-solid fa-house-user"></i> Chi Siamo</a></li>
+                <li><a href="#sentieri" class="nav-link"><i class="fa-solid fa-mountain-sun"></i> Sentieri</a></li>
+                <li><a href="#bike-rent" class="nav-link"><i class="fa-solid fa-bicycle"></i> Bike Rent</a></li>
+                <li><a href="#eventi" class="nav-link"><i class="fa-solid fa-calendar-check"></i> Eventi</a></li>
+                <li><a href="#cosa-vedere" class="nav-link"><i class="fa-solid fa-camera-retro"></i> Cosa Vedere</a>
+                </li>
+                <li><a href="#ospitalita" class="nav-link"><i class="fa-solid fa-bed"></i> Ospitalità</a></li>
+                <li><a href="#contatti" class="nav-link"><i class="fa-solid fa-envelope"></i> Contatti</a></li>
             </ul>
             <div class="mobile-menu-toggle">
                 <span></span>
@@ -112,7 +112,7 @@
     <!-- I Sentieri del Moro -->
     <section id="sentieri" class="section-alt fade-in">
         <div class="container">
-            <h2 class="section-title">I Sentieri del Moro</h2>
+            <h2 class="section-title"><i class="fa-solid fa-route"></i> I Sentieri del Moro</h2>
             <p class="section-subtitle">Una rete di sette itinerari che conducono alla scoperta del territorio compreso
                 tra i borghi montani di Sillico, Capraia e Bargecchia</p>
 
@@ -120,7 +120,7 @@
                 <button class="filter-btn active" data-filter="all">Tutti</button>
                 <button class="filter-btn" data-filter="T">T (Turistico)</button>
                 <button class="filter-btn" data-filter="E">E (Escursionistico)</button>
-                <button class="filter-btn-duration active" data-duration="all">Ognuna</button>
+                <button class="filter-btn-duration active" data-duration="all">Qualsiasi</button>
                 <button class="filter-btn-duration" data-duration="short">&lt; 1h</button>
                 <button class="filter-btn-duration" data-duration="medium">1-2h</button>
                 <button class="filter-btn-duration" data-duration="long">&gt; 2h</button>
@@ -317,7 +317,7 @@
     <!-- Sillico Bike Rent -->
     <section id="bike-rent" class="fade-in">
         <div class="container">
-            <h2 class="section-title">Sillico Bike Rent</h2>
+            <h2 class="section-title"><i class="fa-solid fa-bicycle"></i> Sillico Bike Rent</h2>
             <p class="section-subtitle">Mountain bike di ultima generazione per esplorare la Garfagnana su due ruote</p>
             <div class="bike-grid">
                 <div>
@@ -345,7 +345,7 @@
     <!-- Eventi -->
     <section id="eventi" class="section-alt fade-in">
         <div class="container">
-            <h2 class="section-title">Eventi</h2>
+            <h2 class="section-title"><i class="fa-solid fa-calendar-days"></i> Eventi</h2>
             <p class="section-subtitle">Un calendario ricco di appuntamenti per vivere le tradizioni e la cultura del
                 borgo</p>
 
@@ -359,7 +359,7 @@
     <!-- Cosa Vedere -->
     <section id="cosa-vedere" class="fade-in">
         <div class="container">
-            <h2 class="section-title">Cosa Vedere</h2>
+            <h2 class="section-title"><i class="fa-solid fa-monument"></i> Cosa Vedere</h2>
             <p class="section-subtitle">Testimonianze storiche e artistiche di un borgo ricco di memoria e tradizioni
             </p>
             <div class="attractions-grid">
@@ -407,7 +407,7 @@
     <!-- Ristoranti e Ospitalità -->
     <section id="ospitalita" class="section-alt fade-in">
         <div class="container">
-            <h2 class="section-title">Ristoranti e Ospitalità</h2>
+            <h2 class="section-title"><i class="fa-solid fa-utensils"></i> Ristoranti e Ospitalità</h2>
             <p class="section-subtitle">Sapori autentici e accoglienza calorosa nel cuore pulsante della Garfagnana</p>
 
             <div class="hospitality-filters">
@@ -419,8 +419,7 @@
             <div class="hospitality-list">
                 <!-- Ristoranti -->
                 <div class="stay-item" data-type="ristorante">
-                    <h4>Locanda Belvedere</h4>
-                    <p>di Roberta e Clara</p>
+                    <h4>Locanda Belvedere di Roberta e Clara</h4>
                     <div class="stay-contact">
                         <a href="tel:0583662173"><i class="fa-solid fa-phone"></i> 0583 662173</a>
                         <a href="tel:3285337176"><i class="fa-solid fa-mobile"></i> 328 5337176</a>
@@ -487,7 +486,7 @@
     <!-- Contatti -->
     <section id="contatti" class="fade-in">
         <div class="container">
-            <h2 class="section-title">Contatti</h2>
+            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Contatti</h2>
             <p class="section-subtitle">Siamo qui per rendere indimenticabile la tua esperienza a Sillico</p>
             <div class="contact-grid">
                 <div class="contact-info">
@@ -518,8 +517,9 @@
                 </div>
                 <div class="contact-map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1396.3852099135363!2d10.442952938823897!3d44.132561417875905!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d565f419e20ebf%3A0x74d57d917d501a1!2s55036%20Sillico%2C%20Province%20of%20Lucca!5e1!3m2!1sen!2sit!4v1770039671739!5m2!1sen!2sit"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1396.3852099135363!2d10.442952938823897!3d44.132561417875905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d565f419e20ebf%3A0x74d57d917d501a1!2s55036%20Sillico%2C%20Province%20of%20Lucca!5e1!3m2!1sen!2sit!4v1770041247813!5m2!1sen!2sit"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
