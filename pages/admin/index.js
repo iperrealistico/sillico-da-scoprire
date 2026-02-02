@@ -31,11 +31,34 @@ export default function AdminDashboard() {
         if (!token) {
             router.push('/admin/login');
         } else {
-            setContent(getContent());
+            fetchContent();
             fetchBlobStats();
-            setLoading(false);
         }
     }, []);
+
+    const fetchContent = async () => {
+        logDebug('Recupero contenuti live...');
+        try {
+            const response = await fetch('/api/admin/content', {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setContent(data);
+                setLoading(false);
+                logDebug('Contenuti caricati con successo');
+            } else {
+                logDebug(`Errore recupero contenuti: ${response.status}`, 'error');
+                // Fallback to local import if API fails (e.g. initial setup)
+                setContent(getContent());
+                setLoading(false);
+            }
+        } catch (e) {
+            logDebug(`Eccezione content fetch: ${e.message}`, 'error');
+            setContent(getContent());
+            setLoading(false);
+        }
+    };
 
     const fetchBlobStats = async () => {
         logDebug('Recupero statistiche storage...');
@@ -243,7 +266,7 @@ export default function AdminDashboard() {
                     ctx.drawImage(img, 0, 0, size, size);
 
                     const mimeType = key === 'ico' ? 'image/x-icon' : 'image/png';
-                    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png')); // Still PNG bit stream
+                    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
 
                     const uploadRes = await fetch(`/api/admin/upload?filename=${name}&contentType=${mimeType}&oldUrl=${(content.meta.favicons && content.meta.favicons[key]) || ''}`, {
                         method: 'POST',
