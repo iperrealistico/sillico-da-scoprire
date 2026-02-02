@@ -219,7 +219,7 @@ export default function AdminDashboard() {
             logDebug(`Elaborazione favicons da: ${file.name}`);
 
             const sizes = [
-                { size: 32, key: 'ico', name: 'favicon.png' },
+                { size: 32, key: 'ico', name: 'favicon.ico' },
                 { size: 180, key: 'apple', name: 'apple-touch-icon.png' },
                 { size: 192, key: 'android_192', name: 'android-chrome-192.png' },
                 { size: 512, key: 'android_512', name: 'android-chrome-512.png' }
@@ -242,8 +242,10 @@ export default function AdminDashboard() {
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, size, size);
 
-                    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-                    const uploadRes = await fetch(`/api/admin/upload?filename=${name}&contentType=image/png&oldUrl=${(content.meta.favicons && content.meta.favicons[key]) || ''}`, {
+                    const mimeType = key === 'ico' ? 'image/x-icon' : 'image/png';
+                    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png')); // Still PNG bit stream
+
+                    const uploadRes = await fetch(`/api/admin/upload?filename=${name}&contentType=${mimeType}&oldUrl=${(content.meta.favicons && content.meta.favicons[key]) || ''}`, {
                         method: 'POST',
                         body: blob,
                         headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` }
@@ -302,9 +304,9 @@ export default function AdminDashboard() {
                 </div>
                 <div style={{ marginTop: '1.5rem', display: 'flex', gap: '15px', flexWrap: 'wrap', padding: '10px', background: '#fff', borderRadius: '4px', border: '1px solid #eee' }}>
                     {Object.entries(content.meta.favicons || {}).map(([key, url]) => (
-                        url && url.startsWith('http') && (
+                        url && (
                             <div key={key} style={{ textAlign: 'center', padding: '5px' }}>
-                                <img src={url} style={{ width: '40px', height: '40px', display: 'block', margin: '0 auto', objectFit: 'contain', border: '1px solid #eee' }} alt={key} />
+                                <img src={url.startsWith('http') ? url : `/${url}`} style={{ width: '40px', height: '40px', display: 'block', margin: '0 auto', objectFit: 'contain', border: '1px solid #eee' }} alt={key} />
                                 <span style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', marginTop: '4px', display: 'block' }}>{key.replace('_', ' ')}</span>
                             </div>
                         )
@@ -342,10 +344,11 @@ export default function AdminDashboard() {
     };
 
     const updateField = (path, value) => {
-        const newContent = { ...content };
+        const newContent = JSON.parse(JSON.stringify(content));
         const parts = path.split('.');
         let current = newContent;
         for (let i = 0; i < parts.length - 1; i++) {
+            if (!current[parts[i]]) current[parts[i]] = {};
             current = current[parts[i]];
         }
         current[parts[parts.length - 1]] = value;
@@ -1196,12 +1199,25 @@ export default function AdminDashboard() {
                                 </div>
                                 <div className="grid-2">
                                     <div className="input-group">
-                                        <label>Meta Keywords (Separate da virgola)</label>
+                                        <label>Meta Keywords (IT - Separate da virgola)</label>
                                         <input type="text" value={content.meta.keywords.it} onChange={(e) => {
                                             const nc = { ...content };
                                             nc.meta.keywords.it = e.target.value;
                                             setContent(nc);
                                         }} />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Meta Keywords (EN - Separate da virgola)</label>
+                                        <input type="text" value={content.meta.keywords.en || ''} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.meta.keywords.en = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                </div>
+                                <div className="grid-2">
+                                    <div className="input-group" style={{ display: 'none' }}>
+                                        {/* Hidden placeholder for spacing alignment */}
                                     </div>
                                     <FileUploader
                                         label="Immagine Anteprima Social (OG Image)"

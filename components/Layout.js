@@ -8,6 +8,12 @@ export default function Layout({ children, content, lang }) {
     const meta = content.meta;
     const nav = content.nav;
 
+    const getImageUrl = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http')) return path;
+        return `https://sillicodascoprire.it/${path.startsWith('/') ? path.slice(1) : path}`;
+    };
+
     const toggleLang = lang === 'it' ? 'en' : 'it';
     const togglePath = lang === 'it' ? '/en' : '/';
 
@@ -35,14 +41,17 @@ export default function Layout({ children, content, lang }) {
                 <meta property="og:title" content={meta.title} />
                 <meta property="og:description" content={meta.description} />
                 <meta property="og:site_name" content={meta.google_site_name || 'Sillico'} />
-                {meta.og_image && <meta property="og:image" content={meta.og_image} />}
+                {meta.og_image && <meta property="og:image" content={getImageUrl(meta.og_image)} />}
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:url" content={`https://sillicodascoprire.it${lang === 'en' ? '/en' : ''}`} />
                 <meta name="twitter:title" content={meta.title} />
                 <meta name="twitter:description" content={meta.description} />
-                {meta.og_image && <meta name="twitter:image" content={meta.og_image} />}
+                {meta.og_image && <meta name="twitter:image" content={getImageUrl(meta.og_image)} />}
+                {meta.twitter_handle && <meta name="twitter:site" content={meta.twitter_handle} />}
 
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
                 <link rel="stylesheet" href="/css/style.css" />
