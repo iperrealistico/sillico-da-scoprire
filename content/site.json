@@ -143,7 +143,7 @@
           "en": "Short loop around Sillico, with a magnificent view over the valley and the Apuan Alps. Crossing chestnut groves and terraced vineyards you reach a station of the “Rogazioni”, a religious rite to ask God for protection of the harvests. A sculpture in an old chestnut trunk was recently created near the trail start."
         },
         "gpx": "gpx/1-sentiero-delle-rogazioni.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=rogazioni.gpx&embed=1"
       },
       {
         "id": "2",
@@ -163,7 +163,7 @@
           "en": "From the lower part of the village you descend along “Via Chiusa” to discover the majestic panorama of the Apuan Alps. Entering the chestnut grove you intercept the ancient municipal road that goes back up. Along the way you encounter some “maestà” (votive shrines) and the wash house, used until a few decades ago."
         },
         "gpx": "gpx/2-sentiero-delle-maesta.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=maesta.gpx&embed=1"
       },
       {
         "id": "3",
@@ -183,7 +183,7 @@
           "en": "Easy loop starting from the Sillico parking lot, passing through evocative chestnut groves. Along the route you encounter various “metati”, buildings for drying chestnuts, some still regularly used. A short variant leads to the Sillico stream near an ancient mill."
         },
         "gpx": "gpx/3-sentierodei-metati.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=metati.gpx&embed=1"
       },
       {
         "id": "4",
@@ -203,7 +203,7 @@
           "en": "From Sillico you reach Capraia and its suggestive Hermitage. Taking the dirt road starting from the upper parking lot, the trail turns right into the chestnut forest. The path then leaves the forest and climbs through meadows to the Hermitage of Capraia. From there, you can reach the road or the village of Capraia. The path eventually leads to the Col de’ Campacci pinewood and back to the start."
         },
         "gpx": "gpx/4-sentiero-dell-eremo.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=eremo.gpx&embed=1"
       },
       {
         "id": "5",
@@ -223,7 +223,7 @@
           "en": "Descending below the Sillico sports field, you take the path to Bargecchia, a tiny village overlooking the valley. The trail is entirely in the woods until the village, then follows a stretch of road back up to Sillico via “La Casetta”."
         },
         "gpx": "gpx/5-sentiero-di-barghecchia.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=bargecchia.gpx&embed=1"
       },
       {
         "id": "6",
@@ -243,7 +243,7 @@
           "en": "Descending below the sports field, take the path to Pastina, once inhabited and cultivated. Continue right to Salotti and its old mill. Crossing the stream separating Sillico from Fosciandora, other locations can be reached, though not part of the Moro network. Return to Sillico along the same path."
         },
         "gpx": "gpx/6-sentiero-sassatecchia.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=sassatecchia.gpx&embed=1"
       },
       {
         "id": "7",
@@ -263,7 +263,7 @@
           "en": "From the lower village, reach the old wash house and the ancient municipal road. Reach the first mill, cross the Sillico river, and follow the river passing the hydroelectric plant and Sacco dam to Pilastrello Mill. Cross a second bridge and climb back to the village through chestnut groves connecting to trail N.3."
         },
         "gpx": "gpx/7-sentiero-dei-mulini.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=mulini.gpx&embed=1"
       },
       {
         "id": "8",
@@ -283,7 +283,7 @@
           "en": "This trail connects to Foce and Capraia. Starting from the parking lot, follow trail N.3 towards Pasquejo. At “Le Grotte”, climb right towards “Buricavi”. Out of the forest, connect to the road at La Foce."
         },
         "gpx": "gpx/caprasecca.gpx",
-        "gpxViewerUrl": ""
+        "gpxViewerUrl": "https://iperrealistico.github.io/gpx-viewer/?gpx=caprasecca.gpx&embed=1"
       }
     ]
   },
