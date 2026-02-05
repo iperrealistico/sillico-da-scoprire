@@ -170,6 +170,45 @@ const initApp = () => {
         }
     });
 
+    // GPX Viewer Modal logic
+    window.openGpxViewer = function (url) {
+        const modal = document.getElementById('gpx-modal');
+        const iframe = document.getElementById('gpx-iframe');
+
+        if (modal && iframe) {
+            iframe.src = url;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeGpxViewer = function () {
+        const modal = document.getElementById('gpx-modal');
+        const iframe = document.getElementById('gpx-iframe');
+
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            if (iframe) iframe.src = '';
+        }
+    };
+
+    // Close GPX modal handlers
+    const gpxModal = document.getElementById('gpx-modal');
+    if (gpxModal) {
+        gpxModal.addEventListener('click', (e) => {
+            if (e.target.id === 'gpx-modal') {
+                closeGpxViewer();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeGpxViewer();
+        }
+    });
+
     /* --- FILTRI SENTIERI (UNIFIED) --- */
     const trailFilterButtons = document.querySelectorAll('.filter-btn, .filter-btn-duration');
     const trailCards = document.querySelectorAll('.trail-card');

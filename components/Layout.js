@@ -141,6 +141,14 @@ export default function Layout({ children, content, lang }) {
                 <img src="" alt="" id="lightbox-img" />
             </div>
 
+            {/* GPX Modal */}
+            <div className="gpx-modal" id="gpx-modal">
+                <div className="gpx-modal-content">
+                    <span className="gpx-modal-close" onClick={() => typeof window !== 'undefined' && window.closeGpxViewer()}>&times;</span>
+                    <iframe id="gpx-iframe" src="" frameBorder="0"></iframe>
+                </div>
+            </div>
+
             <Script src="/js/main.js" strategy="afterInteractive" />
         </div>
     );

@@ -635,6 +635,78 @@ section {
     opacity: 0.7;
 }
 
+/* GPX Modal */
+.gpx-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+.gpx-modal.active {
+    display: flex;
+}
+
+.gpx-modal-content {
+    position: relative;
+    width: 90%;
+    height: 85%;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.gpx-modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.gpx-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 3001;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.gpx-modal-close:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .gpx-modal-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
 /* ===================================
    🏛️ COSA VEDERE
 =================================== */

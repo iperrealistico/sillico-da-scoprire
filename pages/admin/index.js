@@ -751,6 +751,14 @@ export default function AdminDashboard() {
                                                 }} />
                                             </div>
                                             <div className="input-group">
+                                                <label>Descrizione (IT)</label>
+                                                <textarea rows="4" value={trail.description.it} onChange={(e) => {
+                                                    const nc = { ...content };
+                                                    nc.trails.items[idx].description.it = e.target.value;
+                                                    setContent(nc);
+                                                }} />
+                                            </div>
+                                            <div className="input-group">
                                                 <label>Durata (IT - es: "1 ora")</label>
                                                 <input type="text" value={trail.durationText.it} onChange={(e) => {
                                                     const nc = { ...content };
@@ -769,6 +777,14 @@ export default function AdminDashboard() {
                                                     <option value="E">E (Escursionistico)</option>
                                                 </select>
                                             </div>
+                                            <div className="input-group">
+                                                <label>GPX Viewer URL (Embed Link)</label>
+                                                <input type="text" value={trail.gpxViewerUrl || ''} onChange={(e) => {
+                                                    const nc = { ...content };
+                                                    nc.trails.items[idx].gpxViewerUrl = e.target.value;
+                                                    setContent(nc);
+                                                }} />
+                                            </div>
                                         </div>
                                         <div>
                                             <div className="input-group">
@@ -776,6 +792,14 @@ export default function AdminDashboard() {
                                                 <input type="text" value={trail.title.en} onChange={(e) => {
                                                     const nc = { ...content };
                                                     nc.trails.items[idx].title.en = e.target.value;
+                                                    setContent(nc);
+                                                }} />
+                                            </div>
+                                            <div className="input-group">
+                                                <label>Description (EN)</label>
+                                                <textarea rows="4" value={trail.description.en} onChange={(e) => {
+                                                    const nc = { ...content };
+                                                    nc.trails.items[idx].description.en = e.target.value;
                                                     setContent(nc);
                                                 }} />
                                             </div>
@@ -818,7 +842,8 @@ export default function AdminDashboard() {
                                     durationText: { it: '1 ora', en: '1 hour' },
                                     image: 'images/sentiero-maesta.jpg',
                                     description: { it: '', en: '' },
-                                    gpx: 'gpx/caprasecca.gpx'
+                                    gpx: 'gpx/caprasecca.gpx',
+                                    gpxViewerUrl: ''
                                 });
                                 setContent(nc);
                             }}>+ Aggiungi Nuovo Sentiero</button>

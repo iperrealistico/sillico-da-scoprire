@@ -72,8 +72,10 @@ export default function Home({ lang = 'it' }) {
                                 <div className="trail-actions">
                                     <a href={getImageUrl(trail.gpx)} className="btn btn-secondary btn-trail" download><i
                                         className="fa-solid fa-download"></i> GPX</a>
-                                    <button className="btn btn-secondary btn-trail" onClick={() => alert('Mappa interattiva in arrivo!')}><i
-                                        className="fa-solid fa-map"></i> Mappa</button>
+                                    {trail.gpxViewerUrl && (
+                                        <button className="btn btn-secondary btn-trail" onClick={() => typeof window !== 'undefined' && window.openGpxViewer(trail.gpxViewerUrl)}><i
+                                            className="fa-solid fa-map"></i> Mappa</button>
+                                    )}
                                 </div>
                             </div>
                         ))}

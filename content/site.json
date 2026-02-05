@@ -142,7 +142,8 @@
           "it": "Breve anello intorno a Sillico, da cui si gode di una magnifica vista sulla valle e le Alpi Apuane. Attraversando castagneti e vigne terrazzate si giunge ad una stazione delle “Rogazioni”, rito religioso col quale si chiedeva aiuto a Dio perché venissero protetti i raccolti. E’ di recente realizzazione la scultura nel tronco di un vecchio castagno, posta poco dopo l’imbocco del sentiero.",
           "en": "Short loop around Sillico, with a magnificent view over the valley and the Apuan Alps. Crossing chestnut groves and terraced vineyards you reach a station of the “Rogazioni”, a religious rite to ask God for protection of the harvests. A sculpture in an old chestnut trunk was recently created near the trail start."
         },
-        "gpx": "gpx/1-sentiero-delle-rogazioni.gpx"
+        "gpx": "gpx/1-sentiero-delle-rogazioni.gpx",
+        "gpxViewerUrl": ""
       },
       {
         "id": "2",
@@ -161,7 +162,8 @@
           "it": "Dalla parte bassa del paese si scende per la “Via Chiusa” fino a scoprire il maestoso panorama delle Alpi Apuane. Entrati nel castagneto si intercetta l’antica via comunale che risale in paese. Lungo il percorso si incontrano alcune maestà (costruzioni con immagine votiva) e il lavatoio, usato fino ad alcuni decenni fa.",
           "en": "From the lower part of the village you descend along “Via Chiusa” to discover the majestic panorama of the Apuan Alps. Entering the chestnut grove you intercept the ancient municipal road that goes back up. Along the way you encounter some “maestà” (votive shrines) and the wash house, used until a few decades ago."
         },
-        "gpx": "gpx/2-sentiero-delle-maesta.gpx"
+        "gpx": "gpx/2-sentiero-delle-maesta.gpx",
+        "gpxViewerUrl": ""
       },
       {
         "id": "3",
@@ -180,7 +182,8 @@
           "it": "Facile anello con partenza dal parcheggio di Sillico, che attraversa suggestivi castagneti. Lungo il percorso si incontrano vari metati, edifici per l’essiccazione delle castagne, alcuni dei quali sono ancora regolarmente utilizzati. Una breve variante conduce in riva al torrente Sillico in prossimità di un antico mulino.",
           "en": "Easy loop starting from the Sillico parking lot, passing through evocative chestnut groves. Along the route you encounter various “metati”, buildings for drying chestnuts, some still regularly used. A short variant leads to the Sillico stream near an ancient mill."
         },
-        "gpx": "gpx/3-sentierodei-metati.gpx"
+        "gpx": "gpx/3-sentierodei-metati.gpx",
+        "gpxViewerUrl": ""
       },
       {
         "id": "4",
@@ -199,7 +202,8 @@
           "it": "Dal borgo di Sillico si raggiunge Capraia ed, in particolare, il suo suggestivo Eremo. Imboccata la strada sterrata, che parte dal parcheggio alto di Sillico, il sentiero piega a destra e si addentra nel bosco di castagni. Il sentiero, poi, abbandona il bosco e sale per prati e vecchi coltivi fino all’ Eremo di Capraia. Da qui, proseguendo sulla sinistra con un breve tratto in salita, il sentiero raggiunge la carrozzabile, oppure sulla destra è possibile raggiungere il paese di Capraia per poi ricollegarsi sempre alla strada carrabile. Si prosegue fino ad incontrare la strada sterrata, chiusa da una catena, che conduce alla pineta di Col de’ Campacci e, in breve, nuovamente al punto di partenza.",
           "en": "From Sillico you reach Capraia and its suggestive Hermitage. Taking the dirt road starting from the upper parking lot, the trail turns right into the chestnut forest. The path then leaves the forest and climbs through meadows to the Hermitage of Capraia. From there, you can reach the road or the village of Capraia. The path eventually leads to the Col de’ Campacci pinewood and back to the start."
         },
-        "gpx": "gpx/4-sentiero-dell-eremo.gpx"
+        "gpx": "gpx/4-sentiero-dell-eremo.gpx",
+        "gpxViewerUrl": ""
       },
       {
         "id": "5",
@@ -215,10 +219,11 @@
         },
         "image": "images/sentiero-bargecchia.jpg",
         "description": {
-          "it": "Scendendo sotto il campo sportivo di Sillico si imbocca il sentiero che porta a Bargecchia, un piccolissimo borgo che si affaccia sulla valle. Il sentiero è interamente nel bosco fino al paese, da qui poi si percorre un tratto di strada carrabile e si risale a Sillico passando per la località “La Casetta”.",
+          "it": "Scendendo sotto il campo sportivo di Sillico si imbocca le sentiero che porta a Bargecchia, un piccolissimo borgo che si affaccia sulla valle. Il sentiero è interamente nel bosco fino al paese, da qui poi si percorre un tratto di strada carrabile e si risale a Sillico passando per la località “La Casetta”.",
           "en": "Descending below the Sillico sports field, you take the path to Bargecchia, a tiny village overlooking the valley. The trail is entirely in the woods until the village, then follows a stretch of road back up to Sillico via “La Casetta”."
         },
-        "gpx": "gpx/5-sentiero-di-barghecchia.gpx"
+        "gpx": "gpx/5-sentiero-di-barghecchia.gpx",
+        "gpxViewerUrl": ""
       },
       {
         "id": "6",
@@ -237,7 +242,8 @@
           "it": "Scendendo sotto il campo sportivo di Sillico si imbocca il sentiero che porta in località Pastina, un tempo abitata e coltivata come testimoniano i ruderi e i terrazzamenti ancora presenti. Si prosegue sulla destra fino alla località Salotti, dove è ancora visibile un vecchio mulino. Attraversando il torrente che divide il versante di Sillico da quello di Fosciandora, è possibile raggiungere località come Ceserana, La Villa, Migliano o Fosciandora, ma questi tratti non fanno parte della rete dei sentieri del Moro. Si risale verso il paese di Sillico ripercorrendo lo stesso sentiero.",
           "en": "Descending below the sports field, take the path to Pastina, once inhabited and cultivated. Continue right to Salotti and its old mill. Crossing the stream separating Sillico from Fosciandora, other locations can be reached, though not part of the Moro network. Return to Sillico along the same path."
         },
-        "gpx": "gpx/6-sentiero-sassatecchia.gpx"
+        "gpx": "gpx/6-sentiero-sassatecchia.gpx",
+        "gpxViewerUrl": ""
       },
       {
         "id": "7",
@@ -256,7 +262,8 @@
           "it": "Partendo dalla parte bassa del paese si raggiunge l’antico lavatoio e si va ad intercettare quella che era l’antica via comunale, di cui si intravedono ancora i sassi sotto alla morbida coperta di muschio. Si giunge ad un primo mulino e si attraversa il fiume di Sillico passando sul ponte carrabile. Passati sull’altro versante si percorre il sentiero lungo fiume, incontrando la centralina idroelettrica, la diga del Sacco ed, infine, il Mulino del Pilastrello, dove si attraversa un secondo ponte sospeso. Da qui si risale al paese tra i castagneti ricollegandosi al sentiero dei Metati N.3.",
           "en": "From the lower village, reach the old wash house and the ancient municipal road. Reach the first mill, cross the Sillico river, and follow the river passing the hydroelectric plant and Sacco dam to Pilastrello Mill. Cross a second bridge and climb back to the village through chestnut groves connecting to trail N.3."
         },
-        "gpx": "gpx/7-sentiero-dei-mulini.gpx"
+        "gpx": "gpx/7-sentiero-dei-mulini.gpx",
+        "gpxViewerUrl": ""
       },
       {
         "id": "8",
@@ -275,7 +282,8 @@
           "it": "Questo sentiero permette il collegamento con le località di Foce e Capraia, con la possibilità di proseguire il cammino sui sentieri della Pro Loco Capraia. Partendo dal parcheggio di Sillico si imbocca il sentiero N.3 verso Pasquejo. Una volta arrivati a “Le Grotte” si prosegue salendo sulla destra in direzione “Buricavi”. Usciti dal bosco ci si collega alla strada carrabile in località La Foce",
           "en": "This trail connects to Foce and Capraia. Starting from the parking lot, follow trail N.3 towards Pasquejo. At “Le Grotte”, climb right towards “Buricavi”. Out of the forest, connect to the road at La Foce."
         },
-        "gpx": "gpx/caprasecca.gpx"
+        "gpx": "gpx/caprasecca.gpx",
+        "gpxViewerUrl": ""
       }
     ]
   },
