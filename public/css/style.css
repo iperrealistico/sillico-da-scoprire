@@ -188,6 +188,21 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
+.btn-booking {
+    background: #682716;
+    color: white !important;
+    box-shadow: var(--shadow-lg);
+    padding: 1rem 2.5rem;
+    border: none;
+}
+
+.btn-booking:hover {
+    background: #4a1c0f;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+    filter: brightness(1.1);
+}
+
 /* ===================================
    📱 HEADER E NAVIGAZIONE
 =================================== */

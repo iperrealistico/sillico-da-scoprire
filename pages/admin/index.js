@@ -984,6 +984,57 @@ export default function AdminDashboard() {
                                     setContent(nc);
                                 }}>+ Aggiungi Caratteristica</button>
                             </div>
+                            <div className="grid-2" style={{ marginTop: '2rem', borderTop: '1px solid #eee', paddingTop: '2rem' }}>
+                                <div className="col-it">
+                                    <h3>Configurazione Bottone (ITA)</h3>
+                                    <div className="input-group">
+                                        <label>Testo Bottone (ITA)</label>
+                                        <input type="text" value={content.bike_rent.cta.text.it} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.bike_rent.cta.text.it = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>URL Bottone (ITA)</label>
+                                        <input type="text" value={content.bike_rent.cta.url.it} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.bike_rent.cta.url.it = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                </div>
+                                <div className="col-en">
+                                    <h3>CTA Button Config (ENG)</h3>
+                                    <div className="input-group">
+                                        <label>Button Text (ENG)</label>
+                                        <input type="text" value={content.bike_rent.cta.text.en} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.bike_rent.cta.text.en = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Button URL (ENG)</label>
+                                        <input type="text" value={content.bike_rent.cta.url.en} onChange={(e) => {
+                                            const nc = { ...content };
+                                            nc.bike_rent.cta.url.en = e.target.value;
+                                            setContent(nc);
+                                        }} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="input-group">
+                                <label>Target apertura link</label>
+                                <select value={content.bike_rent.cta.target} onChange={(e) => {
+                                    const nc = { ...content };
+                                    nc.bike_rent.cta.target = e.target.value;
+                                    setContent(nc);
+                                }}>
+                                    <option value="_blank">Nuova finestra (_blank)</option>
+                                    <option value="_self">Stessa finestra (_self)</option>
+                                </select>
+                            </div>
                         </div>
                     )}
 

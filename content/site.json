@@ -332,8 +332,15 @@
       }
     ],
     "cta": {
-      "it": "🚴‍♂️ Prenota ora",
-      "en": "🚴‍♂️ Book now"
+      "text": {
+        "it": "🚴‍♂️ Prenota ora",
+        "en": "🚴‍♂️ Book now"
+      },
+      "url": {
+        "it": "https://www.mtbreserve.com/sillico",
+        "en": "https://www.mtbreserve.com/sillico"
+      },
+      "target": "_blank"
     }
   },
   "events": {

@@ -97,7 +97,7 @@ export default function Home({ lang = 'it' }) {
                                 ))}
                             </ul>
                             <div className="mt-4">
-                                <a href="#contatti" className="btn btn-secondary">{content.bike_rent.cta}</a>
+                                <a href={content.bike_rent.cta.url} target={content.bike_rent.cta.target} className="btn btn-booking">{content.bike_rent.cta.text}</a>
                             </div>
                         </div>
                         <div className="bike-image img-container"
