@@ -632,6 +632,7 @@ export default function AdminDashboard() {
                 <TabButton id="attractions" label="Cosa Vedere" icon="camera-retro" />
                 <TabButton id="hospitality" label="Ospitalità" icon="bed" />
                 <TabButton id="contacts" label="Contatti" icon="address-book" />
+                <TabButton id="footer" label="Footer" icon="shoe-prints" />
                 <TabButton id="advanced" label="Avanzate" icon="gears" />
 
                 <a href="#" className="logout-btn" onClick={() => {
@@ -1237,6 +1238,52 @@ export default function AdminDashboard() {
                             </div>
                         </div>
                     )}
+
+                    {activeTab === 'footer' && (
+                        <div>
+                            <div className="grid-2">
+                                <div className="col-it">
+                                    <h3>Italiano</h3>
+                                    <div className="input-group">
+                                        <label>Testo Indirizzo (Multi-linea)</label>
+                                        <textarea 
+                                            rows="6"
+                                            value={content.footer?.text?.it || ''}
+                                            onChange={(e) => updateField('footer.text.it', e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Copyright</label>
+                                        <input 
+                                            type="text"
+                                            value={content.footer?.copyright?.it || ''}
+                                            onChange={(e) => updateField('footer.copyright.it', e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-en">
+                                    <h3>English</h3>
+                                    <div className="input-group">
+                                        <label>Address Text (Multi-line)</label>
+                                        <textarea 
+                                            rows="6"
+                                            value={content.footer?.text?.en || ''}
+                                            onChange={(e) => updateField('footer.text.en', e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="input-group">
+                                        <label>Copyright</label>
+                                        <input 
+                                            type="text"
+                                            value={content.footer?.copyright?.en || ''}
+                                            onChange={(e) => updateField('footer.copyright.en', e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     {activeTab === 'advanced' && (
                         <div>
                             <h3>Impostazioni Avanzate</h3>

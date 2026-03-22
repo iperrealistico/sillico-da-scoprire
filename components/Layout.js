@@ -131,6 +131,13 @@ export default function Layout({ children, content, lang }) {
                         <a href={content.contacts.social.facebook} target="_blank" className="social-icon"><i className="fa-brands fa-facebook"></i></a>
                         <a href={content.contacts.social.instagram} target="_blank" className="social-icon"><i className="fa-brands fa-instagram"></i></a>
                     </div>
+                    {content.footer?.text && (
+                        <div className="footer-address" style={{ marginBottom: '1.5rem', opacity: 0.8, fontSize: '0.95rem', lineHeight: '1.6' }}>
+                            {content.footer.text.split('\n').map((line, i) => (
+                                <div key={i}>{line}</div>
+                            ))}
+                        </div>
+                    )}
                     <p>{content.footer.copyright}</p>
                 </div>
             </footer>
