@@ -1,8 +1,14 @@
+import { useState } from 'react';
 import Layout from '../components/Layout';
+import ExternalContentGate from '../components/ExternalContentGate';
+import GpxViewerModal from '../components/GpxViewerModal';
 import { getLangContent } from '../lib/content';
+import { getPrivacyText } from '../lib/privacy';
 
 export default function Home({ lang = 'it' }) {
     const content = getLangContent(lang);
+    const privacyText = getPrivacyText(lang);
+    const [gpxViewerUrl, setGpxViewerUrl] = useState(null);
 
     const getImageUrl = (path) => {
         if (!path) return '';
@@ -73,8 +79,8 @@ export default function Home({ lang = 'it' }) {
                                     <a href={getImageUrl(trail.gpx)} className="btn btn-secondary btn-trail" download><i
                                         className="fa-solid fa-download"></i> GPX</a>
                                     {trail.gpxViewerUrl && (
-                                        <button className="btn btn-secondary btn-trail" onClick={() => typeof window !== 'undefined' && window.openGpxViewer(trail.gpxViewerUrl)}><i
-                                            className="fa-solid fa-map"></i> Mappa</button>
+                                        <button className="btn btn-secondary btn-trail" onClick={() => setGpxViewerUrl(trail.gpxViewerUrl)}><i
+                                            className="fa-solid fa-map"></i> {lang === 'en' ? 'Map' : 'Mappa'}</button>
                                     )}
                                 </div>
                             </div>
@@ -97,7 +103,14 @@ export default function Home({ lang = 'it' }) {
                                 ))}
                             </ul>
                             <div className="mt-4">
-                                <a href={content.bike_rent.cta.url} target={content.bike_rent.cta.target} className="btn btn-booking">{content.bike_rent.cta.text}</a>
+                                <a
+                                    href={content.bike_rent.cta.url}
+                                    target={content.bike_rent.cta.target}
+                                    rel={content.bike_rent.cta.target === '_blank' ? 'noreferrer noopener' : undefined}
+                                    className="btn btn-booking"
+                                >
+                                    {content.bike_rent.cta.text}
+                                </a>
                             </div>
                         </div>
                         <div className="bike-image img-container"
@@ -171,7 +184,12 @@ export default function Home({ lang = 'it' }) {
                                 <h4>{item.name}</h4>
                                 <div className="stay-contact">
                                     {item.contacts.map((contact, j) => (
-                                        <a key={j} href={contact.type === 'email' ? `mailto:${contact.value}` : contact.type === 'phone' || contact.type === 'mobile' ? `tel:${contact.value.replace(/\s/g, '')}` : contact.value} target={contact.type === 'web' ? "_blank" : undefined}>
+                                        <a
+                                            key={j}
+                                            href={contact.type === 'email' ? `mailto:${contact.value}` : contact.type === 'phone' || contact.type === 'mobile' ? `tel:${contact.value.replace(/\s/g, '')}` : contact.value}
+                                            target={contact.type === 'web' ? "_blank" : undefined}
+                                            rel={contact.type === 'web' ? 'noreferrer noopener' : undefined}
+                                        >
                                             <i className={`fa-solid fa-${contact.type === 'web' ? 'globe' : contact.type === 'email' ? 'envelope' : contact.type === 'mobile' ? 'mobile' : 'phone'}`}></i> {contact.label}
                                         </a>
                                     ))}
@@ -204,9 +222,9 @@ export default function Home({ lang = 'it' }) {
                                     <h4>{content.contacts.social.title}</h4>
                                     <div className="social-links" style={{ justifyContent: 'flex-start', marginTop: '0.5rem' }}>
                                         <a href={content.contacts.social.facebook}
-                                            target="_blank" style={{ color: 'var(--primary)', fontSize: '1.5rem' }}><i
+                                            target="_blank" rel="noreferrer noopener" style={{ color: 'var(--primary)', fontSize: '1.5rem' }}><i
                                                 className="fa-brands fa-facebook"></i></a>
-                                        <a href={content.contacts.social.instagram} target="_blank"
+                                        <a href={content.contacts.social.instagram} target="_blank" rel="noreferrer noopener"
                                             style={{ color: 'var(--primary)', fontSize: '1.5rem' }}><i
                                                 className="fa-brands fa-instagram"></i></a>
                                     </div>
@@ -214,14 +232,30 @@ export default function Home({ lang = 'it' }) {
                             </div>
                         </div>
                         <div className="contact-map">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1396.3852099135363!2d10.442952938823897!3d44.132561417875905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d565f419e20ebf%3A0x74d57d917d501a1!2s55036%20Sillico%2C%20Province%20of%20Lucca!5e1!3m2!1sen!2sit!4v1770041247813!5m2!1sen!2sit"
-                                width="600" height="450" style={{ border: 0 }} allowFullScreen="" loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"></iframe>
+                            <ExternalContentGate
+                                title={privacyText.mapGateTitle}
+                                description={privacyText.mapGateDescription}
+                                actionLabel={privacyText.mapGateAction}
+                                fallbackLink={{
+                                    href: 'https://www.google.com/maps/search/?api=1&query=Sillico%2C%20Lucca',
+                                    label: privacyText.openInGoogleMaps,
+                                }}
+                            >
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1396.3852099135363!2d10.442952938823897!3d44.132561417875905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d565f419e20ebf%3A0x74d57d917d501a1!2s55036%20Sillico%2C%20Province%20of%20Lucca!5e1!3m2!1sen!2sit!4v1770041247813!5m2!1sen!2sit"
+                                    width="600"
+                                    height="450"
+                                    style={{ border: 0 }}
+                                    allowFullScreen=""
+                                    loading="lazy"
+                                    referrerPolicy="strict-origin-when-cross-origin"
+                                ></iframe>
+                            </ExternalContentGate>
                         </div>
                     </div>
                 </div>
             </section>
+            <GpxViewerModal viewerUrl={gpxViewerUrl} lang={lang} onClose={() => setGpxViewerUrl(null)} />
         </Layout>
     );
 }

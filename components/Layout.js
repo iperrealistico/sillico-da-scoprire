@@ -1,12 +1,14 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Script from 'next/script';
+import { getPrivacyText } from '../lib/privacy';
+import { usePrivacy } from './PrivacyProvider';
 
 export default function Layout({ children, content, lang }) {
-    const router = useRouter();
     const meta = content.meta;
     const nav = content.nav;
+    const privacy = usePrivacy();
+    const privacyText = getPrivacyText(lang);
 
     const getImageUrl = (path) => {
         if (!path) return '';
@@ -14,7 +16,6 @@ export default function Layout({ children, content, lang }) {
         return `https://sillicodascoprire.it/${path.startsWith('/') ? path.slice(1) : path}`;
     };
 
-    const toggleLang = lang === 'it' ? 'en' : 'it';
     const togglePath = lang === 'it' ? '/en' : '/';
 
     return (
@@ -53,8 +54,6 @@ export default function Layout({ children, content, lang }) {
                 {meta.og_image && <meta name="twitter:image" content={getImageUrl(meta.og_image)} />}
                 {meta.twitter_handle && <meta name="twitter:site" content={meta.twitter_handle} />}
 
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-                <link rel="stylesheet" href="/css/style.css" />
                 <link rel="canonical" href={`https://sillicodascoprire.it${lang === 'en' ? '/en' : ''}`} />
                 <link rel="alternate" hrefLang="it" href="https://sillicodascoprire.it/" />
                 <link rel="alternate" hrefLang="en" href="https://sillicodascoprire.it/en" />
@@ -128,8 +127,16 @@ export default function Layout({ children, content, lang }) {
             <footer className="footer">
                 <div className="container">
                     <div className="social-links">
-                        <a href={content.contacts.social.facebook} target="_blank" className="social-icon"><i className="fa-brands fa-facebook"></i></a>
-                        <a href={content.contacts.social.instagram} target="_blank" className="social-icon"><i className="fa-brands fa-instagram"></i></a>
+                        <a href={content.contacts.social.facebook} target="_blank" rel="noreferrer noopener" className="social-icon"><i className="fa-brands fa-facebook"></i></a>
+                        <a href={content.contacts.social.instagram} target="_blank" rel="noreferrer noopener" className="social-icon"><i className="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <div className="footer-links">
+                        <Link href={privacy.policyPath} className="footer-link-button">
+                            {privacyText.policyLinkLabel}
+                        </Link>
+                        <button type="button" className="footer-link-button" onClick={privacy.openPreferences}>
+                            {privacyText.footerPreferences}
+                        </button>
                     </div>
                     {content.footer?.text && (
                         <div className="footer-address" style={{ marginBottom: '1.5rem', opacity: 0.8, fontSize: '0.95rem', lineHeight: '1.6' }}>
@@ -146,14 +153,6 @@ export default function Layout({ children, content, lang }) {
             <div className="lightbox" id="lightbox">
                 <span className="lightbox-close">&times;</span>
                 <img src="" alt="" id="lightbox-img" />
-            </div>
-
-            {/* GPX Modal */}
-            <div className="gpx-modal" id="gpx-modal">
-                <div className="gpx-modal-content">
-                    <span className="gpx-modal-close" onClick={() => typeof window !== 'undefined' && window.closeGpxViewer()}>&times;</span>
-                    <iframe id="gpx-iframe" src="" frameBorder="0"></iframe>
-                </div>
             </div>
 
             <Script src="/js/main.js" strategy="afterInteractive" />

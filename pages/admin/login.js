@@ -24,7 +24,6 @@ export default function AdminLogin() {
         <div className="login-container">
             <Head>
                 <title>Admin Login - Sillico</title>
-                <link rel="stylesheet" href="/css/style.css" />
                 <style>{`
                     .login-container {
                         display: flex;
