@@ -914,6 +914,46 @@ export default function AdminDashboard() {
                                             }} />
                                         </div>
                                     </div>
+                                    <div style={{ marginTop: '1rem', padding: '1rem 1.25rem', background: '#fcfaf7', border: '1px solid #e8ddd4', borderRadius: '14px' }}>
+                                        <div style={{ marginBottom: '0.9rem' }}>
+                                            <strong style={{ color: '#682716' }}>Pulsante Prenotazione</strong>
+                                            <p style={{ marginTop: '0.35rem', color: '#6b5b4d', fontSize: '0.92rem', lineHeight: '1.5' }}>
+                                                Compila il link per mostrare il tasto nel frontend. Se il link resta vuoto, la card evento continua a funzionare come ora senza mostrare alcun pulsante.
+                                            </p>
+                                        </div>
+                                        <div className="grid-2">
+                                            <div className="input-group">
+                                                <label>Testo Bottone (IT)</label>
+                                                <input
+                                                    type="text"
+                                                    value={event.booking?.text?.it ?? 'Prenota'}
+                                                    placeholder="Prenota"
+                                                    onChange={(e) => updateField(`events.items.${idx}.booking.text.it`, e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="input-group">
+                                                <label>Button Text (EN)</label>
+                                                <input
+                                                    type="text"
+                                                    value={event.booking?.text?.en ?? 'Book now'}
+                                                    placeholder="Book now"
+                                                    onChange={(e) => updateField(`events.items.${idx}.booking.text.en`, e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="input-group" style={{ marginBottom: 0 }}>
+                                            <label>Link Prenotazione</label>
+                                            <input
+                                                type="url"
+                                                value={event.booking?.url || ''}
+                                                placeholder="https://piattaforma-prenotazioni.example/evento"
+                                                onChange={(e) => updateField(`events.items.${idx}.booking.url`, e.target.value)}
+                                            />
+                                            <small style={{ color: '#6b5b4d', marginTop: '0.45rem', display: 'block' }}>
+                                                Il bottone si aprirà in una nuova scheda per non far uscire l’utente dal sito.
+                                            </small>
+                                        </div>
+                                    </div>
                                     <button className="btn btn-secondary" style={{ color: 'red', border: '1px solid red' }} onClick={() => {
                                         const nc = { ...content };
                                         nc.events.items.splice(idx, 1);
@@ -928,7 +968,11 @@ export default function AdminDashboard() {
                                     title: { it: 'Nuovo Evento', en: 'New Event' },
                                     date: { it: '', en: '' },
                                     image: '',
-                                    description: { it: '', en: '' }
+                                    description: { it: '', en: '' },
+                                    booking: {
+                                        text: { it: 'Prenota', en: 'Book now' },
+                                        url: ''
+                                    }
                                 });
                                 setContent(nc);
                             }}>+ Aggiungi Nuovo Evento</button>

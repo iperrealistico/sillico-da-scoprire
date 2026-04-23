@@ -545,9 +545,19 @@ section {
     border: 1px solid var(--border);
     transition: all var(--transition);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.event-card:focus-visible {
+    outline: 3px solid rgba(104, 39, 22, 0.18);
+    outline-offset: 4px;
     transform: translateY(-5px);
     box-shadow: var(--shadow-xl);
 }
@@ -584,6 +594,9 @@ section {
 
 .event-content {
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .event-content h3 {
@@ -598,6 +611,59 @@ section {
 .event-content p {
     color: var(--text-secondary);
     line-height: 1.7;
+    flex: 1;
+}
+
+.event-card-actions {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(104, 39, 22, 0.1);
+}
+
+.event-booking-btn {
+    padding: 0.9rem 1.35rem;
+    background: var(--gradient-primary);
+    color: white !important;
+    box-shadow: 0 18px 28px -18px rgba(104, 39, 22, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    isolation: isolate;
+}
+
+.event-booking-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 18%, rgba(255, 255, 255, 0.24) 50%, transparent 82%);
+    transform: translateX(-130%);
+    transition: transform 0.65s ease;
+    z-index: -1;
+}
+
+.event-booking-btn:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 24px 34px -20px rgba(104, 39, 22, 1);
+    filter: brightness(1.04);
+}
+
+.event-booking-btn:hover::before {
+    transform: translateX(130%);
+}
+
+.event-booking-btn i {
+    font-size: 0.9rem;
+    transition: transform var(--transition);
+}
+
+.event-booking-btn:hover i {
+    transform: translate(2px, -1px);
+}
+
+.event-booking-btn:focus-visible {
+    outline: 3px solid rgba(104, 39, 22, 0.2);
+    outline-offset: 3px;
 }
 
 /* Lightbox per immagini eventi */
@@ -1091,6 +1157,11 @@ section {
     .attraction-content,
     .event-content {
         padding: 1.5rem;
+    }
+
+    .event-booking-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
 

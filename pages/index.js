@@ -16,6 +16,19 @@ export default function Home({ lang = 'it' }) {
         return `/${path}`;
     };
 
+    const openEventLightbox = (eventIndex) => {
+        if (typeof window !== 'undefined' && typeof window.openLightbox === 'function') {
+            window.openLightbox(`evento-${eventIndex}`);
+        }
+    };
+
+    const handleEventCardKeyDown = (event, eventIndex) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openEventLightbox(eventIndex);
+        }
+    };
+
     return (
         <Layout content={content} lang={lang}>
             {/* Hero Section */}
@@ -127,18 +140,46 @@ export default function Home({ lang = 'it' }) {
 
                     <div className="events-grid">
                         {content.events.items && content.events.items.length > 0 ? (
-                            content.events.items.map((event, i) => (
-                                <div key={i} className="event-card" onClick={() => typeof window !== 'undefined' && window.openLightbox(`evento-${i}`)}>
-                                    <div className="event-image">
-                                        <img src={getImageUrl(event.image)} alt={event.title} id={`evento-${i}-img`} loading="lazy" />
-                                        <div className="event-date"><i className="fa-regular fa-calendar"></i> {event.date}</div>
+                            content.events.items.map((event, i) => {
+                                const bookingUrl = event.booking?.url?.trim();
+                                const bookingLabel = event.booking?.text?.trim() || (lang === 'en' ? 'Book now' : 'Prenota');
+
+                                return (
+                                    <div
+                                        key={i}
+                                        className="event-card"
+                                        role="button"
+                                        tabIndex={0}
+                                        onClick={() => openEventLightbox(i)}
+                                        onKeyDown={(domEvent) => handleEventCardKeyDown(domEvent, i)}
+                                        aria-label={`${lang === 'en' ? 'Open image for' : 'Apri immagine di'} ${event.title}`}
+                                    >
+                                        <div className="event-image">
+                                            <img src={getImageUrl(event.image)} alt={event.title} id={`evento-${i}-img`} loading="lazy" />
+                                            <div className="event-date"><i className="fa-regular fa-calendar"></i> {event.date}</div>
+                                        </div>
+                                        <div className="event-content">
+                                            <h3>{event.title}</h3>
+                                            <p>{event.description}</p>
+                                            {bookingUrl && (
+                                                <div className="event-card-actions">
+                                                    <a
+                                                        href={bookingUrl}
+                                                        target="_blank"
+                                                        rel="noreferrer noopener"
+                                                        className="btn event-booking-btn"
+                                                        onClick={(domEvent) => domEvent.stopPropagation()}
+                                                        aria-label={`${bookingLabel}: ${event.title}`}
+                                                    >
+                                                        <span>{bookingLabel}</span>
+                                                        <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
-                                    <div className="event-content">
-                                        <h3>{event.title}</h3>
-                                        <p>{event.description}</p>
-                                    </div>
-                                </div>
-                            ))
+                                );
+                            })
                         ) : (
                             <p className="text-center">Nessun evento in programma al momento.</p>
                         )}
