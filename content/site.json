@@ -374,8 +374,8 @@
           "en": "Trails & Flavors"
         },
         "date": {
-          "it": "Domenica 17 maggio e 4 ottobre",
-          "en": "Sunday May 17th and October 4th"
+          "it": "Domenica 4 ottobre",
+          "en": "Sunday October 4th"
         },
         "image": "https://www.sillicodascoprire.it/images/evento-sentieri-e-sapori.jpg",
         "description": {
@@ -394,8 +394,8 @@
         },
         "image": "https://www.sillicodascoprire.it/images/evento-divini-e-sapori.jpg",
         "description": {
-          "it": "Due serate per gli appassionati di alta cucina e vini pregiati. Questo evento va in scena nella splendida cornice di palazzo Carli e nelle piazze del borgo. Si tratta di un esclusivo evento a numero chiuso per il quale è richiesta la prenotazione. La cena è composta da stuzzicanti portate che rivisitano la tradizione garfagnina, con l’aggiunta di una degustazione guidata dal corpo di sommelier FISAR. ",
-          "en": "Two evenings for fine dining and wine lovers in the beautiful setting of Palazzo Carli. Limited availability, reservation required, FISAR guided tasting."
+          "it": "Due serate per gli appassionati di alta cucina e vini pregiati. Questo evento va in scena nella splendida cornice di palazzo Carli e nelle piazze del borgo. Si tratta di un esclusivo evento a numero chiuso per il quale è richiesta la prenotazione. La cena è composta da stuzzicanti portate che rivisitano la tradizione garfagnina, con l’aggiunta di una degustazione di vini guidata dal corpo di sommelier FISAR. ",
+          "en": "Two evenings for fine dining and wine lovers in the beautiful setting of Palazzo Carli. Limited availability, reservation required, FISAR guided wine tasting."
         }
       },
       {
@@ -449,13 +449,123 @@
           "en": "\"UOMO / NATURA\""
         },
         "date": {
-          "it": "Da Sabato 2 Maggio a Domenica 21 Giugno",
-          "en": "From Saturday 2 May to Sunday 21 June"
+          "it": "Dal 2 Maggio al 21 Giugno",
+          "en": "From May 2nd to June 21st"
         },
         "image": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/Immagine%202026-04-07%20185454-dQRWlpupq8DKPW9mS9u69wytRy6MDe.png",
         "description": {
           "it": "Mostra di pittura a cura di Annamaria Buonamici, Guido Morelli, Armando Orfeo e Valente Taddei. La mostra sarà ospitata nelle sale all'ultimo piano di Palazzo Carli e verrà inaugurata sabato 2 Maggio alle ore 17:00.\nOrari di apertura: Sabato 16:00 - 19:00, Domenica 10:00 - 12:00 e 16:00 - 19:00. Altri giorni su appuntamento, telefonare a Mauro Puppa 328 6232904",
           "en": "Painting exhibition curated by Annamaria Buonamici, Guido Morelli, Armando Orfeo e Valente Taddei. The exhibition will be held in the top-floor rooms of Palazzo Carli and will be inaugurated on Saturday 2 May.\nOpening hours: Saturday 3:00 PM - 6:00 PM, Sunday 9:00 AM - 11:00 AM and 3:00 PM - 6:00 PM. Other days by appointment, please call Mauro Puppa at 328 6232904."
+        }
+      },
+      {
+        "title": {
+          "it": "\"Con l'Arte mi Esprimo\"",
+          "en": "\"Con l'Arte mi Esprimo\""
+        },
+        "date": {
+          "it": "Dall'1 al 26 Luglio",
+          "en": "From 1st July to 26th July"
+        },
+        "image": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/Locandina%20mostra-DUgS0aeJEssoWb3e4vMsd9XwfQeubG.jpg",
+        "description": {
+          "it": "Mostra di pittura a cura di Paolo Galletti, Paolo Pieri, Sandra Rigali e Alma Sheik. La mostra sarà ospitata nelle sale all'ultimo piano di Palazzo Carli e verrà inaugurata domenica 5 Luglio alle ore 18:00.\nOrari di apertura: Sabato 15:00 - 18:00, Domenica 10:00 - 12:00 e 15:00 - 18:00. Altri giorni su appuntamento, telefonare a Mauro Puppa 328 6232904",
+          "en": "Painting exhibition curated by Paolo Galletti, Paolo Pieri, Sandra Rigali e Alma Sheik. The exhibition will be held in the top-floor rooms of Palazzo Carli and will be inaugurated on Sunday 5 July.\nOpening hours: Saturday 3:00 PM - 6:00 PM, Sunday 10:00 AM - 12:00 AM and 3:00 PM - 6:00 PM. Other days by appointment, please call Mauro Puppa at 328 6232904."
+        },
+        "booking": {
+          "text": {
+            "it": "Prenota",
+            "en": "Book now"
+          },
+          "url": ""
+        }
+      },
+      {
+        "title": {
+          "it": "Concerto nella Chiesa di San Lorenzo",
+          "en": "Concert in Chiesa di San Lorenzo"
+        },
+        "date": {
+          "it": "Domenica 19 Luglio",
+          "en": "Sunday July 19th"
+        },
+        "image": "",
+        "description": {
+          "it": "Concerto in omaggio a Don Emilio Maggini e Don Lorenzo Perosi. Con la partecipazione della Cappella Santa Cecilia della Cattedrale di Lucca, dirige il maestro Luca Bacci.",
+          "en": "Concert in tribute to Don Emilio Maggini and Don Lorenzo Perosi. Featuring the Santa Cecilia Chapel of Lucca Cathedral, conducted by Maestro Luca Bacci."
+        },
+        "booking": {
+          "text": {
+            "it": "Prenota",
+            "en": "Book now"
+          },
+          "url": ""
+        }
+      },
+      {
+        "title": {
+          "it": "\"Arte al Plurale\"",
+          "en": "\"Arte al Plurale\""
+        },
+        "date": {
+          "it": "Dall'1 al 31 Agosto",
+          "en": "From 1st August to 31st August"
+        },
+        "image": "https://wwlgpzphwa5dn9o9.public.blob.vercel-storage.com/locandina%20arte%20al%20plurale-MaIoU9DB51YvjCh2FbbQCVEVIPs9oL.jpg",
+        "description": {
+          "it": "Mostra d'arte a cura di Giovanni Atzeni, Tito Mucci, Angela Palese e Lisandro Rota. La mostra sarà ospitata nelle sale all'ultimo piano di Palazzo Carli e verrà inaugurata sabato 1 Agosto alle ore 18:00.\nOrari di apertura: Sabato 15:00 - 18:00, Domenica 10:00 - 12:00 e 15:00 - 18:00. Altri giorni su appuntamento, telefonare a Mauro Puppa 328 6232904",
+          "en": "Art exhibition curated by Giovanni Atzeni, Tito Mucci, Angela Palese, and Lisandro Rota. The exhibition will be hosted in the top-floor rooms of Palazzo Carli and will open on Saturday, August 1st at 6:00 PM.\nOpening hours: Saturday 3:00 PM - 6:00 PM, Sunday 10:00 AM - 12:00 PM and 3:00 PM - 6:00 PM. Other days by appointment, please call Mauro Puppa at 328 6232904."
+        },
+        "booking": {
+          "text": {
+            "it": "Prenota",
+            "en": "Book now"
+          },
+          "url": ""
+        }
+      },
+      {
+        "title": {
+          "it": "Concerto d'Organo nella Chiesa di San Lorenzo",
+          "en": "Organ Concert in the Church of San Lorenzo"
+        },
+        "date": {
+          "it": "Domenica 2 Agosto",
+          "en": "Sunday 2 August"
+        },
+        "image": "",
+        "description": {
+          "it": "Concerto d'Organo del maestro Niccolò Bartolini nella Chiesa di San Lorenzo",
+          "en": "Organ concert by Maestro Niccolò Bartolini in the Church of San Lorenzo"
+        },
+        "booking": {
+          "text": {
+            "it": "Prenota",
+            "en": "Book now"
+          },
+          "url": ""
+        }
+      },
+      {
+        "title": {
+          "it": "\"Il Kavasko\"",
+          "en": "\"Il Kavasko\""
+        },
+        "date": {
+          "it": "Dal 2 al 30 Agosto",
+          "en": "From August 2nd to 30th"
+        },
+        "image": "",
+        "description": {
+          "it": "Mostra di pittura di Vasco Cavani nella Canonica della Chiesa di S.Lorenzo",
+          "en": "Vasco Cavani's painting exhibition in the rectory of the Church of San Lorenzo"
+        },
+        "booking": {
+          "text": {
+            "it": "Prenota",
+            "en": "Book now"
+          },
+          "url": ""
         }
       }
     ]
