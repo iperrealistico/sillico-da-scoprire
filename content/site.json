@@ -396,6 +396,12 @@
         "description": {
           "it": "Due serate per gli appassionati di alta cucina e vini pregiati. Questo evento va in scena nella splendida cornice di palazzo Carli e nelle piazze del borgo. Si tratta di un esclusivo evento a numero chiuso per il quale è richiesta la prenotazione. La cena è composta da stuzzicanti portate che rivisitano la tradizione garfagnina, con l’aggiunta di una degustazione di vini guidata dal corpo di sommelier FISAR. ",
           "en": "Two evenings for fine dining and wine lovers in the beautiful setting of Palazzo Carli. Limited availability, reservation required, FISAR guided wine tasting."
+        },
+        "booking": {
+          "text": {
+            "it": "Prenota Ora"
+          },
+          "url": "https://passreserve.com/sillico/events/divini-sapori"
         }
       },
       {
