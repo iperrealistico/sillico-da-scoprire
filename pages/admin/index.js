@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { getContent } from '../../lib/content';
+import { getContent, normalizeSiteContent } from '../../lib/content';
 
 export default function AdminDashboard() {
     const [content, setContent] = useState(null);
@@ -44,7 +44,7 @@ export default function AdminDashboard() {
             });
             if (response.ok) {
                 const data = await response.json();
-                setContent(data);
+                setContent(normalizeSiteContent(data));
                 setLoading(false);
                 logDebug('Contenuti caricati con successo');
             } else {
@@ -342,13 +342,16 @@ export default function AdminDashboard() {
         setMessage({ type: 'info', text: 'Salvataggio in corso...' });
 
         try {
+            const normalizedContent = normalizeSiteContent(content);
+            setContent(normalizedContent);
+
             const response = await fetch('/api/admin/update', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('admin_token')}`
                 },
-                body: JSON.stringify({ content })
+                body: JSON.stringify({ content: normalizedContent })
             });
 
             if (response.ok) {

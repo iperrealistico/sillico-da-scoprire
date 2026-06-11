@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Layout from '../components/Layout';
 import ExternalContentGate from '../components/ExternalContentGate';
 import GpxViewerModal from '../components/GpxViewerModal';
-import { getLangContent } from '../lib/content';
+import { getLangContent, resolveLocalizedText } from '../lib/content';
 import { getPrivacyText } from '../lib/privacy';
 
 export default function Home({ lang = 'it' }) {
@@ -141,8 +141,12 @@ export default function Home({ lang = 'it' }) {
                     <div className="events-grid">
                         {content.events.items && content.events.items.length > 0 ? (
                             content.events.items.map((event, i) => {
-                                const bookingUrl = event.booking?.url?.trim();
-                                const bookingLabel = event.booking?.text?.trim() || (lang === 'en' ? 'Book now' : 'Prenota');
+                                const bookingUrl = typeof event.booking?.url === 'string' ? event.booking.url.trim() : '';
+                                const bookingLabel = resolveLocalizedText(
+                                    event.booking?.text,
+                                    lang,
+                                    lang === 'en' ? 'Book now' : 'Prenota'
+                                );
 
                                 return (
                                     <div

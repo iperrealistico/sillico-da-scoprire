@@ -399,7 +399,8 @@
         },
         "booking": {
           "text": {
-            "it": "Prenota Ora"
+            "it": "Prenota Ora",
+            "en": "Book now"
           },
           "url": "https://passreserve.com/sillico/events/divini-sapori"
         }
